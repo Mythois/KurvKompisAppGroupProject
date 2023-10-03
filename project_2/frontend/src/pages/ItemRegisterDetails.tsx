@@ -1,0 +1,1 @@
+//"Vareinformasjon 2" -> The details about items from the register, where we don't want functionality for going to the next/previous item

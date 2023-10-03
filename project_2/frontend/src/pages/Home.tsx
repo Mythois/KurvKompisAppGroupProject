@@ -1,0 +1,1 @@
+// "Forside" -> The site that shows a list of your shoppinglists, as well as the opportunity to create a new shoppinglist or add an item to the register
