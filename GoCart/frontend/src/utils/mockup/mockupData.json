@@ -1,0 +1,112 @@
+{
+  "foods": {
+    "Fruits": [
+      {
+        "name": "Apple",
+        "calories": "52 kcal",
+        "carbohydrates": "14 g",
+        "fiber": "2.7 g",
+        "vitaminC": "14%",
+        "fat": "0.2 g"
+      },
+      {
+        "name": "Banana",
+        "calories": "89 kcal",
+        "carbohydrates": "23 g",
+        "fiber": "2.6 g",
+        "vitaminC": "11%",
+        "fat": "0.3 g"
+      },
+      {
+        "name": "Orange",
+        "calories": "43 kcal",
+        "carbohydrates": "9 g",
+        "fiber": "2.3 g",
+        "vitaminC": "85%",
+        "fat": "0.2 g"
+      },
+      {
+        "name": "Mango",
+        "calories": "60 kcal",
+        "carbohydrates": "15 g",
+        "fiber": "1.6 g",
+        "vitaminC": "60%",
+        "fat": "0.4 g"
+      }
+    ],
+    "Protein Sources": [
+      {
+        "name": "Chicken Breast (cooked, skinless)",
+        "calories": "165 kcal",
+        "protein": "31 g",
+        "carbohydrates": "0 g",
+        "fat": "3.6 g"
+      },
+      {
+        "name": "Salmon (baked)",
+        "calories": "206 kcal",
+        "protein": "25 g",
+        "carbohydrates": "0 g",
+        "fat": "11 g"
+      },
+      {
+        "name": "Tofu (fermented)",
+        "calories": "144 kcal",
+        "protein": "16 g",
+        "carbohydrates": "3.9 g",
+        "fat": "8 g"
+      }
+    ],
+    "Carbohydrate Sources": [
+      {
+        "name": "Brown Rice (cooked)",
+        "calories": "215 kcal",
+        "carbohydrates": "45 g",
+        "fiber": "3.5 g",
+        "protein": "5 g",
+        "fat": "1.6 g"
+      },
+      {
+        "name": "Quinoa (cooked)",
+        "calories": "120 kcal",
+        "carbohydrates": "21 g",
+        "fiber": "2.8 g",
+        "protein": "4 g",
+        "fat": "1.9 g"
+      }
+    ],
+    "Dairy Products": [
+      {
+        "name": "Milk (whole)",
+        "calories": "149 kcal",
+        "carbohydrates": "12 g",
+        "protein": "8 g",
+        "fat": "8 g"
+      },
+      {
+        "name": "Yogurt (plain, unsweetened)",
+        "calories": "59 kcal",
+        "carbohydrates": "5 g",
+        "protein": "10 g",
+        "fat": "1 g"
+      }
+    ],
+    "Nuts and Seeds": [
+      {
+        "name": "Almonds",
+        "calories": "207 kcal",
+        "carbohydrates": "6 g",
+        "protein": "8 g",
+        "fat": "18 g"
+      },
+      {
+        "name": "Chia Seeds (dry)",
+        "calories": "486 kcal",
+        "carbohydrates": "42 g",
+        "fiber": "34 g",
+        "protein": "16 g",
+        "fat": "31 g"
+      }
+    ]
+  }
+}
