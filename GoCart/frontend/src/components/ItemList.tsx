@@ -1,4 +1,5 @@
-// ItemList.tsx
+// Functional component that renders a list of 'items'
+
 import React from 'react';
 import Item from './Item';
 
