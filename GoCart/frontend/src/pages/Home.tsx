@@ -12,7 +12,7 @@ function Home() {
   return (
   
     <div className='flex flex-row'>
-      <div className='bg-red-400 flex-1'><ListShoppingList/></div>
+      <div className='bg-red-400 flex-1'><ListShoppingList shoppingLists={[]}/></div>
       { width > 500 &&                                                    // Conditional render based on the width of the screen
         <div className='bg-green-400 flex-1'>ShoppingList klone:</div>  
         } 
