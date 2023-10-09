@@ -10,7 +10,7 @@ interface ItemListProps {
 
 const ItemList: React.FC<ItemListProps> = ({ items }) => {
   return (
-    <div>
+    <div className='bg-white p-2 rounded-2xl '>
       {items.map((item, index) => (
         <Item
           key={index}
