@@ -15,8 +15,15 @@ const items = [
     // Add more items as needed
   ];
 
+interface ShoppingList {
+    title: string;
+    items: string[];
+    id: string;
+  }
+
 interface ShoppingListProps {
     title: string;
+    
 
 }
 
