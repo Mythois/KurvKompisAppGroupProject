@@ -6,7 +6,11 @@ import { Searchbar } from '../components/Searchbar';
 import ItemList from '../components/ItemList'; 
 import NavButton from '../components/NavButton';
 
-const ItemRegister: React.FC = () => {
+interface ItemRegisterProps {
+    editable: boolean;
+}
+
+const ItemRegister: React.FC<ItemRegisterProps> = ({ editable }) => {
     const [filter, setFilter] = useState("");
     const [foodData, setFoodData] = useState<Food[]>([]);
 
@@ -24,12 +28,20 @@ const ItemRegister: React.FC = () => {
     );
 
     // Map filtered items to objects that include all props
-    const itemPropsList = filteredItems.map((item) => ({
-        itemName: item.name,
-        increment: false, // Can be customized as needed
-        decrement: false,
-        quantity: false,
-    }));
+    // Define the itemPropsList based on the "editable" prop
+    const itemPropsList = editable
+        ? filteredItems.map((item) => ({
+              itemName: item.name,
+              increment: true,
+              decrement: true,
+              quantity: true,
+          }))
+        : filteredItems.map((item) => ({
+              itemName: item.name,
+              increment: false,
+              decrement: false,
+              quantity: false,
+          }));
     
     return (
         <div>
