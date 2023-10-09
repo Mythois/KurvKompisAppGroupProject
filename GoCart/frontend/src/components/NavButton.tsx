@@ -1,26 +1,26 @@
-// Including the props: text or img, route and function
+/*NavigationButton component. A button that, when clicked will send the user to another page in the application. */
 
-import React from 'react';
+import { Link } from "react-router-dom";
 
-interface NavButtonProps {
-    visual: string | HTMLImageElement;
-    route: string;
-    onClick: () => void;
+interface NavButtonProps{
+  title: string         
+  route: string;        
+
 }
+
+
+const NavButton = (props:NavButtonProps)=>{
   
-const ArrowButton: React.FC<NavButtonProps> = ({ visual, route, onClick }) => {
-  return (
-    <div>
-      {typeof visual === 'string' ? (
-        <p>{visual}</p>
-      ) : (
-        <img src={visual.src} alt={visual.alt} />
-      )}
-      <p>Route: {route}</p>
-      <button onClick={onClick}>Click Me</button>
-    </div>
-  );
-};
+    return(
+      <Link to={import.meta.env.BASE_URL + props.route}>
+        <button className="border-solid border-2 border-customGreen px-20 py-2 rounded-3xl">{props.title}</button>
+      </Link>
+      
 
-export default ArrowButton;
+    );
 
+
+}
+
+
+export default NavButton
