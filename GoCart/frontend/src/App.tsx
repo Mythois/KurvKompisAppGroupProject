@@ -3,7 +3,8 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 
 import Navbar from './components/Navbar'
-import ShoppingList from './pages/ShoppingList'
+import ShoppingListPage from './pages/ShoppingListPage'
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,7 +13,8 @@ function App() {
     <div className='bg-green-50 h-screen'>
 
       <Navbar title='GoCart'/>
-      <ShoppingList title={'Untitled list'}/>
+      <ShoppingListPage title='Untitled list'/>
+
 
     </div>
 

@@ -1,7 +1,7 @@
 // "ListeDetaljer" -> The site that shows details about the shoppinglist with the specific title you choose
 
 import React from 'react'
-import ItemList from '../components/ItemList'
+import ItemList from './ItemList'
 
 // mock data just for visualizing the list
 const items = [
@@ -22,7 +22,7 @@ interface ShoppingListProps {
 
 function ShoppingList( {title}: ShoppingListProps ) {
     return (
-        <div className='px-4 py-10 sm:w-2/3 m-auto md:w-1/2 xl:w-1/3'>
+        <div className='px-4 py-10'>
                 <h1 className='mb-2 text-2xl font-light text-center'>{title}</h1>
                 <ItemList items={items}/>
                 <div className=' flex justify-center py-8'>
