@@ -22,10 +22,10 @@ interface ShoppingListProps {
 
 function ShoppingList( {title}: ShoppingListProps ) {
     return (
-        <div className='px-2 py-10'>
+        <div className='px-4 py-10 sm:w-2/3 m-auto md:w-1/2 xl:w-1/3'>
                 <h1 className='mb-2 text-2xl font-light text-center'>{title}</h1>
                 <ItemList items={items}/>
-                <div className=' flex justify-center py-4'>
+                <div className=' flex justify-center py-8'>
                     <button className='bg-white py-2 px-8 text-lg rounded-3xl border-green-700 border-2 hover:bg-green-700 hover:text-white'>Add item</button>
                 </div>
         </div>
