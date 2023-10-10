@@ -60,4 +60,3 @@ const ItemRegister: React.FC<ItemRegisterProps> = ({ editable }) => {
 }
 
 export default ItemRegister;
-
