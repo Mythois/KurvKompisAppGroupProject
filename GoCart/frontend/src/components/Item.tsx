@@ -26,12 +26,11 @@ const Item: React.FC<ItemProps> = ({ increment, decrement, quantity, itemName })
   };
 
   return (
-    <div className="item bg-light-green-200 border border-green-200 rounded-lg p-2 mb-4 mt-4 flex justify-between items-center">
+    <div className="item bg-light-green-200 pt-2 flex justify-between items-center border-b border-gray-200">
       {/* Display the item name based on 'itemName' prop */}
-      <div>
-        <span className="text-lg font-semibold pb-1 border-b border-gray-200">{itemName}</span>
-      </div>
-
+  
+      <span className="text-lg font-semibold">{itemName}</span>
+  
       <div className="flex items-center">
         {/* Display the decrement button if 'decrement' prop is true */}
         {decrement && (

@@ -1,1 +1,0 @@
-// "ListeDetaljer" -> The site that shows details about the shoppinglist with the specific title you choose
