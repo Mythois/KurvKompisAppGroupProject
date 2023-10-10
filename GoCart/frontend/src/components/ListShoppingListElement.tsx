@@ -5,6 +5,7 @@ import React from 'react';
 interface ShoppingListElementProps {
   listName: string;
   items: string[];
+  onClick?: () => void;
 }
 
 const ShoppingListElement: React.FC<ShoppingListElementProps> = ({ listName, items }) => {
