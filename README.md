@@ -33,7 +33,7 @@ The solution should demonstrate aspects of universal design and web accessibilit
 * If the screen turns small phone sized a footer will appear.
 
 The solution should demonstrate aspects of sustainable web development through design choices.
-* **{?}** Yet to be discussed within the team.
+*  Yet to be discussed within the team.
 
 Good design, sensible choices, and solutions that align with the type of data you choose.
 * The website follows a lot of the standards of web pages making it easy to navigate giving it a good design.
@@ -47,15 +47,14 @@ Use of state management, for example, redux, mobx, recoil, apollo local state ma
 
 A custom/developer GraphQL backend, with the freedom to choose the type of database server on the backend, but the project should use a backend database set up by the group.
 * Yet to be implemented.
-* The backend is going to be build using GraphQL so that it should, by changing the **{?}** variable be able to interact with different types of database servers.
-* For the project it is going to be built a database set up by de group following the **{?}** model. 
+* For the project it is going to be built a database set up by de group following the  model. 
 
 Use of good and relevant components and libraries (freedom to choose, and we encourage maximum reuse of third-party solutions).
 * Yet to be implemented.
 * We have used Tailwind for making the styling process smoother.
 
 ## Testing
-The test are set up using vitest and should be covering all the different components and **{?}**
+The test are set up using vitest and should be covering all the different components and 
 * Yet to be implemented.
 
 ## Future Work
@@ -70,10 +69,10 @@ The test are set up using vitest and should be covering all the different compon
 5. Run "git pull" in the terminal just to be sure that you got everything from the repository
 6. Run "git branch -a" to see all branches
 7. Run "git checkout name-of-branch" to switch to another branch
-8. Once you are in the desired branch make sure that you are in the "MatLyst" folder. For example if you created the folder "project_2" folder in step 1, you may want to run "cd MatLyst" to enter the correct folder.
+8. Once you are in the desired branch make sure that you are in the "GoCart" folder. For example, if you created the folder "project_2" folder in step 1, you may want to run "cd GoCart" to enter the correct folder.
 9. You can now run "npm run dev" to start a live server that should update everytime you make changes to the codebase.
 
-Step 8 may  have to and step 9 and 10 certainly  have to be repeated everytime you start your IDE. 
+Step 8 and 9 certainly have to be repeated everytime you start your IDE. 
 
 ### How to save changes in a branch
 Once you have made changes that you want to save in the branch you are currently working in, do the following:
