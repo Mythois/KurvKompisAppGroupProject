@@ -1,5 +1,5 @@
 # Project 2
-Our app is...
+We have made a shopping list app, where the user can make their own shopping lists based on an item register.
 
 ## Structure
 The app is structured in such a way that the various parts of the website are organized into their own folders within common directories with similar elements, as follows:
@@ -12,13 +12,22 @@ The app is structured in such a way that the various parts of the website are or
 The actual app is under "project_2/frontend/src/App.tsx."
 
 ## Functional Requirements
-* Something here
-* And something here
-    - Maybe even something here
+* Search functionality, e.g., through a dialog/form/search field for search input
+We have implemented a "Searchbar" component, which displays a input 
+* List-based presentation of searches with provisions for handling large result sets, either by paging through them or dynamically loading more results through scrolling.
+* The ability to view more details about each object.
+* Sorting and filtering options for the result set (note that sorting and filtering should be applied to the entire result set, not just what happens to be loaded on the client).
+* Inclusion of some form of user-generated data that should be stored persistently on the database server and presented (either user-added information, reviews, ratings, search history, or other data like a shopping list).
+* The solution should demonstrate aspects of universal design and web accessibility.
+* The solution should demonstrate aspects of sustainable web development through design choices.
+* Good design, sensible choices, and solutions that align with the type of data you choose.
+* The project's database and backend should be hosted on the group's virtual machine upon submission.
 
 ## Technical Requirements
-* Something here
-* And something here
+* The user interface should be based on React and programmed in TypeScript. The project should be set up using Vite.
+* Use of state management, for example, redux, mobx, recoil, apollo local state management, etc.
+* A custom/developer GraphQL backend, with the freedom to choose the type of database server on the backend, but the project should use a backend database set up by the group.
+* Use of good and relevant components and libraries (freedom to choose, and we encourage maximum reuse of third-party solutions).
     - Maybe even something here
 
 ## Testing
