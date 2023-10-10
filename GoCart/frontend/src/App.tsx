@@ -1,24 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { Fragment, useState } from 'react'
+
 
 import Navbar from './components/Navbar'
-import ShoppingListPage from './pages/ShoppingListPage'
+import { Route, Routes } from 'react-router-dom'
+
+import Home from './pages/Home'
+import ItemRegister from './pages/ItemRegister'
+
 
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <div className='bg-green-50 h-screen'>
-
-      <Navbar title='GoCart'/>
-      <ShoppingListPage title='Untitled list'/>
-
-
+    <Fragment>
+    <Navbar title='GoCart'/>
+    <div className='pt-24'>
+      <Routes>
+        <Route path={import.meta.env.BASE_URL + "/Home"} element={<Home/>}/>
+        <Route path={import.meta.env.BASE_URL + "/ItemRegister"} element={<ItemRegister/>}/>
+        <Route path={import.meta.env.BASE_URL} element={<Home/>}/>
+      </Routes>
     </div>
-
+    </Fragment>
   )
 }
 
 export default App
+
