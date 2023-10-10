@@ -53,7 +53,7 @@ const ItemRegister: React.FC<ItemRegisterProps> = ({ editable }) => {
 
             {/* Add the NavButton component in the bottom right corner */}
             <div className="button-container flex justify-end">
-                <NavButton route="/addItemToRegister" onClick={() => {}} visual="Add item to register" />
+                <NavButton route="/addItemToRegister" title={"Add item to register"} />
             </div>
         </div>
     );
