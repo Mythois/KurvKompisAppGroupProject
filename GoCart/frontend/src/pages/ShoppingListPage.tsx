@@ -1,8 +1,6 @@
-// this page is for mobile view only
-// the shoppinglist will be displayed in the home page in desktop view
+// This page is for mobile view only
+// The shoppinglist will be displayed in the home page in desktop view
 
-
-import React from 'react'
 import ShoppingList from '../components/ShoppingList'
 
 interface ShoppingListProps {
