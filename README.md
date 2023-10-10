@@ -12,26 +12,54 @@ The app is structured in such a way that the various parts of the website are or
 The actual app is under "project_2/frontend/src/App.tsx."
 
 ## Functional Requirements
-* Search functionality, e.g., through a dialog/form/search field for search input
-We have implemented a "Searchbar" component, which displays a input 
-* List-based presentation of searches with provisions for handling large result sets, either by paging through them or dynamically loading more results through scrolling.
-* The ability to view more details about each object.
-* Sorting and filtering options for the result set (note that sorting and filtering should be applied to the entire result set, not just what happens to be loaded on the client).
-* Inclusion of some form of user-generated data that should be stored persistently on the database server and presented (either user-added information, reviews, ratings, search history, or other data like a shopping list).
-* The solution should demonstrate aspects of universal design and web accessibility.
-* The solution should demonstrate aspects of sustainable web development through design choices.
-* Good design, sensible choices, and solutions that align with the type of data you choose.
-* The project's database and backend should be hosted on the group's virtual machine upon submission.
+Search functionality, e.g., through a dialog/form/search field for search input
+* We have implemented a "Searchbar" component, which updates the displayed shopping item while writing to the items matching the search input
+
+List-based presentation of searches with provisions for handling large result sets, either by paging through them or dynamically loading more results through scrolling.
+* The **{?}** page showes a list-based presentation of possible shopping items depending on the input of the search field. Large result sets are handeled by **{?}**
+
+The ability to view more details about each object.
+* By clicking on an item in the list one will be sendt to a page showing more information about the selected item. 
+
+Sorting and filtering options for the result set (note that sorting and filtering should be applied to the entire result set, not just what happens to be loaded on the client).
+* **{?}**
+
+Inclusion of some form of user-generated data that should be stored persistently on the database server and presented (either user-added information, reviews, ratings, search history, or other data like a shopping list). 
+* The user can add shopping items
+
+The solution should demonstrate aspects of universal design and web accessibility.
+* The website is designed to change the layout of the page after de size of the user device. 
+* On desctop the home page have a double view showing one component on the left sidde and one component on the right side. If the screen turns small enough (about phone size) the page will be split into two different pages.
+* If the screen turns small phone sized a footer will appear.
+* **{?}** 
+
+The solution should demonstrate aspects of sustainable web development through design choices.
+* **{?}**
+
+Good design, sensible choices, and solutions that align with the type of data you choose.
+* Hope so...
+* The website follows a lot of the standards of webpages making it easy to navigate giving it a good design.
+* **{?}**
+
+The project's database and backend should be hosted on the group's virtual machine upon submission.
+* **{?}**
 
 ## Technical Requirements
-* The user interface should be based on React and programmed in TypeScript. The project should be set up using Vite.
-* Use of state management, for example, redux, mobx, recoil, apollo local state management, etc.
-* A custom/developer GraphQL backend, with the freedom to choose the type of database server on the backend, but the project should use a backend database set up by the group.
-* Use of good and relevant components and libraries (freedom to choose, and we encourage maximum reuse of third-party solutions).
-    - Maybe even something here
+The user interface should be based on React and programmed in TypeScript. The project should be set up using Vite.
+* We have build the project using React and typecript, set up by Vite
+
+Use of state management, for example, redux, mobx, recoil, apollo local state management, etc.
+* The project uses **{?}** to manage states.
+
+A custom/developer GraphQL backend, with the freedom to choose the type of database server on the backend, but the project should use a backend database set up by the group.
+* The backend is build using GraphQL so that it sould, by changing the **{?}** variable be able to interact with different types of database servers.
+* For the project it is buil a database set up by de group following the **{?}** model. 
+
+Use of good and relevant components and libraries (freedom to choose, and we encourage maximum reuse of third-party solutions).
+* We have used **{?}**
 
 ## Testing
-Somethingsomething test
+The test are set up using vitest and should be covering all the different components and **{?}**
 
 ## Future Work
 - What is our plan?
