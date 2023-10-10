@@ -31,13 +31,8 @@ function ListShoppingList() {
     setShoppingLists((prevLists) => [...prevLists, newList] as ShoppingList[]); // Update the shopping lists state
     saveShoppingLists([...shoppingLists, newList] as ShoppingList[]); // Save the updated shopping lists to storage
     setNewListTitle('');
-    
-
   } 
 
-  function displayShoppingList() {
-    
-  }
 
   function deleteShoppingList(idToDelete: number) {
     const updatedLists = shoppingLists.filter(
@@ -48,21 +43,23 @@ function ListShoppingList() {
     saveShoppingLists(updatedLists); // Save the updated shopping lists to storage
     
   }
+
+  
   
   return (
     <div>
-      <div className='bg-green-100 flex-1'>
+      <div className='flex-1 '>
       <div>
         {shoppingLists.map((shoppingList, index) => (
-          <div key={index} className="relative hover:bg-green-700 cursor-pointer">
+          <div key={index} className="relative">
             <div>
-              <Link to={'/ShoppingListPage'}>
+
+              <Link to={`/ShoppingListPage/${index}`}>
                 <ListShoppingListElement
                   listName={shoppingList.title}
                   items={shoppingList.items}
-                  onClick={() => displayShoppingList()}
                   />
-            </Link>
+              </Link>
 
             </div>
               <button

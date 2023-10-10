@@ -10,15 +10,16 @@ function Home() {
   const { width } = useWindowDimensions(); // Get the window width
 
   return (
-    <div className='flex flex-row'>
+    <div className='flex flex-row justify-center'>
 
       <ListShoppingList/>
 
-      {width > 500 && (
+
+      {/* {width > 500 && (
         <div className='bg-green-400 flex-1'>
-          {/* Content to be displayed when the window width is greater than 500 pixels */}
+          Content to be displayed when the window width is greater than 500 pixels
         </div>
-      )}
+      )} */}
     </div>
   );
 }
