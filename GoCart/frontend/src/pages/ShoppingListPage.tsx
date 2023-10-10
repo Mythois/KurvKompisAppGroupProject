@@ -1,5 +1,5 @@
-// this page is for mobile view only
-// the shoppinglist will be displayed in the home page in desktop view
+// This page is for mobile view only
+// The shoppinglist will be displayed in the home page in desktop view
 
 import ShoppingList from '../components/ShoppingList'
 import { useParams } from 'react-router-dom';
