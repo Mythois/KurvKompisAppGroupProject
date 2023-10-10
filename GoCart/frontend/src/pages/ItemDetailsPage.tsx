@@ -1,0 +1,1 @@
+//"Vareinformasjon" -> The details about items in the given ShoppingList, where we want functionality for going to the next/previous item
