@@ -18,7 +18,7 @@ function ShoppingListPage( {title, items}: ShoppingListProps) {
 
 
   return (
-    <div className='sm:hidden'>
+    <div>
         <ShoppingList title={title} id={id} items={items}/>
     </div>
   )
