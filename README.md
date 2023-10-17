@@ -1,8 +1,31 @@
+# Table of Contents
+
+1. [Project 2](#project-2)
+2. [Building and Running the Project](#building-and-running-the-project)
+3. [Prettier](#prettier)
+4. [Development](#development)
+   1. [Built With](#built-with)
+   2. [Dependencies](#dependencies)
+5. [Structure](#structure)
+6. [Functional Requirements](#functional-requirements)
+7. [Technical Requirements](#technical-requirements)
+8. [Testing](#testing)
+9. [Future Work](#future-work)
+
 # Project 2
 We have made a shopping list app, where the user can make their own shopping lists based on an item register, where items represent groceries. The main functionality of this app is making customized shopping lists, to make the everyday shopping easier. The user will have a register of items to choose from, and may also add items to this register as they wish. The user will also have the opportunity to read details about each item.
 
 ## Building and Running the Project
-### How to get started
+To get started, run the following commands in the following order:
+
+| Command                                                                       | Description                                        |
+| ----------------------------------------------------------------------------- | -------------------------------------------------- |
+| `git clone https://gitlab.stud.idi.ntnu.no/it2810-h23/Team-22/project_2.git ` | clone project                                      |
+| `cd GoCart`                                                                   | navigate into root folder                          |
+| `npm run dev`                                                                 | install dependencies and run project in browser    |
+
+Or manually:
+
 1. Create a folder on your machine in which you want the project to live, for example the folder "project_1"
 2. Go to the GitLab repository https://gitlab.stud.idi.ntnu.no/it2810-h23/Team-22/project_2 and select "Clone" and copy the URL pertaining to "Clone with HTTPS".
 3. Open the folder created in step 1 in a terminal and enter "git clone the-url-from-clone-with-https"
@@ -13,15 +36,37 @@ We have made a shopping list app, where the user can make their own shopping lis
 8. Once you are in the desired branch make sure that you are in the "GoCart" folder. For example, if you created the folder "project_2" folder in step 1, you may want to run "cd GoCart" to enter the correct folder.
 9. You can now run "npm run dev" to start a live server that should update everytime you make changes to the codebase.
 
-Step 8 and 9 certainly have to be repeated everytime you start your IDE. 
+## Prettier
 
-### How to save changes in a branch
-Once you have made changes that you want to save in the branch you are currently working in, do the following:
-1. Run "git status" to see all changed files
-2. Assuming you want to add all changed files / all changes to the branch you are currently working in, run the command "git add --all".
-5. Check that you have added all changes by running: git status
-4. Commit the changes you have made by running: git commit -m"[#issueNumber]your-commit message header" -m"your-detailed-commit-message"
-5. Push the commited changes to the branch: git push
+To activate follow the following steps:
+
+```
+- Install Prettier extension
+- Open settings for your VS Code
+- Click on the formatting section of the Text Editor tab and enable Format on Save Mode (recommended).
+- Highlight your code and right-click. Select Format Document. Once you click on Format Document, a dialog box will tell you to configure your code formatter. This is to set your default code formatter. Click on the configure button.
+- After you click on configure, select Prettier as the default formatter.
+```
+
+Source for guided step by step tutorial: https://www.educative.io/answers/how-to-set-up-prettier-and-automatic-formatting-on-vs-code
+
+## Development
+
+### Technology
+
+- [Typescript](https://www.typescriptlang.org/)
+  - JavaScript with syntax for types
+- [React](https://reactjs.org/)
+  - Component based JavaScript library used for creating user interfaces
+- [Vite](https://vitejs.dev/)
+  - Build tool
+
+### Dependencies
+
+This project uses the [npm](https://www.npmjs.com/) package manager.
+
+- [React-router](https://reactrouter.com/en/main)
+- [Tailwind CSS](https://tailwindcss.com/)
 
 ## Structure
 The app is structured in such a way that the various parts of the website are organized into their own folders within common directories with similar elements, as follows:
