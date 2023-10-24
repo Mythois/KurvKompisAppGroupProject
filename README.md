@@ -38,17 +38,19 @@ Or manually:
 
 ## Prettier
 
-To activate follow the following steps:
+Prettier is recomended to format on save. To activate follow these steps:
 
 ```
 - Install Prettier extension
 - Open settings for your VS Code
-- Click on the formatting section of the Text Editor tab and enable Format on Save Mode (recommended).
+- Click on the formatting section of the Text Editor tab and enable Format on Save Mode.
 - Highlight your code and right-click. Select Format Document. Once you click on Format Document, a dialog box will tell you to configure your code formatter. This is to set your default code formatter. Click on the configure button.
 - After you click on configure, select Prettier as the default formatter.
 ```
 
 Source for guided step by step tutorial: https://www.educative.io/answers/how-to-set-up-prettier-and-automatic-formatting-on-vs-code
+
+Or use shift + alt + F to format
 
 ## Development
 
