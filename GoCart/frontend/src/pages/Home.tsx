@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import ListShoppingList from '../components/ListShoppingList';
 import useWindowDimensions from '../utils/useWindowDimensions';
+import ShoppingList from '../components/ShoppingList';
 
 
 function Home() {
@@ -10,16 +11,14 @@ function Home() {
   const { width } = useWindowDimensions(); // Get the window width
 
   return (
-    <div className='flex flex-row justify-center'>
+    <div className="grid gap-8 lg:gap-16 mt-8 md:grid-cols-2">
+      <div className="md:col-span-1 mb-5">
+        <ListShoppingList/>
+      </div>
+      <div className="md:col-span-1">
+        <ShoppingList title={'test'} id={'0'} items={[]}/>
+      </div>
 
-      <ListShoppingList/>
-
-
-      {/* {width > 500 && (
-        <div className='bg-green-400 flex-1'>
-          Content to be displayed when the window width is greater than 500 pixels
-        </div>
-      )} */}
     </div>
   );
 }
