@@ -7,9 +7,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        customGreen: '#7EA172', // Define the custom color
+        primary: '#f97316',
+        secondary: '#678765', // just put a random color
       },
     },
+
   },
   variants: {
     fill: ['hover', 'focus'], 
