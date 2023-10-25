@@ -32,11 +32,11 @@ function ShoppingList( {title, id, items}: ShoppingListProps ) {
 
     return (
         <div className='px-4 py-10'>
-            <h1 className='mb-2 text-2xl font-light text-center'>{title}</h1>
+            <h1 className='mb-2 text-2xl font-bold uppercase text-center'>{title}</h1>
             <ItemList items={mockiItems}/>
             <div className=' flex justify-center py-8'>
                 <Link to={'/AddItem'}>
-                    <button className='bg-white py-2 px-8 text-lg rounded-3xl border-green-700 border-2 hover:bg-green-700 hover:text-white'>Add item</button>
+                    <button className='btn'>Add item</button>
                 </Link>
             </div>
         </div>
