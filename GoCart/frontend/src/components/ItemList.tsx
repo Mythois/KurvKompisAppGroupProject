@@ -13,7 +13,7 @@ const ItemList: React.FC<ItemListProps> = ({ items }) => {
   return (
     <div className="bg-white p-2 rounded-2xl ">
       {items.map((item, index) => (
-        <div className="hover:underline">
+        <div>
           <Link to={`/ItemDetailsPage/${item.itemName}`}>
             <Item
               key={index}
