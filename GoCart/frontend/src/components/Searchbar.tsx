@@ -31,7 +31,9 @@ export const Searchbar: React.FC<SearchbarProps> = ({ onFilter }) => {
         value={filter}
         // The onChange event handler is used to call the handleFilterChange function when the input value changes.
         onChange={(e) => handleFilterChange(e.target.value)}
-        className="w-full p-2 rounded-md border border-gray-300 focus:outline-none focus:border-black"
+        className="inputfield border-input
+        placeholder:text-muted-foreground 
+        focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-300"
       />
     </div>
   );

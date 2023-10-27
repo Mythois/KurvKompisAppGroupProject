@@ -1,18 +1,18 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useState } from 'react';
 
-import Navbar from './components/Navbar'
-import { Route, Routes } from 'react-router-dom'
+import Navbar from './components/Navbar';
+import { Route, Routes } from 'react-router-dom';
 
-import Home from './pages/Home'
-import ItemRegister from './pages/ItemRegister'
-import ShoppingListPage from './pages/ShoppingListPage'
-import ItemDetailsPage from './pages/ItemDetailsPage'
+import Home from './pages/Home';
+import ItemRegister from './pages/ItemRegister';
+import ShoppingListPage from './pages/ShoppingListPage';
+import ItemDetailsPage from './pages/ItemDetailsPage';
 
 function App() {
   return (
     <Fragment>
       <Navbar title="GoCart" />
-      <div className="pt-24 bg-green-50 h-screen">
+      <div className="pt-24 h-screen ml-16 mr-16">
         <Routes>
           <Route path={import.meta.env.BASE_URL + '/Home'} element={<Home />} />
           <Route path={import.meta.env.BASE_URL + '/ItemRegister'} element={<ItemRegister editable={false} />} />
@@ -25,11 +25,12 @@ function App() {
             path={import.meta.env.BASE_URL + '/ItemDetailsPage/:itemName'}
             element={<ItemDetailsPage showArrowButtons={true} />}
           />
+
           <Route path={import.meta.env.BASE_URL} element={<Home />} />
         </Routes>
       </div>
     </Fragment>
-  )
+  );
 }
 
-export default App
+export default App;

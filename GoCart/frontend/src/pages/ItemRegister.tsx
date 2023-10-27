@@ -44,15 +44,19 @@ const ItemRegister: React.FC<ItemRegisterProps> = ({ editable }) => {
           }));
     
     return (
-        <div>
+        <div className='mt-5 mb-5 flex flex-col'>
             {/* Render the Searchbar component with the filter callback */}
-            <Searchbar onFilter={(value: React.SetStateAction<string>) => setFilter(value)} />
+            <div className='fixed bg-white w-1/3'>
+                <Searchbar onFilter={(value: React.SetStateAction<string>) => setFilter(value)} />
+            </div>
+            
 
             {/* Render the ItemList component with the extracted item names */}
-            <ItemList items={itemPropsList} />
-
+            <div className='mt-10'>
+                <ItemList items={itemPropsList} />
+            </div>
             {/* Add the NavButton component in the bottom right corner */}
-            <div className="button-container flex justify-end">
+            <div className="button-container flex justify-end mb-5">
                 <NavButton route="/addItemToRegister" title={"Add item to register"} />
             </div>
         </div>
