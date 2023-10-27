@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 // Define the props for the ItemList component
 interface ItemListProps {
-  items: Array<{ itemName: string; increment?: boolean; decrement?: boolean; quantity?: boolean }>;
+  items: Array<{ itemName: string; increment?: boolean; decrement?: boolean; quantity?: boolean }>
 }
 
 const ItemList: React.FC<ItemListProps> = ({ items }) => {
@@ -26,7 +26,7 @@ const ItemList: React.FC<ItemListProps> = ({ items }) => {
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default ItemList;
+export default ItemList
