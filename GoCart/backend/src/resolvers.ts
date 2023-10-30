@@ -1,79 +1,102 @@
-import { Item } from './models/Item'
+import mongoose from 'mongoose'
+import { Item } from './models/Item.js'
 
 const resolvers = {
   Query: {
-    product: async (_, { _id }) => {
+    item: async (_, { _id }) => {
       try {
-        const product = await Item.findById(_id).exec()
-        return product
+        console.log('_id: ' + _id)
+        const objectId = new mongoose.Types.ObjectId(_id)
+        console.log('objectID:' + objectId)
+        const item = await Item.findById(objectId).exec()
+        console.log('item:' + item)
+        return item
       } catch (error) {
-        throw new Error(`Error retrieving product: ${error.message}`)
+        throw new Error(`Error retrieving item: ${error.message}`)
       }
     },
-    products: async (_, { page, perPage }) => {
+    items: async (_, { page, perPage }) => {
       const skip = (page - 1) * perPage
       const limit = perPage
       try {
         const allProducts = await Item.find().skip(skip).limit(limit).exec()
         return allProducts
       } catch (error) {
-        throw new Error(`Error retrieving products: ${error.message}`)
+        throw new Error(`Error retrieving items: ${error.message}`)
       }
     },
-    productsByBrand: async (_, { brand }) => {
+    itemsByBrand: async (_, { brand }) => {
       try {
-        const products = await Item.find({ brands: brand }).exec()
-        return products
+        const items = await Item.find({ brands: brand }).exec()
+        return items
       } catch (error) {
-        throw new Error(`Error retrieving products by brand: ${error.message}`)
+        throw new Error(`Error retrieving items by brand: ${error.message}`)
       }
     },
-    productsByCategory: async (_, { category }) => {
+    itemsByCategory: async (_, { category }) => {
       try {
-        const products = await Item.find({ categories: category }).exec()
-        return products
+        const items = await Item.find({ categories: category }).exec()
+        return items
       } catch (error) {
-        throw new Error(`Error retrieving products by category: ${error.message}`)
+        throw new Error(`Error retrieving items by category: ${error.message}`)
       }
     },
-    productsByLabel: async (_, { label }) => {
+    itemsByLabel: async (_, { label }) => {
       try {
-        const products = await Item.find({ labels: label }).exec()
-        return products
+        const items = await Item.find({ labels: label }).exec()
+        return items
       } catch (error) {
-        throw new Error(`Error retrieving products by label: ${error.message}`)
+        throw new Error(`Error retrieving items by label: ${error.message}`)
       }
     },
-    productsByAllergens: async (_, { allergens }) => {
+    itemsByAllergens: async (_, { allergens }) => {
       try {
-        const products = await Item.find({ allergens: allergens }).exec()
-        return products
+        const items = await Item.find({ allergens: allergens }).exec()
+        return items
       } catch (error) {
-        throw new Error(`Error retrieving products by allergens: ${error.message}`)
+        throw new Error(`Error retrieving items by allergens: ${error.message}`)
       }
     },
-    productsByEcoscoreScore: async (_, { ecoscore_score }) => {
+    itemsByEcoscoreScore: async (_, { ecoscore_score }) => {
       try {
-        const products = await Item.find({ ecoscore_score: ecoscore_score }).exec()
-        return products
+        const items = await Item.find({ ecoscore_score: ecoscore_score }).exec()
+        return items
       } catch (error) {
-        throw new Error(`Error retrieving products by ecoscore score: ${error.message}`)
+        throw new Error(`Error retrieving items by ecoscore score: ${error.message}`)
       }
     },
-    productsByEcoscoreGrade: async (_, { ecoscore_grade }) => {
+    itemsByEcoscoreGrade: async (_, { ecoscore_grade }) => {
       try {
-        const products = await Item.find({ ecoscore_grade: ecoscore_grade }).exec()
-        return products
+        const items = await Item.find({ ecoscore_grade: ecoscore_grade }).exec()
+        return items
       } catch (error) {
-        throw new Error(`Error retrieving products by ecoscore grade: ${error.message}`)
+        throw new Error(`Error retrieving items by ecoscore grade: ${error.message}`)
       }
     },
-    productsByFoodGroup: async (_, { food_group }) => {
+    itemsByFoodGroup: async (_, { food_group }) => {
       try {
-        const products = await Item.find({ food_groups: food_group }).exec()
-        return products
+        const items = await Item.find({ food_groups: food_group }).exec()
+        return items
       } catch (error) {
-        throw new Error(`Error retrieving products by food group: ${error.message}`)
+        throw new Error(`Error retrieving items by food group: ${error.message}`)
+      }
+    },
+    itemByName: async (_, { product_name_nb }) => {
+      try {
+        const item = await Item.findOne({ product_name_nb }).exec()
+        return item
+      } catch (error) {
+        throw new Error(`Error retrieving item by name: ${error.message}`)
+      }
+    },
+    itemsByStore: async (_, { store, page, perPage }) => {
+      const skip = (page - 1) * perPage
+      const limit = perPage
+      try {
+        const items = await Item.find({ stores: store }).skip(skip).limit(limit).exec()
+        return items
+      } catch (error) {
+        throw new Error(`Error retrieving items by store: ${error.message}`)
       }
     },
   },

@@ -98,7 +98,9 @@ const typeDefs = gql`
 
   type Query {
     item(_id: ID!): Item
+    itemByName(product_name_nb: String!): Item
     items(page: Int!, perPage: Int!): [Item]
+    itemsByStore(store: String!, page: Int!, perPage: Int!): [Item]
     itemsByBrand(brand: String!, page: Int!, perPage: Int!): [Item]
     itemsByCategory(category: String!, page: Int!, perPage: Int!): [Item]
     itemsByLabel(label: String!, page: Int!, perPage: Int!): [Item]
