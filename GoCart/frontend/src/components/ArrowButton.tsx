@@ -23,12 +23,12 @@ interface ArrowButtonProps {
 }
 
 // Define the ArrowButton component
-const ArrowButton = (props: ArrowButtonProps) => {
+function ArrowButton(props: ArrowButtonProps) {
   // Initialize a counter with the provided index
   let counter = props.index
 
   // Function to handle button click
-  const handleClick = () => {
+  function handleClick() {
     if (props.direction === 'right') {
       // Increment the counter if the direction is right
       counter = counter + 1

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { getFoodData, Food } from '../utils/mockup/mockup'
-import { Searchbar } from '../components/Searchbar'
+import Searchbar from '../components/Searchbar'
 import ItemList from '../components/ItemList'
 import NavButton from '../components/NavButton'
 
@@ -10,7 +10,7 @@ interface ItemRegisterProps {
   editable: boolean
 }
 
-const ItemRegister: React.FC<ItemRegisterProps> = ({ editable }) => {
+function ItemRegister({ editable }: ItemRegisterProps) {
   const [filter, setFilter] = useState('')
   const [foodData, setFoodData] = useState<Food[]>([])
 

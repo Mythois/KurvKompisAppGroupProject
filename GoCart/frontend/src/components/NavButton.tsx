@@ -7,7 +7,7 @@ interface NavButtonProps {
   route: string
 }
 
-const NavButton = (props: NavButtonProps) => {
+function NavButton(props: NavButtonProps) {
   return (
     <Link to={import.meta.env.BASE_URL + props.route}>
       <button className="btn">{props.title}</button>

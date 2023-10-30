@@ -13,7 +13,7 @@ interface NavbarProps {
   title: string
 }
 
-const Navbar: React.FC<NavbarProps> = ({ title }) => {
+function Navbar({ title }: NavbarProps) {
   return (
     <>
       <nav className="fixed h-24 w-screen bg-primary py-6 px-8 sm:grid grid-flow-col grid-cols-5">

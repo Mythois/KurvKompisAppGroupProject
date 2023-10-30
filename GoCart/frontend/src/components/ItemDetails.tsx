@@ -8,7 +8,7 @@ interface ItemDetailsProps {
   editable?: boolean // Whether the component should be editable
 }
 
-const ItemDetails: React.FC<ItemDetailsProps> = ({ itemName, editable = false }) => {
+function ItemDetails({ itemName, editable = false }: ItemDetailsProps) {
   // Get the food data from the data service
   const foodData = getFoodData()
 
@@ -30,7 +30,7 @@ const ItemDetails: React.FC<ItemDetailsProps> = ({ itemName, editable = false })
   const [editedItem, setEditedItem] = useState<Food | undefined>(foodItem)
 
   // Handle input changes for editable items
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target
     setEditedItem((prevItem) => ({
       ...prevItem,

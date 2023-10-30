@@ -9,12 +9,12 @@ interface SearchbarProps {
 }
 
 // Define the Searchbar component as a functional component.
-export const Searchbar: React.FC<SearchbarProps> = ({ onFilter }) => {
+function Searchbar({ onFilter }: SearchbarProps) {
   // Initialize the 'filter' state using React's useState hook.
   const [filter, setFilter] = useState('')
 
   // Function to handle changes in the filter input field.
-  const handleFilterChange = (value: string) => {
+  function handleFilterChange(value: string) {
     // Update the 'filter' state with the new value.
     setFilter(value)
 
@@ -38,3 +38,5 @@ export const Searchbar: React.FC<SearchbarProps> = ({ onFilter }) => {
     </div>
   )
 }
+
+export default Searchbar
