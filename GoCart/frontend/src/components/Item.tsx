@@ -34,15 +34,19 @@ const Item: React.FC<ItemProps> = ({ increment, decrement, quantity, itemName })
       <div className="flex items-center">
         {/* Display the decrement button if 'decrement' prop is true */}
         {decrement && (
-          <button className="btn px-2 mr-1" onClick={decrementItem}>-</button>
-          )}
+          <button className="btn px-2 mr-1" onClick={decrementItem}>
+            -
+          </button>
+        )}
 
         {/* Conditionally render the quantity span based on 'quantity' prop */}
         {quantity && <span className="text-lg px-2">{itemQuantity}</span>}
 
         {/* Display the increment button if 'increment' prop is true */}
         {increment && (
-          <button className="btn px-2 ml-1" onClick={incrementItem}>+</button>
+          <button className="btn px-2 ml-1" onClick={incrementItem}>
+            +
+          </button>
         )}
       </div>
     </div>
