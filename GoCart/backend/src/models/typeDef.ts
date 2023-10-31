@@ -58,7 +58,7 @@ const typeDefs = gql`
     food_groups: String
     food_groups_tags: [String]
     nova_groups: String
-    nova_groups_tags: String
+    nova_groups_tags: [String]
     nutriscore_grade: String
     nutriscore_score: String
     ecoscore_grade: String
@@ -69,30 +69,30 @@ const typeDefs = gql`
 
   type EcoscoreData {
     missing_key_data: String
-    agribalyse: AgribalyseData
-    adjustments: AdjustmentsData
+    agribalyse: Agribalyse
+    adjustments: Adjustments
   }
 
-  type AgribalyseData {
+  type Agribalyse {
     code: String
   }
 
-  type AdjustmentsData {
-    origins_of_ingredients: OriginOfIngredientsData
-    packaging: PackagingData
-    production_system: ProductionSystemData
+  type Adjustments {
+    origins_of_ingredients: OriginAdjustment
+    packaging: PackagingAdjustment
+    production_system: ProductionAdjustment
   }
 
-  type OriginOfIngredientsData {
+  type OriginAdjustment {
     value: String
   }
 
-  type PackagingData {
+  type PackagingAdjustment {
     value: String
     non_recyclable_and_non_biodegradable_materials: String
   }
 
-  type ProductionSystemData {
+  type ProductionAdjustment {
     value: String
   }
 
@@ -110,4 +110,5 @@ const typeDefs = gql`
     itemsByFoodGroup(food_group: String!, page: Int!, perPage: Int!): [Item]
   }
 `
+
 export { typeDefs }
