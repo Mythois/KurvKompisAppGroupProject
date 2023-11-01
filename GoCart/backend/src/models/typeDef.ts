@@ -39,17 +39,17 @@ const typeDefs = gql`
   }
 
   type Query {
-    product(_id: ID!): Item
-    productByName(product_name_nb: String!): Item
-    products(page: Int!, perPage: Int!): [Item]
-    productsByStore(store: String!, page: Int!, perPage: Int!): [Item]
-    productsByBrand(brand: String!, page: Int!, perPage: Int!): [Item]
-    productsByCategory(category: String!, page: Int!, perPage: Int!): [Item]
-    productsByLabel(label: String!, page: Int!, perPage: Int!): [Item]
-    productsByAllergens(allergens: String!, page: Int!, perPage: Int!): [Item]
-    productsByEcoscoreScore(ecoscore_score: String!, page: Int!, perPage: Int!): [Item]
-    productsByEcoscoreGrade(ecoscore_grade: String!, page: Int!, perPage: Int!): [Item]
-    productsByFoodGroup(food_group: String!, page: Int!, perPage: Int!): [Item]
+    product(_id: ID!): Product
+    productByName(product_name_nb: String!): Product
+    products(page: Int!, perPage: Int!): [Product]
+    productsByStore(store: String!, page: Int!, perPage: Int!): [Product]
+    productsByBrand(brand: String!, page: Int!, perPage: Int!): [Product]
+    productsByCategory(category: String!, page: Int!, perPage: Int!): [Product]
+    productsByLabel(label: String!, page: Int!, perPage: Int!): [Product]
+    productsByAllergens(allergens: String!, page: Int!, perPage: Int!): [Product]
+    productsByEcoscoreScore(ecoscore_score: String!, page: Int!, perPage: Int!): [Product]
+    productsByEcoscoreGrade(ecoscore_grade: String!, page: Int!, perPage: Int!): [Product]
+    productsByFoodGroup(food_group: String!, page: Int!, perPage: Int!): [Product]
   }
 `
 
