@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 const typeDefs = gql`
-  type Item {
+  type Product {
     _id: ID!
     product_name_nb: String
     quantity: String
@@ -39,17 +39,17 @@ const typeDefs = gql`
   }
 
   type Query {
-    item(_id: ID!): Item
-    itemByName(product_name_nb: String!): Item
-    items(page: Int!, perPage: Int!): [Item]
-    itemsByStore(store: String!, page: Int!, perPage: Int!): [Item]
-    itemsByBrand(brand: String!, page: Int!, perPage: Int!): [Item]
-    itemsByCategory(category: String!, page: Int!, perPage: Int!): [Item]
-    itemsByLabel(label: String!, page: Int!, perPage: Int!): [Item]
-    itemsByAllergens(allergens: String!, page: Int!, perPage: Int!): [Item]
-    itemsByEcoscoreScore(ecoscore_score: String!, page: Int!, perPage: Int!): [Item]
-    itemsByEcoscoreGrade(ecoscore_grade: String!, page: Int!, perPage: Int!): [Item]
-    itemsByFoodGroup(food_group: String!, page: Int!, perPage: Int!): [Item]
+    product(_id: ID!): Item
+    productByName(product_name_nb: String!): Item
+    products(page: Int!, perPage: Int!): [Item]
+    productsByStore(store: String!, page: Int!, perPage: Int!): [Item]
+    productsByBrand(brand: String!, page: Int!, perPage: Int!): [Item]
+    productsByCategory(category: String!, page: Int!, perPage: Int!): [Item]
+    productsByLabel(label: String!, page: Int!, perPage: Int!): [Item]
+    productsByAllergens(allergens: String!, page: Int!, perPage: Int!): [Item]
+    productsByEcoscoreScore(ecoscore_score: String!, page: Int!, perPage: Int!): [Item]
+    productsByEcoscoreGrade(ecoscore_grade: String!, page: Int!, perPage: Int!): [Item]
+    productsByFoodGroup(food_group: String!, page: Int!, perPage: Int!): [Item]
   }
 `
 

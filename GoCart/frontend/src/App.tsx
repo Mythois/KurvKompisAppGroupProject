@@ -1,12 +1,12 @@
-import { Fragment, useState } from 'react';
+import { Fragment } from 'react'
 
-import Navbar from './components/Navbar';
-import { Route, Routes } from 'react-router-dom';
+import Navbar from './components/Navbar'
+import { Route, Routes } from 'react-router-dom'
 
-import Home from './pages/Home';
-import ItemRegister from './pages/ItemRegister';
-import ShoppingListPage from './pages/ShoppingListPage';
-import ItemDetailsPage from './pages/ItemDetailsPage';
+import Home from './pages/Home'
+import ItemRegister from './pages/ItemRegister'
+import ShoppingListPage from './pages/ShoppingListPage'
+import ItemDetailsPage from './pages/ItemDetailsPage'
 
 function App() {
   return (
@@ -30,7 +30,7 @@ function App() {
         </Routes>
       </div>
     </Fragment>
-  );
+  )
 }
 
-export default App;
+export default App
