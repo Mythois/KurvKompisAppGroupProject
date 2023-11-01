@@ -12,11 +12,14 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 })
 
+/* Test query.
+Check out https://www.apollographql.com/docs/react/development-testing/static-typing/ for how to do more advanced stuff and
+how to do queries in other files*/
 client
   .query({
     query: gql`
-      query GetItem($id: ID!) {
-        item(_id: $id) {
+      query GetProduct($id: ID!) {
+        product(_id: $id) {
           product_name_nb
           salt_value
           salt_unit

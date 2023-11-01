@@ -22,11 +22,13 @@ To get started, run the following commands in the following order:
 | ----------------------------------------------------------------------------- | -------------------------------------------------- |
 | `git clone https://gitlab.stud.idi.ntnu.no/it2810-h23/Team-22/project_2.git ` | clone project                                      |
 | `cd GoCart`                                                                   | navigate into root folder                          |
-| `npm run dev`                                                                 | install dependencies and run project in browser    |
+| `npm run back`                                                                | install dependencies and run backend server        |
+| `npm run front`                                                               | install dependencies and run frontend server       |
 
 Or manually:
 
-1. Create a folder on your machine in which you want the project to live, for example the folder "project_1"
+### Cloning the repository
+1. Create a folder on your machine in which you want the project to live, for example the folder "project_2"
 2. Go to the GitLab repository https://gitlab.stud.idi.ntnu.no/it2810-h23/Team-22/project_2 and select "Clone" and copy the URL pertaining to "Clone with HTTPS".
 3. Open the folder created in step 1 in a terminal and enter "git clone the-url-from-clone-with-https"
 4. Wait until the cloning process is finished
@@ -34,7 +36,19 @@ Or manually:
 6. Run "git branch -a" to see all branches
 7. Run "git checkout name-of-branch" to switch to another branch
 8. Once you are in the desired branch make sure that you are in the "GoCart" folder. For example, if you created the folder "project_2" folder in step 1, you may want to run "cd GoCart" to enter the correct folder.
-9. You can now run "npm run dev" to start a live server that should update everytime you make changes to the codebase.
+
+### Installing mongodb community edition
+1. Install mongodb community edition on your computer by following the instructions at https://www.mongodb.com/docs/manual/administration/install-community/
+2. During installation of mongodb or thereafter install mongodb compass
+3. Run mongodb using the terminal by following the instructions given at the link above for your platform
+4. After all installation is complete, start mongodb compass
+4. connect to the database with mongodb compass
+5. Create a database called GoCart with a collection called Items
+6. Upload the json file you find at GoCart/frontend/src/utils/mockup/GoCart.Items.json to the Items collection
+
+### Running the project
+1. Going back to the project. From the GoCart folder you can run npm run back to run the backend server and connect the project to the database. Thereafter, you can run npm run front in a new terminal (remember to cd into GoCart if you are not already there). This will start the website.
+2. Interact with our website.
 
 ## Prettier
 
