@@ -1,6 +1,6 @@
 {
-    "scripts": {
-      "dev": "cd frontend && npm install && npm run dev"
-    }
+  "scripts": {
+    "back": "cd backend && npm run start",
+    "front": "cd frontend && npm run watch && npm install && npm run dev"
   }
-  
+}
