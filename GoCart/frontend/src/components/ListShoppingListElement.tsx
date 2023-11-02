@@ -1,25 +1,22 @@
 // ShoppingListElement component represents an ShoppingListElement in a ListShoppingList
 
-import React from 'react';
+import React from 'react'
 
 interface ListShoppingListElementProps {
-  listName: string;
-  items: string[];
-  onClick?: () => void;
+  listName: string
+  items: string[]
+  onClick?: () => void
 }
 
-
-function ListShoppingListElement ({ listName, items }: ListShoppingListElementProps ) {
+function ListShoppingListElement({ listName, items }: ListShoppingListElementProps) {
   // If there are no items, display a message
-  
- // If there are more than two items, display the first two and "..."
-  const firstTwoItems = items.slice(0, 2);
-  
-  return (
-    
-    <div className="">
 
-    <h3 className="text-lg font-semibold mb-2 ml-4">{listName}</h3>
+  // If there are more than two items, display the first two and "..."
+  const firstTwoItems = items.slice(0, 2)
+
+  return (
+    <div className="">
+      <h3 className="text-lg font-semibold mb-2 ml-4">{listName}</h3>
 
       {items.length === 0 && (
         <div>
@@ -45,7 +42,7 @@ function ListShoppingListElement ({ listName, items }: ListShoppingListElementPr
         </div>
       )}
     </div>
-  );
+  )
 }
 
-export default ListShoppingListElement;
+export default ListShoppingListElement

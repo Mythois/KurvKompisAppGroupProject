@@ -1,26 +1,26 @@
 // Searchbar component: A reusable input field for filtering items.
 // Using the same searchbar component as in project_1
 
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 interface SearchbarProps {
   // Callback function that will be called when the filter value changes.
-  onFilter: (value: string) => void;
+  onFilter: (value: string) => void
 }
 
 // Define the Searchbar component as a functional component.
-export const Searchbar: React.FC<SearchbarProps> = ({ onFilter }) => {
+function Searchbar({ onFilter }: SearchbarProps) {
   // Initialize the 'filter' state using React's useState hook.
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState('')
 
   // Function to handle changes in the filter input field.
-  const handleFilterChange = (value: string) => {
+  function handleFilterChange(value: string) {
     // Update the 'filter' state with the new value.
-    setFilter(value);
-    
+    setFilter(value)
+
     // Call the 'onFilter' callback function to notify the parent component of the filter change.
-    onFilter(value);
-  };
+    onFilter(value)
+  }
 
   return (
     <div>
@@ -36,5 +36,7 @@ export const Searchbar: React.FC<SearchbarProps> = ({ onFilter }) => {
         focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-300"
       />
     </div>
-  );
-};
+  )
+}
+
+export default Searchbar

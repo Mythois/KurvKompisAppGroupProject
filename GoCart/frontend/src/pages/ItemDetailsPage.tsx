@@ -8,7 +8,7 @@ interface ItemDetailsPageProps {
   showArrowButtons: boolean
 }
 
-const ItemDetailsPage: React.FC<ItemDetailsPageProps> = () => {
+function ItemDetailsPage({ showArrowButtons }: ItemDetailsPageProps) {
   const { itemName: paramId } = useParams()
   const itemName = paramId as string
 
