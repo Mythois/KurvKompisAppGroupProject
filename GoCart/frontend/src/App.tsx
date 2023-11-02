@@ -12,7 +12,7 @@ function App() {
   return (
     <Fragment>
       <Navbar title="GoCart" />
-      <div className="pt-24 pr-4 pl-4 h-screen">
+      <div className="pt-28 pr-4 pl-4 pb-14 sm:pb-0 h-screen">
         <Routes>
           <Route path={import.meta.env.BASE_URL + '/Home'} element={<Home />} />
           <Route path={import.meta.env.BASE_URL + '/ItemRegister'} element={<ItemRegister editable={false} />} />

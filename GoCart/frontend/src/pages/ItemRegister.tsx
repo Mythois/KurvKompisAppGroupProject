@@ -43,18 +43,17 @@ function ItemRegister({ editable }: ItemRegisterProps) {
       }))
 
   return (
-    <div className="flex flex-col">
+    <div className="h-full flex flex-col justify-center">
       {/* Render the Searchbar component with the filter callback */}
-      <div className="fixed flex justify-items-center bg-white p-5">
+      <div className="grid sm:flex gap-4 bg-white ">
         <Searchbar onFilter={(value: React.SetStateAction<string>) => setFilter(value)} />
         <ItemFilters />
       </div>
-
       {/* Render the ItemList component with the extracted item names */}
-      <div className="mt-10">
+      <div className="overflow-y-scroll">
         <ItemList items={itemPropsList} />
       </div>
-      {/* Add the NavButton component in the bottom right corner */}
+
       <div className="button-container flex justify-end mb-5">
         <NavButton route="/addItemToRegister" title={'Add item to register'} />
       </div>
