@@ -45,12 +45,12 @@ function ItemRegister({ editable }: ItemRegisterProps) {
   return (
     <div className="h-full flex flex-col justify-center">
       {/* Render the Searchbar component with the filter callback */}
-      <div className="grid sm:flex gap-4 bg-white ">
+      <div className="grid sm:flex gap-4 bg-white">
         <Searchbar onFilter={(value: React.SetStateAction<string>) => setFilter(value)} />
         <ItemFilters />
       </div>
       {/* Render the ItemList component with the extracted item names */}
-      <div className="overflow-y-scroll">
+      <div className="h-full overflow-y-scroll mt-4 mb-4">
         <ItemList items={itemPropsList} />
       </div>
 
