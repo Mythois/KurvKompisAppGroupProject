@@ -5,6 +5,7 @@ import { getFoodData, Food } from '../utils/mockup/mockup'
 import Searchbar from '../components/Searchbar'
 import ItemList from '../components/ItemList'
 import NavButton from '../components/NavButton'
+import ItemFilters from '../components/ItemFilters'
 
 interface ItemRegisterProps {
   editable: boolean
@@ -42,17 +43,17 @@ function ItemRegister({ editable }: ItemRegisterProps) {
       }))
 
   return (
-    <div className="mt-5 mb-5 flex flex-col">
+    <div className="h-full flex flex-col justify-center">
       {/* Render the Searchbar component with the filter callback */}
-      <div className="fixed bg-white w-1/3">
+      <div className="grid sm:flex gap-4 bg-white">
         <Searchbar onFilter={(value: React.SetStateAction<string>) => setFilter(value)} />
+        <ItemFilters />
       </div>
-
       {/* Render the ItemList component with the extracted item names */}
-      <div className="mt-10">
+      <div className="h-full overflow-y-scroll mt-4 mb-4">
         <ItemList items={itemPropsList} />
       </div>
-      {/* Add the NavButton component in the bottom right corner */}
+
       <div className="button-container flex justify-end mb-5">
         <NavButton route="/addItemToRegister" title={'Add item to register'} />
       </div>

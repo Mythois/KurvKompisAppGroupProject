@@ -11,9 +11,9 @@ interface ItemListProps {
 
 function ItemList({ items }: ItemListProps) {
   return (
-    <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 bg-white p-2 rounded-2xl ">
+    <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 bg-white rounded-2xl ">
       {items.map((item, index) => (
-        <div className="card mx-2">
+        <div className="card">
           <Link to={`/ItemDetailsPage/${item.itemName}`}>
             <Item
               key={index}

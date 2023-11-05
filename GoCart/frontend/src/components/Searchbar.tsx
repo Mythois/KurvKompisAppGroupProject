@@ -23,7 +23,7 @@ function Searchbar({ onFilter }: SearchbarProps) {
   }
 
   return (
-    <div>
+    <div className="sm:w-1/2">
       {/* Input field for filtering with controlled value */}
       <input
         type="text"
