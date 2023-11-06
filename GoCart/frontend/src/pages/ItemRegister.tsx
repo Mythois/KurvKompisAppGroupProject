@@ -45,7 +45,7 @@ function ItemRegister({ editable }: ItemRegisterProps) {
   return (
     <div className="h-full flex flex-col justify-center">
       {/* Render the Searchbar component with the filter callback */}
-      <div className="grid sm:flex gap-4 bg-white">
+      <div className="grid sm:flex gap-4 bg-white mb-2">
         <Searchbar onFilter={(value: React.SetStateAction<string>) => setFilter(value)} />
         <ItemFilters />
       </div>

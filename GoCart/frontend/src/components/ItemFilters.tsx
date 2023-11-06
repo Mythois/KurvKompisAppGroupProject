@@ -4,60 +4,144 @@ import { SlidersHorizontal } from 'lucide-react'
 
 function ItemFilters() {
   const [isFilterVisible, setFilterVisible] = useState(false)
+  const [selectedCategory, setSelectedCategory] = useState('')
 
   function handleFilterClick() {
     setFilterVisible(!isFilterVisible)
   }
 
-  useEffect(() => {
-    function handleResize() {
-      setFilterVisible(window.innerWidth > 640) // hide filter on small screens
-    }
-
-    window.addEventListener('resize', handleResize) // Add event listener to handle window resize
-
-    handleResize() // Call the handleResize function once on initial render
-
-    // Remove the event listener when the component unmounts
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, []) // Empty dependency array ensures the effect runs once after the initial render
+  function handleCategoryChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setSelectedCategory(event.target.value)
+  }
 
   return (
     <div>
       {!isFilterVisible && (
         // Filter button
-        <button className="btn flex gap-2 text-xl" onClick={handleFilterClick}>
+        <button className="btn flex gap-2 text-xl sm:absolute" onClick={handleFilterClick}>
           <SlidersHorizontal size={30} color="white" />
           Filter
         </button>
       )}
 
       {isFilterVisible && (
-        <div className=" sm:flex sm:gap-4 sm:border-none border-2 border-primary rounded-lg p-2 text-xl">
-          <div className=" sm:hidden flex cursor-pointer border-b-2 text-2xl" onClick={handleFilterClick}>
+        <div className="sm:gap-4 sm:absolute sm:w-max bg-white border-2 border-primary rounded-lg p-2 text-xl z-0">
+          <div className=" flex cursor-pointer border-b-2 mb-2 text-2xl" onClick={handleFilterClick}>
             <X size={35} />
             Close
           </div>
 
           {/* Checkboxes */}
-          <div className="text-2xl grid grid-cols-2 lg:flex lg:gap-6">
+          <div className="text-2xl grid grid-cols-1 xl:grid-cols-2">
             <div>
-              <input type="checkbox" className="checkbox" />
-              <label>Fruit</label>
+              <input
+                type="radio"
+                className="radio"
+                name="category"
+                value="Fruit & Vegetables"
+                checked={selectedCategory === 'Fruit & Vegetables'}
+                onChange={handleCategoryChange}
+              />
+              <label>Fruit & Vegetables</label>
             </div>
             <div>
-              <input type="checkbox" className="checkbox" />
-              <label>Vegetables</label>
+              <input
+                type="radio"
+                className="radio"
+                name="category"
+                value="Fish & Seafood"
+                checked={selectedCategory === 'Fish & Seafood'}
+                onChange={handleCategoryChange}
+              />
+              <label>Fish & Seafood</label>
             </div>
             <div>
-              <input type="checkbox" className="checkbox" />
-              <label>Fish</label>
+              <input
+                type="radio"
+                className="radio"
+                name="category"
+                value="Beverages"
+                checked={selectedCategory === 'Beverages'}
+                onChange={handleCategoryChange}
+              />
+              <label>Beverages</label>
             </div>
             <div>
-              <input type="checkbox" className="checkbox" />
+              <input
+                type="radio"
+                className="radio"
+                name="category"
+                value="Baked Goods and Biscuits"
+                checked={selectedCategory === 'Baked Goods and Biscuits'}
+                onChange={handleCategoryChange}
+              />
+              <label>Baked Goods and Biscuits</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                className="radio"
+                name="category"
+                value="Meat"
+                checked={selectedCategory === 'Meat'}
+                onChange={handleCategoryChange}
+              />
               <label>Meat</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                className="radio"
+                name="category"
+                value="Chicken & Poultry"
+                checked={selectedCategory === 'Chicken & Poultry'}
+                onChange={handleCategoryChange}
+              />
+              <label>Chicken & Poultry</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                className="radio"
+                name="category"
+                value="Dairy & Eggs"
+                checked={selectedCategory === 'Dairy & Eggs'}
+                onChange={handleCategoryChange}
+              />
+              <label>Dairy & Eggs</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                className="radio"
+                name="category"
+                value="Snacks & Sweets"
+                checked={selectedCategory === 'Snacks & Sweets'}
+                onChange={handleCategoryChange}
+              />
+              <label>Snacks & Sweets</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                className="radio"
+                name="category"
+                value="Cheese"
+                checked={selectedCategory === 'Cheese'}
+                onChange={handleCategoryChange}
+              />
+              <label>Cheese</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                className="radio"
+                name="category"
+                value="Spread & Breakfast"
+                checked={selectedCategory === 'Spread & Breakfast'}
+                onChange={handleCategoryChange}
+              />
+              <label>Spread & Breakfast</label>
             </div>
           </div>
         </div>
