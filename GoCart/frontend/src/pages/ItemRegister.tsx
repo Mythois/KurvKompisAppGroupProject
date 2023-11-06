@@ -5,7 +5,8 @@ import { getFoodData, Food } from '../utils/mockup/mockup'
 import Searchbar from '../components/Searchbar'
 import ItemList from '../components/ItemList'
 import NavButton from '../components/NavButton'
-import ItemFilters from '../components/ItemFilters'
+import FilterDropdown from '../components/FilterDropdown'
+import SortButtons from '../components/SortButtons'
 
 interface ItemRegisterProps {
   editable: boolean
@@ -47,7 +48,10 @@ function ItemRegister({ editable }: ItemRegisterProps) {
       {/* Render the Searchbar component with the filter callback */}
       <div className="grid sm:flex gap-4 bg-white mb-2">
         <Searchbar onFilter={(value: React.SetStateAction<string>) => setFilter(value)} />
-        <ItemFilters />
+        <div className="grid grid-cols-2">
+          <FilterDropdown />
+          <SortButtons />
+        </div>
       </div>
       {/* Render the ItemList component with the extracted item names */}
       <div className="h-full overflow-y-scroll mt-4 mb-4">

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { X } from 'lucide-react'
 import { SlidersHorizontal } from 'lucide-react'
 
-function ItemFilters() {
+function FilterDropdown() {
   const [isFilterVisible, setFilterVisible] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState('')
 
@@ -15,7 +15,7 @@ function ItemFilters() {
   }
 
   return (
-    <div>
+    <div className="flex">
       {!isFilterVisible && (
         // Filter button
         <button className="btn flex gap-2 text-xl sm:absolute" onClick={handleFilterClick}>
@@ -150,4 +150,4 @@ function ItemFilters() {
   )
 }
 
-export default ItemFilters
+export default FilterDropdown
