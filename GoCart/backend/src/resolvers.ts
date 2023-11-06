@@ -40,11 +40,47 @@ const resolvers = (db) => ({
         throw new Error(`Error retrieving products by category: ${error.message}`);
       }
     },
+    getProductsByName: async (_, { name, page, perPage }) => {
+      const skip = (page - 1) * perPage;
+      const limit = perPage;
+      try {
+        // Find and return a list of products by the specified name from the database
+        const products = await db.collection('Products').find({
+          name: { $regex: new RegExp(name, 'i') }, // Case-insensitive search
+        }).skip(skip).limit(limit).toArray();
+        return products;
+      } catch (error) {
+        throw new Error(`Error retrieving products by name: ${error.message}`);
+      }
+    },
 
+    searchProducts: async (_, { name, category, page, perPage }) => {
+      const skip = (page - 1) * perPage;
+      const limit = perPage;
+      try {
+        // Initialize the query object with name and category set to null
+        const query = {} as any;
+    
+        if (name) {
+          query.name = { $regex: new RegExp(name, 'i') }; // Case-insensitive name search
+        }
+    
+        if (category) {
+          query['category.name'] = category
+        }
+    
+        // Find and return products that match the search criteria
+        const products = await db.collection('Products').find(query).skip(skip).limit(limit).toArray();
+        return products;
+      } catch (error) {
+        throw new Error(`Error searching for products: ${error.message}`);
+      }
+    },
+    
   },
 
   Product: {
-    // You can add any additional resolvers for the Product type here if needed.
+    // Add any additional resolvers for the Product type here if needed.
   },
 });
 
