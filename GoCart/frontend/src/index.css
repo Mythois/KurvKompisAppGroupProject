@@ -11,7 +11,7 @@
 }
 
 .card {
-  @apply rounded-md p-4 mt-4 mb-4 shadow cursor-pointer border border-gray-100 bg-white hover:border-gray-300;
+  @apply rounded-md p-4 m-2 shadow cursor-pointer border border-gray-100 bg-white hover:border-primary/50;
 }
 
 .inputfield {

@@ -18,14 +18,14 @@ function FilterDropdown() {
     <div className="flex">
       {!isFilterVisible && (
         // Filter button
-        <button className="btn flex gap-2 text-xl sm:absolute" onClick={handleFilterClick}>
-          <SlidersHorizontal size={30} color="white" />
+        <button className="btn flex gap-2 text-xl" onClick={handleFilterClick}>
+          <SlidersHorizontal size={30} />
           Filter
         </button>
       )}
 
       {isFilterVisible && (
-        <div className="sm:gap-4 sm:absolute sm:w-max bg-white border-2 border-primary rounded-lg p-2 text-xl z-0">
+        <div className="sm:gap-4 absolute w-max bg-white border-2 border-primary rounded-lg p-2 text-xl z-0">
           <div className=" flex cursor-pointer border-b-2 mb-2 text-2xl" onClick={handleFilterClick}>
             <X size={35} />
             Close

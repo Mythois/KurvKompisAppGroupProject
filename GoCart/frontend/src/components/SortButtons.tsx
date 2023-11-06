@@ -22,7 +22,7 @@ function SortButtons() {
   return (
     <div>
       {/* Sort buttons */}
-      <div className={'flex justify-end gap-2'}>
+      <div className={'flex gap-2'}>
         <button className={`${downIsClicked ? 'btnClicked' : 'btn'}`} onClick={handleDownButtonClick}>
           <ArrowDownAZ size={30} />
         </button>

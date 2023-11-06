@@ -7,6 +7,9 @@ import ItemList from '../components/ItemList'
 import NavButton from '../components/NavButton'
 import FilterDropdown from '../components/FilterDropdown'
 import SortButtons from '../components/SortButtons'
+import { MoveLeft } from 'lucide-react'
+import { MoveRight } from 'lucide-react'
+import ArrowButton from '../components/ArrowButton'
 
 interface ItemRegisterProps {
   editable: boolean
@@ -46,9 +49,9 @@ function ItemRegister({ editable }: ItemRegisterProps) {
   return (
     <div className="h-full flex flex-col justify-center">
       {/* Render the Searchbar component with the filter callback */}
-      <div className="grid sm:flex gap-4 bg-white mb-2">
+      <div className="grid sm:flex gap-2 bg-white mb-2">
         <Searchbar onFilter={(value: React.SetStateAction<string>) => setFilter(value)} />
-        <div className="grid grid-cols-2">
+        <div className="flex justify-between gap-2">
           <FilterDropdown />
           <SortButtons />
         </div>
@@ -58,8 +61,16 @@ function ItemRegister({ editable }: ItemRegisterProps) {
         <ItemList items={itemPropsList} />
       </div>
 
-      <div className="button-container flex justify-end mb-5">
-        <NavButton route="/addItemToRegister" title={'Add item to register'} />
+      <div className="flex justify-between gap-2 mb-5">
+        <div className="justify-start">
+          <ArrowButton direction="left" index={0} />
+        </div>
+        <div className="justify-center">
+          <NavButton route="/addItemToRegister" title={'Add item to register'} />
+        </div>
+        <div className=" justify-end">
+          <ArrowButton direction="right" index={0} />
+        </div>
       </div>
     </div>
   )
