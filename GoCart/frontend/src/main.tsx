@@ -18,17 +18,20 @@ how to do queries in other files*/
 client
   .query({
     query: gql`
-      query GetProduct($id: ID!) {
-        product(_id: $id) {
-          product_name_nb
-          salt_value
-          salt_unit
+      query getProductsByCategory($category: String!, $page: Int!, $perPage: Int!) {
+        getProductsByCategory(category: $category, page: $page, perPage: $perPage) {
+          _id
+          name
+          brand
+          description
         }
       }
     `,
-    variables: { id: '65425c9f0f864c3cf2e22fbb' },
+    variables: { category: "Barnedessert", page: 1, perPage: 100 },
   })
   .then((result) => console.log(result))
+  .catch((error) => console.error(error));
+
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
