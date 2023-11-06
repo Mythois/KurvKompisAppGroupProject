@@ -1,56 +1,85 @@
-import gql from 'graphql-tag'
+import gql from 'graphql-tag';
 
 const typeDefs = gql`
   type Product {
     _id: ID!
-    product_name_nb: String
-    quantity: String
-    categories: [String]
-    allergens: String
-    allergens_tags: [String]
-    nutrition_data_per: String
-    nutrition_data_prepared_per: String
-    energy_kj_value: Float
-    energy_kj_unit: String
-    energy_kcal_value: Float
-    energy_kcal_unit: String
-    fat_value: Float
-    fat_unit: String
-    saturated_fat_value: Float
-    saturated_fat_unit: String
-    carbohydrates_value: Float
-    carbohydrates_unit: String
-    sugars_value: Float
-    sugars_unit: String
-    fiber_value: Float
-    fiber_unit: String
-    proteins_value: Float
-    proteins_unit: String
-    salt_value: Float
-    salt_unit: String
-    sodium_value: Float
-    sodium_unit: String
-    energy_value: Float
-    energy_unit: String
-    monounsaturated_fat_value: Float
-    monounsaturated_fat_unit: String
-    polyunsaturated_fat_value: Float
-    polyunsaturated_fat_unit: String
+    id: Int!
+    name: String!
+    brand: String!
+    vendor: String!
+    ean: String!
+    url: String!
+    image: String!
+    category: [Category!]!
+    description: String!
+    ingredients: String!
+    current_price: Float!
+    current_unit_price: Float!
+    weight: Float!
+    weight_unit: String!
+    store: Store!
+    price_history: [PriceHistory!]!
+    allergens: [Allergen!]!
+    nutrition: [Nutrition!]!
+    labels: [Label!]!
+    created_at: String!
+    updated_at: String!
+  }
+
+  type Category {
+    id: Int!
+    depth: Int!
+    name: String!
+  }
+
+  type Store {
+    name: String!
+    code: String!
+    url: String!
+    logo: String!
+  }
+
+  type PriceHistory {
+    price: Float!
+    date: String!
+  }
+
+  type Allergen {
+    code: String!
+    display_name: String!
+    contains: String!
+  }
+
+  type Nutrition {
+    code: String!
+    display_name: String!
+    amount: Float!
+    unit: String!
+  }
+
+  type Label {
+    name: String!
+    display_name: String!
+    description: String
+    organization: String
+    alternative_names: [String!]!
+    type: String
+    year_established: Int
+    about: String
+    note: String
+    icon: LabelIcon
+  }
+
+  type LabelIcon {
+    svg: String
+    png: String
   }
 
   type Query {
-    product(_id: ID!): Product
-    productByName(product_name_nb: String!): Product
-    products(page: Int!, perPage: Int!): [Product]
-    productsByStore(store: String!, page: Int!, perPage: Int!): [Product]
-    productsByBrand(brand: String!, page: Int!, perPage: Int!): [Product]
-    productsByCategory(category: String!, page: Int!, perPage: Int!): [Product]
-    productsByLabel(label: String!, page: Int!, perPage: Int!): [Product]
-    productsByAllergens(allergens: String!, page: Int!, perPage: Int!): [Product]
-    productsByEcoscoreScore(ecoscore_score: String!, page: Int!, perPage: Int!): [Product]
-    productsByEcoscoreGrade(ecoscore_grade: String!, page: Int!, perPage: Int!): [Product]
-    productsByFoodGroup(food_group: String!, page: Int!, perPage: Int!): [Product]
+    getProduct(_id: ID!): Product
+    getProducts(page: Int!, perPage: Int!): [Product]
+    getProductsByCategory(category: String!,page: Int!, perPage: Int!): [Product]
   }
-`
+`;
 
-export { typeDefs }
+export default typeDefs;
