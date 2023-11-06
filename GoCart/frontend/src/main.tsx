@@ -4,7 +4,6 @@ import App from './App.tsx'
 import './index.css'
 import { BrowserRouter } from 'react-router-dom'
 import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client'
-import { searchProducts } from './utils/queryFunctions/getProduct.ts'
 
 // Apollo client
 const client = new ApolloClient({
@@ -28,18 +27,10 @@ client
         }
       }
     `,
-    variables: { category: "Barnedessert", page: 1, perPage: 100 },
+    variables: { category: 'Barnedessert', page: 1, perPage: 100 },
   })
   .then((result) => console.log(result))
-  .catch((error) => console.error(error));
-
-  const result = searchProducts({
-    page:1,
-    perPage:10,
-    category:"Dessert"
-  })
-
-  console.log("result: ", result)
+  .catch((error) => console.error(error))
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
