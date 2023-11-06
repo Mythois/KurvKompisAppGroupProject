@@ -1,3 +1,9 @@
+// NB!!!!!!: THIS IS CODE DOES NOT ACTUALLY WORK -- the function is not a functional component
+// But may be a litte helpful for inspiration
+
+
+
+
 import { gql, useQuery } from '@apollo/client';
 
 // Define a GraphQL query string for searching products.
