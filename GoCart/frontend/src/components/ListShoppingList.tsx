@@ -57,7 +57,7 @@ function ListShoppingList() {
           Create Shopping List
         </button>
       </div>
-      <div className="h-full overflow-y-scroll mb-16 sm:mb-5">
+      <div className="mb-16 sm:mb-5">
         {shoppingLists.map((shoppingList, index) => (
           <div key={index} className="card flex justify-between">
             <div>
