@@ -58,7 +58,7 @@ function ItemRegister({ editable }: ItemRegisterProps) {
       </div>
       {/* Render the ItemList component with the extracted item names */}
       <div className="h-full overflow-y-scroll mt-4 mb-4">
-        <ItemList items={itemPropsList} />
+        <ItemList listView={false} items={itemPropsList} />
       </div>
 
       <div className="flex justify-between gap-2 mb-5">

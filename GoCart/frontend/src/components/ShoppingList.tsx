@@ -16,12 +16,6 @@ const mockiItems = [
   // Add more items as needed
 ]
 
-interface ShoppingList {
-  title: string
-  items: string[]
-  id: string
-}
-
 interface ShoppingListProps {
   title: string
   items: string[]
@@ -32,7 +26,7 @@ function ShoppingList({ title, id, items }: ShoppingListProps) {
   return (
     <div className="">
       <h1 className="mb-2 text-2xl font-bold uppercase text-center">{title}</h1>
-      <ItemList items={mockiItems} />
+      <ItemList listView={true} items={mockiItems} />
       <div className=" flex justify-center py-8">
         <Link to={'/AddItem'}>
           <button className="btn">Add item</button>
