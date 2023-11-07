@@ -24,13 +24,13 @@ function ItemRegister({ editable }: ItemRegisterProps) {
   const categoryTranslations: { [key: string]: string } = {
     'Fruit & Vegetables': 'Frukt & grønt',
     'Fish & Seafood': 'Fisk & skalldyr',
-    Beverages: 'Drikke',
+    'Beverages': 'Drikke',
     'Baked Goods and Biscuits': 'Bakvarer og kjeks',
-    Meat: 'Kjøtt',
+    'Meat': 'Kjøtt',
     'Chicken & Poultry': 'Kjylling og fjærkre',
     'Dairy & Eggs': 'Meieri & egg',
     'Snacks & Sweets': 'Snacks & godteri',
-    Cheese: 'Ost',
+    'Cheese': 'Ost',
     'Spread & Breakfast': 'Pålegg & frokost',
   }
 
