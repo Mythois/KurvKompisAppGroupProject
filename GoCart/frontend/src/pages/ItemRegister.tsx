@@ -8,6 +8,7 @@ import NavButton from '../components/NavButton'
 import FilterDropdown from '../components/FilterDropdown'
 import { useQuery } from '@apollo/client'
 import { SEARCH_PRODUCTS } from '../utils/queryFunctions/getProduct'
+import ArrowButton from '../components/ArrowButton'
 
 interface ItemRegisterProps {
   editable: boolean
@@ -20,17 +21,18 @@ interface Product {
 function ItemRegister({ editable }: ItemRegisterProps) {
   const [filter, setFilter] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('')
+  // TODO: add page number which decrements and increments when the arrow buttons are clicked
 
   const categoryTranslations: { [key: string]: string } = {
     'Fruit & Vegetables': 'Frukt & grønt',
     'Fish & Seafood': 'Fisk & skalldyr',
-    'Beverages': 'Drikke',
-    'Baked Goods and Biscuits': 'Bakvarer og kjeks',
-    'Meat': 'Kjøtt',
-    'Chicken & Poultry': 'Kjylling og fjærkre',
+    Beverages: 'Drikke',
+    'Baked Goods and Biscuits': 'Bakevarer og kjeks',
+    Meat: 'Kjøtt',
+    'Chicken & Poultry': 'Kylling og fjærkre',
     'Dairy & Eggs': 'Meieri & egg',
     'Snacks & Sweets': 'Snacks & godteri',
-    'Cheese': 'Ost',
+    Cheese: 'Ost',
     'Spread & Breakfast': 'Pålegg & frokost',
   }
 
@@ -73,8 +75,10 @@ function ItemRegister({ editable }: ItemRegisterProps) {
         <ItemList listView={false} items={itemPropsList} />
       </div>
 
-      <div className="button-container flex justify-end mb-5">
+      <div className="flex justify-between mb-5">
+        <ArrowButton direction="left" index={0} />
         <NavButton route="AddItemToRegister" title={'Add item to register'} />
+        <ArrowButton direction="right" index={0} />
       </div>
     </div>
   )
