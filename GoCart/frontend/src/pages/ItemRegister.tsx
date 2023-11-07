@@ -60,7 +60,7 @@ function ItemRegister({ editable }: ItemRegisterProps) {
     variables: { page: 1, perPage: perPage, category: selectedCategory, name: filter, sortDirection: sortDirection },
   })
 
-  let products: Product[] = data ? data.searchProducts : []
+  const products: Product[] = data ? data.searchProducts : []
 
   // Map filtered items to objects that include all props
   // Define the itemPropsList based on the "editable" prop

@@ -87,7 +87,7 @@ const resolvers = (db) => ({
           sortDir = { name: -1 }
         }
 
-        let products = await db.collection('Products').find(query).sort(sortDir)
+        const products = await db.collection('Products').find(query).sort(sortDir)
 
         // Find and return products that match the search criteria
         const result = await products.skip(skip).limit(limit).toArray()
