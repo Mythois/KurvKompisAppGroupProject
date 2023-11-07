@@ -22,6 +22,7 @@ interface Product {
 function ItemRegister({ editable }: ItemRegisterProps) {
   const [filter, setFilter] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('')
+  const [sortDirection, setSortDirection] = useState('asc')
   // TODO: add page number which decrements and increments when the arrow buttons are clicked
 
   const categoryTranslations: { [key: string]: string } = {
@@ -43,7 +44,7 @@ function ItemRegister({ editable }: ItemRegisterProps) {
   }
 
   const { loading, error, data } = useQuery(SEARCH_PRODUCTS, {
-    variables: { page: 1, perPage: 10, category: selectedCategory, name: filter },
+    variables: { page: 1, perPage: 10, category: selectedCategory, name: filter, sortDirection: sortDirection },
   })
 
   let products: Product[] = data ? data.searchProducts : []
@@ -76,7 +77,13 @@ function ItemRegister({ editable }: ItemRegisterProps) {
       </div>
       {/* Render the ItemList component with the extracted item names */}
       <div className="h-full overflow-y-scroll mt-4 mb-4">
-        <ItemList listView={false} items={itemPropsList} />
+        {loading ? (
+          <div>Loading...</div>
+        ) : error ? (
+          <div>Error: {error.message}</div>
+        ) : (
+          <ItemList listView={false} items={itemPropsList} />
+        )}
       </div>
 
       <div className="flex justify-between mb-5">

@@ -54,7 +54,7 @@ const resolvers = (db) => ({
       }
     },
 
-    searchProducts: async (_, { name, category, page, perPage }) => {
+    searchProducts: async (_, { name, category, page, perPage, sortDirection }) => {
       const skip = (page - 1) * perPage;
       const limit = perPage;
       try {
@@ -68,10 +68,19 @@ const resolvers = (db) => ({
         if (category) {
           query['category.name'] = category
         }
+
+        let products = await db.collection('Products').find(query);
+
+        // Apply sorting based on the sortDirection parameter
+        if (sortDirection === 'asc') {
+          products = products.sort({ name: 1 });
+        } else if (sortDirection === 'desc') {
+          products = products.sort({ name: -1 });
+        }
     
         // Find and return products that match the search criteria
-        const products = await db.collection('Products').find(query).skip(skip).limit(limit).toArray();
-        return products;
+        const result = await products.skip(skip).limit(limit).toArray();
+        return result;
       } catch (error) {
         throw new Error(`Error searching for products: ${error.message}`);
       }
