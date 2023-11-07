@@ -1,45 +1,65 @@
 // The register for every item in the database, where you get the opportunity to go to a site for adding items to the database
 
-import React, { useState, useEffect } from 'react'
-import { getFoodData, Food } from '../utils/mockup/mockup'
+import React, { useState } from 'react'
+
 import Searchbar from '../components/Searchbar'
 import ItemList from '../components/ItemList'
 import NavButton from '../components/NavButton'
 import FilterDropdown from '../components/FilterDropdown'
-import SortButtons from '../components/SortButtons'
-import { MoveLeft } from 'lucide-react'
-import { MoveRight } from 'lucide-react'
-import ArrowButton from '../components/ArrowButton'
+import { useQuery } from '@apollo/client'
+import { SEARCH_PRODUCTS } from '../utils/queryFunctions/getProduct'
 
 interface ItemRegisterProps {
   editable: boolean
 }
 
+interface Product {
+  name: string;
+}
+
 function ItemRegister({ editable }: ItemRegisterProps) {
   const [filter, setFilter] = useState('')
-  const [foodData, setFoodData] = useState<Food[]>([])
+  const [selectedCategory, setSelectedCategory] = useState('')
 
-  useEffect(() => {
-    // Fetch the data from mockup once when the component mounts
-    const data = getFoodData()
-    // Convert the object to an array of Food[]
-    const foodArray: Food[] = Object.values(data).flatMap((items) => items)
-    setFoodData(foodArray)
-  }, [])
+  const categoryTranslations: { [key: string]: string } = {
+    'Fruit & Vegetables': 'Frukt & grønt',
+    'Fish & Seafood': 'Fisk & skalldyr',
+    'Beverages' : 'Drikke',
+    'Baked Goods and Biscuits': 'Bakvarer og kjeks',
+    'Meat': 'Kjøtt',
+    'Chicken & Poultry' : 'Kjylling og fjærkre',
+    'Dairy & Eggs' : 'Meieri & egg',
+    'Snacks & Sweets' : 'Snacks & godteri',
+    'Cheese' :  'Ost',
+    'Spread & Breakfast': 'Pålegg & frokost'
+   }
 
-  // Filter the food items based on the search query
-  const filteredItems = foodData.filter((item) => item.name.toLowerCase().includes(filter.toLowerCase()))
+   const handleCategoryChange = (category:string) => {
+    const translatedCategory = categoryTranslations[category] || category
+    setSelectedCategory(translatedCategory)
+   }
+
+
+
+
+  const { loading, error, data } = useQuery(SEARCH_PRODUCTS, {
+    variables: {  page: 1, perPage: 10, category: selectedCategory, name: filter },
+  })
+  
+  let products: Product[] = data ? data.searchProducts : []
+
+
 
   // Map filtered items to objects that include all props
   // Define the itemPropsList based on the "editable" prop
   const itemPropsList = editable
-    ? filteredItems.map((item) => ({
+    ? products.map((item) => ({
         itemName: item.name,
         increment: true,
         decrement: true,
         quantity: true,
       }))
-    : filteredItems.map((item) => ({
+    : products.map((item) => ({
         itemName: item.name,
         increment: false,
         decrement: false,
@@ -49,28 +69,17 @@ function ItemRegister({ editable }: ItemRegisterProps) {
   return (
     <div className="h-full flex flex-col justify-center">
       {/* Render the Searchbar component with the filter callback */}
-      <div className="grid sm:flex gap-2 bg-white mb-2">
+      <div className="grid sm:flex gap-4 bg-white">
         <Searchbar onFilter={(value: React.SetStateAction<string>) => setFilter(value)} />
-        <div className="flex justify-between gap-2">
-          <FilterDropdown />
-          <SortButtons />
-        </div>
+        <FilterDropdown onCategoryChange={handleCategoryChange}/>
       </div>
       {/* Render the ItemList component with the extracted item names */}
       <div className="h-full overflow-y-scroll mt-4 mb-4">
         <ItemList items={itemPropsList} />
       </div>
 
-      <div className="flex justify-between gap-2 mb-5">
-        <div className="justify-start">
-          <ArrowButton direction="left" index={0} />
-        </div>
-        <div className="justify-center">
-          <NavButton route="/addItemToRegister" title={'Add item to register'} />
-        </div>
-        <div className=" justify-end">
-          <ArrowButton direction="right" index={0} />
-        </div>
+      <div className="button-container flex justify-end mb-5">
+        <NavButton route="/addItemToRegister" title={'Add item to register'} />
       </div>
     </div>
   )
