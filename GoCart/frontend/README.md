@@ -21,7 +21,11 @@
 
 - ShoppingList: The site that shows details about the shoppinglist with the specific title you choose to click on. Props: title (String, the title of the shopping list), items (string[], a string array of items) and id (string, an id that makes each shopping list stand out).
 
-- ListShoppingList: functional component that renders a list of 'ListShoppingListElements', with functionality such as creating and deleteing shopping lists in localstorage.
+- ListShoppingList: Functional component that renders a list of 'ListShoppingListElements', with functionality such as creating and deleteing shopping lists in localstorage.
+
+- FilterDropDown: The FilterDropdown component is used to create a filter for items based on categories. It displays a dropdown menu with radio buttons for selecting different categories. When a category is selected, the component triggers a callback function to notify the parent component of the selected category. Props: onCategoryChange (Function, a callback function that will be called when the filter category changes. It should accept a single argument, the selected category).
+
+- SortButtons: The SortButtons component provides buttons for sorting items in ascending and descending order. It allows users to toggle between sorting options. When a sorting option is selected, the component triggers callback functions to notify the parent component about the chosen sorting order. Props: onSortAsc (function, a callback function that is called when the ascending sort button is clicked) and onSortDesc (function, a callback function that is called when the descending sort button is clicked).
 
 ## Pages
 - Home: The home page of the application.
@@ -30,15 +34,17 @@
 
 - ItemDailsPage: The details about items in the given ShoppingList as well as in the register, where we either want functionality for going to the next/previous item (in your shopping list), or just display general information about the chosen item in the register.
 
-- ShoppingListPage: A page meant for mobile view onlym, while the shopping list will be displayed in the home page in desktop view. The page that shows the details about a spescific shopping list.
+- ShoppingListPage: A page meant for mobile view only, while the shopping list will be displayed in the home page in desktop view. The page that shows the details about a spescific shopping list.
 
 - AddItemToRegister: The site where you get the opportunity to add items to the register, containing the item info you wish. Not yet implemented.
 
 ## Utils
 
 - mockup
-    - mockup: For retrieving mockup data with getFoodData().
-    - mockupdData.json: Mockup data before the DB is ready
+    - GoCart.Products.json: Our data set as a json file.
+
+- queryFunctions
+    - getProduct.ts: query for getting products.
 
 - shoppingListStorage: Functions for saving and loading the local shopping list storage.
 
