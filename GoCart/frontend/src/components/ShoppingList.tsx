@@ -30,7 +30,7 @@ interface ShoppingListProps {
 
 function ShoppingList({ title, id, items }: ShoppingListProps) {
   return (
-    <div className="px-4 py-10">
+    <div className="">
       <h1 className="mb-2 text-2xl font-bold uppercase text-center">{title}</h1>
       <ItemList items={mockiItems} />
       <div className=" flex justify-center py-8">
