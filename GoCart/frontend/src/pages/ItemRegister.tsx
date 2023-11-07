@@ -20,38 +20,41 @@ interface Product {
 }
 
 function ItemRegister({ editable }: ItemRegisterProps) {
-  const [filter, setFilter] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState('')
-  const [sortDirection, setSortDirection] = useState('asc')
-  // TODO: add page number which decrements and increments when the arrow buttons are clicked
+  const [filter, setFilter] = useState('') // Filter for product names
+  const [selectedCategory, setSelectedCategory] = useState('') // Selected category for filtering
+  const [sortDirection, setSortDirection] = useState('asc') // Sort direction for product list
 
+  // Translations for category names
   const categoryTranslations: { [key: string]: string } = {
     'Fruit & Vegetables': 'Frukt & grønt',
     'Fish & Seafood': 'Fisk & skalldyr',
-    Beverages: 'Drikke',
+    'Beverages': 'Drikke',
     'Baked Goods and Biscuits': 'Bakevarer og kjeks',
-    Meat: 'Kjøtt',
+    'Meat': 'Kjøtt',
     'Chicken & Poultry': 'Kylling og fjærkre',
     'Dairy & Eggs': 'Meieri & egg',
     'Snacks & Sweets': 'Snacks & godteri',
-    Cheese: 'Ost',
+    'Cheese': 'Ost',
     'Spread & Breakfast': 'Pålegg & frokost',
   }
 
+  // Handle category change
   const handleCategoryChange = (category: string) => {
     const translatedCategory = categoryTranslations[category] || category
     setSelectedCategory(translatedCategory)
   }
 
+  // Handle ascending sort
   const handleSortAsc = () => {
-    setSortDirection('asc');
-  };
+    setSortDirection('asc')
+  }
   
+  // Handle descending sort
   const handleSortDesc = () => {
-    setSortDirection('desc');    
-  };
+    setSortDirection('desc')   
+  }
 
-
+  // Fetch product data from GraphQL using Apollo Client
   const { loading, error, data } = useQuery(SEARCH_PRODUCTS, {
     variables: { page: 1, perPage: 10, category: selectedCategory, name: filter, sortDirection: sortDirection },
   })

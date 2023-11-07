@@ -7,27 +7,27 @@ interface SortButtonsProps {
 }
 
 function SortButtons(props: SortButtonsProps) {
-  const [downIsClicked, setDownIsClicked] = useState(true)
-  const [upIsClicked, setUpIsClicked] = useState(false)
+  // State variable to track the ascending button click state
+  const [isAscClicked, setIsAscClicked] = useState(true);
 
-  // Notify the parent component about the default descending order when the component mounts
   useEffect(() => {
+    // Notify the parent component about the default descending order when the component mounts
     props.onSortAsc();
   }, []);
 
-  function handleDownButtonClick() {
-    setDownIsClicked(!downIsClicked)
-    if (upIsClicked) {
-      setUpIsClicked(!upIsClicked)
-      props.onSortAsc()
+  // Handle ascending button click
+  function handleAscClick() {
+    if (!isAscClicked) {
+      setIsAscClicked(true);
+      props.onSortAsc(); // Notify the parent component about ascending sort
     }
   }
 
-  function handleUpButtonClick() {
-    setUpIsClicked(!upIsClicked)
-    if (downIsClicked) {
-      setDownIsClicked(!downIsClicked)
-      props.onSortDesc()
+  // Handle descending button click
+  function handleDescClick() {
+    if (isAscClicked) {
+      setIsAscClicked(false);
+      props.onSortDesc(); // Notify the parent component about descending sort
     }
   }
 
@@ -35,10 +35,10 @@ function SortButtons(props: SortButtonsProps) {
     <div>
       {/* Sort buttons */}
       <div className={'flex gap-2'}>
-        <button className={`${downIsClicked ? 'btnClicked' : 'btn'}`} onClick={handleDownButtonClick}>
+        <button className={isAscClicked ? 'btnClicked' : 'btn'} onClick={handleAscClick}>
           <ArrowDownAZ size={30} />
         </button>
-        <button className={`${upIsClicked ? 'btnClicked' : 'btn'}`} onClick={handleUpButtonClick}>
+        <button className={!isAscClicked ? 'btnClicked' : 'btn'} onClick={handleDescClick}>
           <ArrowUpZA size={30} />
         </button>
       </div>
