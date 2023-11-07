@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { X } from 'lucide-react'
 import { SlidersHorizontal } from 'lucide-react'
-
+import { RotateCcw } from 'lucide-react'
 
 type FilterDropdownProps = {
-  onCategoryChange: (category:string) => void
+  onCategoryChange: (category: string) => void
 }
 
-function FilterDropdown({onCategoryChange}:FilterDropdownProps) {
+function FilterDropdown({ onCategoryChange }: FilterDropdownProps) {
   const [isFilterVisible, setFilterVisible] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
-
 
   function handleFilterClick() {
     setFilterVisible(!isFilterVisible)
@@ -22,6 +21,11 @@ function FilterDropdown({onCategoryChange}:FilterDropdownProps) {
 
     // Call the callback function to pass the selected category to the parent component
     onCategoryChange(category)
+  }
+
+  function handleResetClick() {
+    setSelectedCategory(null) // Reset selected category to null
+    onCategoryChange('') // Notify the parent component about the reset (passing null)
   }
 
   return (
@@ -36,9 +40,15 @@ function FilterDropdown({onCategoryChange}:FilterDropdownProps) {
 
       {isFilterVisible && (
         <div className="sm:gap-4 absolute w-max bg-white border-2 border-primary rounded-lg p-2 text-xl z-0">
-          <div className=" flex cursor-pointer border-b-2 mb-2 text-2xl" onClick={handleFilterClick}>
-            <X size={35} />
-            Close
+          <div className="flex justify-between mb-4">
+            <button className="btn flex gap-1" onClick={handleFilterClick}>
+              <X size={30} />
+              Close
+            </button>
+            <button className="btn flex gap-1" onClick={handleResetClick}>
+              <RotateCcw size={30} />
+              Reset
+            </button>
           </div>
 
           {/* Checkboxes */}

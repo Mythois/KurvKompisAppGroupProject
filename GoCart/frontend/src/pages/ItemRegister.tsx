@@ -9,6 +9,7 @@ import FilterDropdown from '../components/FilterDropdown'
 import { useQuery } from '@apollo/client'
 import { SEARCH_PRODUCTS } from '../utils/queryFunctions/getProduct'
 import ArrowButton from '../components/ArrowButton'
+import SortButtons from '../components/SortButtons'
 
 interface ItemRegisterProps {
   editable: boolean
@@ -66,9 +67,12 @@ function ItemRegister({ editable }: ItemRegisterProps) {
   return (
     <div className="h-full flex flex-col justify-center">
       {/* Render the Searchbar component with the filter callback */}
-      <div className="grid sm:flex gap-4 bg-white">
+      <div className="grid sm:flex gap-2 bg-white mb-2">
         <Searchbar onFilter={(value: React.SetStateAction<string>) => setFilter(value)} />
-        <FilterDropdown onCategoryChange={handleCategoryChange} />
+        <div className="flex justify-between gap-2">
+          <FilterDropdown onCategoryChange={handleCategoryChange} />
+          <SortButtons />
+        </div>
       </div>
       {/* Render the ItemList component with the extracted item names */}
       <div className="h-full overflow-y-scroll mt-4 mb-4">
