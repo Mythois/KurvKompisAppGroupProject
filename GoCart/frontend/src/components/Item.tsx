@@ -26,15 +26,15 @@ function Item({ increment, decrement, quantity, itemName }: ItemProps) {
   }
 
   return (
-    <div className="card flex justify-between">
+    <div className="card flex justify-between gap-2">
       {/* Display the item name based on 'itemName' prop */}
-      <Link to={`/ItemDetailsPage/${itemName}`} className="w-4/5 text-lg font-semibold">
+      <Link to={`/ItemDetailsPage/${itemName}`} className="text-lg font-semibold col-span-2">
         {itemName}
       </Link>
 
       {/* Display the buttons if props is true */}
       {decrement && quantity && increment && (
-        <div className="flex justify-between">
+        <div className="flex h-max">
           <button className="btn" onClick={decrementItem}>
             -
           </button>
