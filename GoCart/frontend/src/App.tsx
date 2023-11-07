@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import ItemRegister from './pages/ItemRegister'
 import ShoppingListPage from './pages/ShoppingListPage'
 import ItemDetailsPage from './pages/ItemDetailsPage'
+import AddItemToRegister from './pages/AddItemToRegister'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <div className="pt-28 pr-4 pl-4 pb-14 sm:pb-0 h-screen">
         <Routes>
           <Route path={import.meta.env.BASE_URL + '/Home'} element={<Home />} />
+          <Route path={import.meta.env.BASE_URL + '/AddItemToRegister'} element={<AddItemToRegister />} />
           <Route path={import.meta.env.BASE_URL + '/ItemRegister'} element={<ItemRegister editable={false} />} />
           <Route path={import.meta.env.BASE_URL + '/AddItem'} element={<ItemRegister editable={true} />} />
           <Route
