@@ -38,23 +38,26 @@ function ListShoppingList() {
   }
 
   return (
-    <div className="flex-1 h-full">
-      {/* Input field to create a new shopping list */}
-      <div className="grid gap-2 mb-4 lg:flex lg:justify-between">
+    <div className="flex-1 ">
+      <div className="flex items-center space-x-2">
         <input
-          className="inputfield lg:w-2/3"
+          className="inputfield border-input
+            placeholder:text-muted-foreground 
+            focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-300 ;"
           type="text"
           placeholder="Enter title"
           value={newListTitle}
           onChange={(e) => setNewListTitle(e.target.value)}
         />
-        <button onClick={createShoppingList} className="btn w-max m-auto ">
+        <button
+          onClick={createShoppingList}
+          className="btn text-lg ml-4 inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium transition-colors 
+            focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-200 disabled:pointer-events-none disabled:opacity-50 text-primary-foreground shadow "
+        >
           Create Shopping List
         </button>
       </div>
-
-      {/* List container  */}
-      <div className="h-full overflow-y-scroll">
+      <div className="h-full overflow-y-scroll mb-16 sm:mb-5">
         {shoppingLists.map((shoppingList, index) => (
           <div key={index} className="card flex justify-between">
             <div>

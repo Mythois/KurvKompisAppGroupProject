@@ -20,7 +20,7 @@ function Navbar({ title }: NavbarProps) {
         <h1 className="text-center sm:text-left text-5xl text-white font-semibold col-span-4">
           <Link to={'/'}>{title}</Link>
         </h1>
-        <div className="hidden sm:flex text-white justify-center gap-10 p-3">
+        <div className="hidden sm:flex text-white font-semibold justify-center gap-10 p-3">
           <Link className="hover:underline" to={'/'}>
             Home
           </Link>
