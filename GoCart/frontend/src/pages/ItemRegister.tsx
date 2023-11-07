@@ -20,10 +20,12 @@ interface Product {
 }
 
 function ItemRegister({ editable }: ItemRegisterProps) {
-  const [filter, setFilter] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState('')
+  const [filter, setFilter] = useState('') // Filter for product names
+  const [selectedCategory, setSelectedCategory] = useState('') // Selected category for filtering
+  const [sortDirection, setSortDirection] = useState('asc') // Sort direction for product list
   const [perPage, setPerPage] = useState(40) // initial value is 40
 
+  // Translations for category names
   const categoryTranslations: { [key: string]: string } = {
     'Fruit & Vegetables': 'Frukt & grønt',
     'Fish & Seafood': 'Fisk & skalldyr',
@@ -37,13 +39,25 @@ function ItemRegister({ editable }: ItemRegisterProps) {
     'Spread & Breakfast': 'Pålegg & frokost',
   }
 
+  // Handle category change
   const handleCategoryChange = (category: string) => {
     const translatedCategory = categoryTranslations[category] || category
     setSelectedCategory(translatedCategory)
   }
 
+  // Handle ascending sort
+  const handleSortAsc = () => {
+    setSortDirection('asc')
+  }
+
+  // Handle descending sort
+  const handleSortDesc = () => {
+    setSortDirection('desc')
+  }
+
+  // Fetch product data from GraphQL using Apollo Client
   const { loading, error, data } = useQuery(SEARCH_PRODUCTS, {
-    variables: { page: 1, perPage: perPage, category: selectedCategory, name: filter },
+    variables: { page: 1, perPage: perPage, category: selectedCategory, name: filter, sortDirection: sortDirection },
   })
 
   let products: Product[] = data ? data.searchProducts : []
@@ -71,12 +85,18 @@ function ItemRegister({ editable }: ItemRegisterProps) {
         <Searchbar onFilter={(value: React.SetStateAction<string>) => setFilter(value)} />
         <div className="flex justify-between gap-2">
           <FilterDropdown onCategoryChange={handleCategoryChange} />
-          <SortButtons />
+          <SortButtons onSortAsc={handleSortAsc} onSortDesc={handleSortDesc} />
         </div>
       </div>
       {/* Render the ItemList component with the extracted item names */}
       <div className="h-full overflow-y-scroll mt-4 mb-4">
-        <ItemList listView={false} items={itemPropsList} />
+        {loading ? (
+          <div>Loading...</div>
+        ) : error ? (
+          <div>Error: {error.message}</div>
+        ) : (
+          <ItemList listView={false} items={itemPropsList} />
+        )}
       </div>
 
       <div className="flex justify-between mb-5 gap-2">
