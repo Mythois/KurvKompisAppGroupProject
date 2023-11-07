@@ -43,6 +43,15 @@ function ItemRegister({ editable }: ItemRegisterProps) {
     setSelectedCategory(translatedCategory)
   }
 
+  const handleSortAsc = () => {
+    setSortDirection('asc');
+  };
+  
+  const handleSortDesc = () => {
+    setSortDirection('desc');    
+  };
+
+
   const { loading, error, data } = useQuery(SEARCH_PRODUCTS, {
     variables: { page: 1, perPage: 10, category: selectedCategory, name: filter, sortDirection: sortDirection },
   })
@@ -72,7 +81,7 @@ function ItemRegister({ editable }: ItemRegisterProps) {
         <Searchbar onFilter={(value: React.SetStateAction<string>) => setFilter(value)} />
         <div className="flex justify-between gap-2">
           <FilterDropdown onCategoryChange={handleCategoryChange} />
-          <SortButtons />
+          <SortButtons onSortAsc={handleSortAsc} onSortDesc={handleSortDesc} />
         </div>
       </div>
       {/* Render the ItemList component with the extracted item names */}

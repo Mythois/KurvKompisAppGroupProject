@@ -71,15 +71,16 @@ const resolvers = (db) => ({
 
         let products = await db.collection('Products').find(query);
 
-        // Apply sorting based on the sortDirection parameter
-        if (sortDirection === 'asc') {
-          products = products.sort({ name: 1 });
-        } else if (sortDirection === 'desc') {
-          products = products.sort({ name: -1 });
-        }
-    
         // Find and return products that match the search criteria
         const result = await products.skip(skip).limit(limit).toArray();
+    
+        // Apply sorting based on the sortDirection parameter
+        if (sortDirection === 'asc') {
+          result.sort((a: { name: string; }, b: { name: any; }) => a.name.localeCompare(b.name));
+        } else if (sortDirection === 'desc') {
+          result.sort((a: { name: any; }, b: { name: string; }) => b.name.localeCompare(a.name));
+        }
+        
         return result;
       } catch (error) {
         throw new Error(`Error searching for products: ${error.message}`);

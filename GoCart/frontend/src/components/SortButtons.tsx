@@ -1,14 +1,25 @@
-import React, { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ArrowDownAZ, ArrowUpZA } from 'lucide-react'
 
-function SortButtons() {
-  const [downIsClicked, setDownIsClicked] = useState(false)
+interface SortButtonsProps {
+  onSortAsc: () => void;
+  onSortDesc: () => void;
+}
+
+function SortButtons(props: SortButtonsProps) {
+  const [downIsClicked, setDownIsClicked] = useState(true)
   const [upIsClicked, setUpIsClicked] = useState(false)
+
+  // Notify the parent component about the default descending order when the component mounts
+  useEffect(() => {
+    props.onSortAsc();
+  }, []);
 
   function handleDownButtonClick() {
     setDownIsClicked(!downIsClicked)
     if (upIsClicked) {
       setUpIsClicked(!upIsClicked)
+      props.onSortAsc()
     }
   }
 
@@ -16,6 +27,7 @@ function SortButtons() {
     setUpIsClicked(!upIsClicked)
     if (downIsClicked) {
       setDownIsClicked(!downIsClicked)
+      props.onSortDesc()
     }
   }
 
