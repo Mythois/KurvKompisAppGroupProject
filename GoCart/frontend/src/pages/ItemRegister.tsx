@@ -14,7 +14,7 @@ interface ItemRegisterProps {
 }
 
 interface Product {
-  name: string;
+  name: string
 }
 
 function ItemRegister({ editable }: ItemRegisterProps) {
@@ -24,31 +24,26 @@ function ItemRegister({ editable }: ItemRegisterProps) {
   const categoryTranslations: { [key: string]: string } = {
     'Fruit & Vegetables': 'Frukt & grønt',
     'Fish & Seafood': 'Fisk & skalldyr',
-    'Beverages' : 'Drikke',
+    'Beverages': 'Drikke',
     'Baked Goods and Biscuits': 'Bakvarer og kjeks',
     'Meat': 'Kjøtt',
-    'Chicken & Poultry' : 'Kjylling og fjærkre',
-    'Dairy & Eggs' : 'Meieri & egg',
-    'Snacks & Sweets' : 'Snacks & godteri',
-    'Cheese' :  'Ost',
-    'Spread & Breakfast': 'Pålegg & frokost'
-   }
+    'Chicken & Poultry': 'Kjylling og fjærkre',
+    'Dairy & Eggs': 'Meieri & egg',
+    'Snacks & Sweets': 'Snacks & godteri',
+    'Cheese': 'Ost',
+    'Spread & Breakfast': 'Pålegg & frokost',
+  }
 
-   const handleCategoryChange = (category:string) => {
+  const handleCategoryChange = (category: string) => {
     const translatedCategory = categoryTranslations[category] || category
     setSelectedCategory(translatedCategory)
-   }
-
-
-
+  }
 
   const { loading, error, data } = useQuery(SEARCH_PRODUCTS, {
-    variables: {  page: 1, perPage: 10, category: selectedCategory, name: filter },
+    variables: { page: 1, perPage: 10, category: selectedCategory, name: filter },
   })
-  
+
   let products: Product[] = data ? data.searchProducts : []
-
-
 
   // Map filtered items to objects that include all props
   // Define the itemPropsList based on the "editable" prop
@@ -71,7 +66,7 @@ function ItemRegister({ editable }: ItemRegisterProps) {
       {/* Render the Searchbar component with the filter callback */}
       <div className="grid sm:flex gap-4 bg-white">
         <Searchbar onFilter={(value: React.SetStateAction<string>) => setFilter(value)} />
-        <FilterDropdown onCategoryChange={handleCategoryChange}/>
+        <FilterDropdown onCategoryChange={handleCategoryChange} />
       </div>
       {/* Render the ItemList component with the extracted item names */}
       <div className="h-full overflow-y-scroll mt-4 mb-4">
@@ -79,7 +74,7 @@ function ItemRegister({ editable }: ItemRegisterProps) {
       </div>
 
       <div className="button-container flex justify-end mb-5">
-        <NavButton route="/addItemToRegister" title={'Add item to register'} />
+        <NavButton route="AddItemToRegister" title={'Add item to register'} />
       </div>
     </div>
   )
