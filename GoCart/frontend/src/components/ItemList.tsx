@@ -11,19 +11,15 @@ interface ItemListProps {
 
 function ItemList({ items }: ItemListProps) {
   return (
-    <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 bg-white rounded-2xl ">
+    <div className="grid bg-white rounded-2xl ">
       {items.map((item, index) => (
-        <div className="card">
-          <Link to={`/ItemDetailsPage/${item.itemName}`}>
-            <Item
-              key={index}
-              itemName={item.itemName}
-              increment={item.increment}
-              decrement={item.decrement}
-              quantity={item.quantity}
-            />
-          </Link>
-        </div>
+        <Item
+          key={index}
+          itemName={item.itemName}
+          increment={item.increment}
+          decrement={item.decrement}
+          quantity={item.quantity}
+        />
       ))}
     </div>
   )

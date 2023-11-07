@@ -9,11 +9,11 @@ function Home() {
   const { width } = useWindowDimensions() // Get the window width
 
   return (
-    <div className="grid gap-8 lg:gap-16 mt-8 md:grid-cols-2">
-      <div className="md:col-span-1 mb-5">
+    <div className="grid gap-4 lg:ml-8 lg:mr-8 lg:gap-16 sm:grid-cols-2">
+      <div className="md:col-span-1">
         <ListShoppingList />
       </div>
-      <div className="md:col-span-1">
+      <div className="hidden sm:grid">
         <ShoppingList title={'test'} id={'0'} items={[]} />
       </div>
     </div>

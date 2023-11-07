@@ -38,43 +38,37 @@ function ListShoppingList() {
   }
 
   return (
-    <div>
-      <div className="flex-1 ">
-        <div>
-          {shoppingLists.map((shoppingList, index) => (
-            <div key={index} className="card flex justify-between">
-              <div>
-                <Link to={`/ShoppingListPage/${index}`}>
-                  <ListShoppingListElement listName={shoppingList.title} items={shoppingList.items} />
-                </Link>
-              </div>
-              <div className=" flex flex-col justify-end">
-                <button onClick={() => deleteShoppingList(index)} className="btn text-xs h-9">
-                  Delete
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
+    <div className="flex-1 h-full">
+      {/* Input field to create a new shopping list */}
+      <div className="grid gap-2 mb-4 lg:flex lg:justify-between">
+        <input
+          className="inputfield lg:w-2/3"
+          type="text"
+          placeholder="Enter title"
+          value={newListTitle}
+          onChange={(e) => setNewListTitle(e.target.value)}
+        />
+        <button onClick={createShoppingList} className="btn w-max m-auto ">
+          Create Shopping List
+        </button>
+      </div>
 
-        <div className="flex items-center space-x-2">
-          <input
-            className="inputfield border-input
-            placeholder:text-muted-foreground 
-            focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-300 ;"
-            type="text"
-            placeholder="Enter title"
-            value={newListTitle}
-            onChange={(e) => setNewListTitle(e.target.value)}
-          />
-          <button
-            onClick={createShoppingList}
-            className="btn text-lg ml-4 inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium transition-colors 
-            focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-200 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 "
-          >
-            Create Shopping List
-          </button>
-        </div>
+      {/* List container  */}
+      <div className="h-full overflow-y-scroll">
+        {shoppingLists.map((shoppingList, index) => (
+          <div key={index} className="card flex justify-between">
+            <div>
+              <Link to={`/ShoppingListPage/${index}`}>
+                <ListShoppingListElement listName={shoppingList.title} items={shoppingList.items} />
+              </Link>
+            </div>
+            <div className=" flex flex-col justify-end">
+              <button onClick={() => deleteShoppingList(index)} className="btn text-xs h-9">
+                Delete
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   )
