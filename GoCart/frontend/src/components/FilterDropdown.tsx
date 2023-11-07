@@ -2,16 +2,26 @@ import React, { useEffect, useState } from 'react'
 import { X } from 'lucide-react'
 import { SlidersHorizontal } from 'lucide-react'
 
-function FilterDropdown() {
+
+type FilterDropdownProps = {
+  onCategoryChange: (category:string) => void
+}
+
+function FilterDropdown({onCategoryChange}:FilterDropdownProps) {
   const [isFilterVisible, setFilterVisible] = useState(false)
-  const [selectedCategory, setSelectedCategory] = useState('')
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
+
 
   function handleFilterClick() {
     setFilterVisible(!isFilterVisible)
   }
 
   function handleCategoryChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const category = event.target.value
     setSelectedCategory(event.target.value)
+
+    // Call the callback function to pass the selected category to the parent component
+    onCategoryChange(category)
   }
 
   return (
