@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 // Define the props for the ItemList component
 interface ItemListProps {
-  items: Array<{ itemName: string; increment?: boolean; decrement?: boolean; quantity?: boolean }>
+  items: Array<{ itemName: string; itemID: string, increment?: boolean; decrement?: boolean; quantity?: boolean }>
   listView: Boolean
 }
 
@@ -22,6 +22,7 @@ function ItemList({ items, listView }: ItemListProps) {
         <Item
           key={index}
           itemName={item.itemName}
+          itemID={item.itemID}
           increment={item.increment}
           decrement={item.decrement}
           quantity={item.quantity}

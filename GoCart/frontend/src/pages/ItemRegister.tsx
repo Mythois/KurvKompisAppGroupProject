@@ -17,6 +17,7 @@ interface ItemRegisterProps {
 
 interface Product {
   name: string
+  _id: string
 }
 
 function ItemRegister({ editable }: ItemRegisterProps) {
@@ -53,12 +54,14 @@ function ItemRegister({ editable }: ItemRegisterProps) {
   const itemPropsList = editable
     ? products.map((item) => ({
         itemName: item.name,
+        itemID: item._id,
         increment: true,
         decrement: true,
         quantity: true,
       }))
     : products.map((item) => ({
         itemName: item.name,
+        itemID: item._id,
         increment: false,
         decrement: false,
         quantity: false,
