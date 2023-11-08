@@ -35,7 +35,7 @@ function Item({ itemName, itemID, increment, decrement, quantity}: ItemProps) {
 
       {/* Display the buttons if props is true */}
       {decrement && quantity && increment && (
-        <div className="flex justify-between">
+        <div className="flex h-max">
           <button className="btn" onClick={decrementItem}>
             -
           </button>

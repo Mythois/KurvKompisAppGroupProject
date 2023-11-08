@@ -8,8 +8,8 @@ import NavButton from '../components/NavButton'
 import FilterDropdown from '../components/FilterDropdown'
 import { useQuery } from '@apollo/client'
 import { SEARCH_PRODUCTS } from '../utils/queryFunctions/getProduct'
-import ArrowButton from '../components/ArrowButton'
 import SortButtons from '../components/SortButtons'
+import { ChevronDown, ChevronUp } from 'lucide-react'
 
 interface ItemRegisterProps {
   editable: boolean
@@ -21,10 +21,12 @@ interface Product {
 }
 
 function ItemRegister({ editable }: ItemRegisterProps) {
-  const [filter, setFilter] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState('')
-  // TODO: add page number which decrements and increments when the arrow buttons are clicked
+  const [filter, setFilter] = useState('') // Filter for product names
+  const [selectedCategory, setSelectedCategory] = useState('') // Selected category for filtering
+  const [sortDirection, setSortDirection] = useState('asc') // Sort direction for product list
+  const [perPage, setPerPage] = useState(40) // initial value is 40
 
+  // Translations for category names
   const categoryTranslations: { [key: string]: string } = {
     'Fruit & Vegetables': 'Frukt & grønt',
     'Fish & Seafood': 'Fisk & skalldyr',
@@ -38,16 +40,28 @@ function ItemRegister({ editable }: ItemRegisterProps) {
     'Spread & Breakfast': 'Pålegg & frokost',
   }
 
+  // Handle category change
   const handleCategoryChange = (category: string) => {
     const translatedCategory = categoryTranslations[category] || category
     setSelectedCategory(translatedCategory)
   }
 
+  // Handle ascending sort
+  const handleSortAsc = () => {
+    setSortDirection('asc')
+  }
+
+  // Handle descending sort
+  const handleSortDesc = () => {
+    setSortDirection('desc')
+  }
+
+  // Fetch product data from GraphQL using Apollo Client
   const { loading, error, data } = useQuery(SEARCH_PRODUCTS, {
-    variables: { page: 1, perPage: 10, category: selectedCategory, name: filter },
+    variables: { page: 1, perPage: perPage, category: selectedCategory, name: filter, sortDirection: sortDirection },
   })
 
-  let products: Product[] = data ? data.searchProducts : []
+  const products: Product[] = data ? data.searchProducts : []
 
   // Map filtered items to objects that include all props
   // Define the itemPropsList based on the "editable" prop
@@ -68,24 +82,43 @@ function ItemRegister({ editable }: ItemRegisterProps) {
       }))
 
   return (
-    <div className="h-full flex flex-col justify-center">
+    <div className="h-full flex flex-col justify-center lg:pl-8 lg:pr-8">
       {/* Render the Searchbar component with the filter callback */}
       <div className="grid sm:flex gap-2 bg-white mb-2">
         <Searchbar onFilter={(value: React.SetStateAction<string>) => setFilter(value)} />
         <div className="flex justify-between gap-2">
           <FilterDropdown onCategoryChange={handleCategoryChange} />
-          <SortButtons />
+          <SortButtons onSortAsc={handleSortAsc} onSortDesc={handleSortDesc} />
         </div>
       </div>
       {/* Render the ItemList component with the extracted item names */}
       <div className="h-full overflow-y-scroll mt-4 mb-4">
-        <ItemList listView={false} items={itemPropsList} />
+        {loading ? (
+          <div>Loading...</div>
+        ) : error ? (
+          <div>Error: {error.message}</div>
+        ) : (
+          <ItemList listView={false} items={itemPropsList} />
+        )}
       </div>
 
-      <div className="flex justify-between mb-5">
-        <ArrowButton direction="left" index={0} />
-        <NavButton route="AddItemToRegister" title={'Add item to register'} />
-        <ArrowButton direction="right" index={0} />
+      <div className="flex justify-between mb-5 gap-2">
+        <NavButton route="AddItemToRegister" title={'Add product'} />
+        <div className="flex gap-2">
+          <button className="btn flex" onClick={() => setPerPage(perPage + 40)}>
+            <ChevronDown />
+            <p className="hidden sm:block">Show more</p>
+          </button>
+          <button
+            className="btn flex"
+            onClick={() => {
+              if (perPage > 40) setPerPage(perPage - 40)
+            }}
+          >
+            <p className="hidden sm:block">Show less</p>
+            <ChevronUp />
+          </button>
+        </div>
       </div>
     </div>
   )

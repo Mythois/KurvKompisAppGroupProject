@@ -15,7 +15,7 @@ function ItemList({ items, listView }: ItemListProps) {
     // Render the items in a grid based on the listView prop
     <div
       className={`grid bg-white rounded-2xl ${
-        listView ? 'grid-cols-1' : 'sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
+        listView ? 'grid-cols-1' : 'sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
       }`}
     >
       {items.map((item, index) => (

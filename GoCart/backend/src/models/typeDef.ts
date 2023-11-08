@@ -81,7 +81,8 @@ const typeDefs = gql`
     getProductsByCategory(category: String!, page: Int!, perPage: Int!): [Product]
     getProductsByName(name: String!, page: Int!, perPage: Int!): [Product]
     # searchProducts can be used to query by just name, just category, both or to just get all products.
-    searchProducts(name: String, category: String, page: Int!, perPage: Int!): [Product]
+    searchProducts(name: String, category: String, page: Int!, perPage: Int!, sortDirection: String): [Product]
+
   }
 `;
 
