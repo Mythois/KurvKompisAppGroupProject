@@ -1,7 +1,6 @@
 // Functional component that renders a list of 'ListShoppingListElements'
 
 import ListShoppingListElement from './ListShoppingListElement'
-import ShoppingList from './ShoppingList'
 import { Link } from 'react-router-dom'
 
 import { useState, useEffect } from 'react'
@@ -37,7 +36,7 @@ function ListShoppingList() {
   }
 
   function deleteShoppingList(idToDelete: number) {
-    const updatedLists = shoppingLists.filter((list, index) => index !== idToDelete) // Filter out the shopping list to delete
+    const updatedLists = shoppingLists.filter((_list, index) => index !== idToDelete) // Filter out the shopping list to delete
 
     setShoppingLists(updatedLists) // Update the shopping lists state
     saveShoppingLists(updatedLists) // Save the updated shopping lists to storage

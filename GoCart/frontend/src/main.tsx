@@ -5,7 +5,6 @@ import './index.css'
 import { BrowserRouter } from 'react-router-dom'
 import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client'
 
-
 // Apollo client
 const client = new ApolloClient({
   uri: import.meta.env.DEV?'http://localhost:4000':'http://it2810-22.idi.ntnu.no:4000', // GraphQL server endpoint (the uri of the apollo server)
@@ -28,18 +27,17 @@ client
         }
       }
     `,
-    variables: { category: "Barnedessert", page: 1, perPage: 100 },
+    variables: { category: 'Barnedessert', page: 1, perPage: 100 },
   })
   .then((result) => console.log(result))
-  .catch((error) => console.error(error));
-
+  .catch((error) => console.error(error))
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ApolloProvider client={client}>
-      <BrowserRouter basename={'/project2'}>
+    <BrowserRouter basename='/project2'>
+      <ApolloProvider client={client}>
         <App />
-      </BrowserRouter>
-    </ApolloProvider>
+      </ApolloProvider>
+    </BrowserRouter>
   </React.StrictMode>,
 )

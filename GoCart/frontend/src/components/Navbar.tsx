@@ -3,7 +3,6 @@
 // This is the Navbar component
 // in mobile view, it will also contain a footer with buttons to navigate to the home page and browse page
 
-import React from 'react'
 import { Link } from 'react-router-dom'
 
 import BrowseIcon from '../assets/BrowseIcon.svg'

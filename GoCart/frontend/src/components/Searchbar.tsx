@@ -1,7 +1,7 @@
 // Searchbar component: A reusable input field for filtering items.
 // Using the same searchbar component as in project_1
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 interface SearchbarProps {
   // Callback function that will be called when the filter value changes.
