@@ -79,7 +79,7 @@ function ItemRegister({ editable }: ItemRegisterProps) {
       }))
 
   return (
-    <div className="h-full flex flex-col justify-center sm:p-2 lg:pl-8 lg:pr-8">
+    <div className="h-full flex flex-col justify-center lg:pl-8 lg:pr-8">
       {/* Render the Searchbar component with the filter callback */}
       <div className="grid sm:flex gap-2 bg-white mb-2">
         <Searchbar onFilter={(value: React.SetStateAction<string>) => setFilter(value)} />
