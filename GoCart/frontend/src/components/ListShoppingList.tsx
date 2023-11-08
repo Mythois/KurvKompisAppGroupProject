@@ -8,6 +8,12 @@ import { useState, useEffect } from 'react'
 
 import { loadShoppingLists, saveShoppingLists } from '../utils/shoppingListStorage'
 
+interface shoppingList {
+  title: string
+  items: string[]
+  id: string
+}
+
 function ListShoppingList() {
   // State to store shopping lists and the title of a new list
   const [shoppingLists, setShoppingLists] = useState(loadShoppingLists())
@@ -25,8 +31,8 @@ function ListShoppingList() {
     }
 
     const newList = { id: shoppingLists.length, title: newListTitle, items: [] } // Use the length of shoppingLists as the ID
-    setShoppingLists((prevLists) => [...prevLists, newList] as ShoppingList[]) // Update the shopping lists state
-    saveShoppingLists([...shoppingLists, newList] as ShoppingList[]) // Save the updated shopping lists to storage
+    setShoppingLists((prevLists) => [...prevLists, newList] as shoppingList[]) // Update the shopping lists state
+    saveShoppingLists([...shoppingLists, newList] as shoppingList[]) // Save the updated shopping lists to storage
     setNewListTitle('')
   }
 
