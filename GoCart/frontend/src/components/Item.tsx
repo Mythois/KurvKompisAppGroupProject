@@ -2,15 +2,16 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-// It accepts props for item name, increment, decrement, and quantity
+// It accepts props for item name, id, increment, decrement, and quantity
 interface ItemProps {
   itemName: string // The name or description of the item
+  itemID: string, // The id of the item
   increment?: boolean // Whether to display the increment button
   decrement?: boolean // Whether to display the decrement button
   quantity?: boolean // Whether to display the quantity field
 }
 
-function Item({ increment, decrement, quantity, itemName }: ItemProps) {
+function Item({ itemName, itemID, increment, decrement, quantity}: ItemProps) {
   const [itemQuantity, setItemQuantity] = useState<number>(0)
 
   // Function to increment the item quantity
@@ -26,9 +27,9 @@ function Item({ increment, decrement, quantity, itemName }: ItemProps) {
   }
 
   return (
-    <div className="card flex justify-between gap-2">
-      {/* Display the item name based on 'itemName' prop */}
-      <Link to={`/ItemDetailsPage/${itemName}`} className="text-lg font-semibold col-span-2">
+    <div className="card flex justify-between">
+      {/* Display the item id based on 'itemID' prop */}
+      <Link to={`/ItemDetailsPage/${itemID}`} className="text-lg font-semibold col-span-2">
         {itemName}
       </Link>
 
