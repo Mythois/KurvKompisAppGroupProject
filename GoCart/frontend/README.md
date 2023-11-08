@@ -1,6 +1,11 @@
 # Functionality for components, pages & utils
 
+## Apollo client
+
+- We use apollo client to send queries from frontend to backend.
+
 ## Components
+
 - Item: Represents an item in an itemList, with the props itemName (string, name of the Item), increment (boolean, whether to display the increment button), decrement (boolean, whether to display the decrement button) and quantity (boolean, whether to display the quantity field of the Item).
 
 - ItemDetails: Displays details of a food item and allows for editing if specified (although the editable version is not fully implemented yet), with the props itemName (string, name of the Item) and editable (boolean, whether the component should be editable).
@@ -28,6 +33,7 @@
 - SortButtons: The SortButtons component provides buttons for sorting items in ascending and descending order. It allows users to toggle between sorting options. When a sorting option is selected, the component triggers callback functions to notify the parent component about the chosen sorting order. Props: onSortAsc (function, a callback function that is called when the ascending sort button is clicked) and onSortDesc (function, a callback function that is called when the descending sort button is clicked).
 
 ## Pages
+
 - Home: The home page of the application.
 
 - ItemRegister: Either editable or none-editable. The none-editable represents a register for every item in the database, where you get the opportunity to go to a site for adding items to the database. The editable page represents the page where you add items from the register to your shopping list.
@@ -41,14 +47,13 @@
 ## Utils
 
 - mockup
-    - GoCart.Products.json: Our data set as a json file.
+
+  - GoCart.Products.json: Our data set as a json file.
 
 - queryFunctions
-    - getProduct.ts: query for getting products.
+
+  - getProduct.ts: query for getting products.
 
 - shoppingListStorage: Functions for saving and loading the local shopping list storage.
 
 - useWindowDimensions: Allows components to access and respond to changes in the dimensions of the browser window.
-
-
-
