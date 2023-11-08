@@ -25,7 +25,7 @@ function App() {
           />
           <Route
             path={import.meta.env.BASE_URL + '/ItemDetailsPage/:itemName'}
-            element={<ItemDetailsPage showArrowButtons={true} />}
+            element={<ItemDetailsPage/>}
           />
 
           <Route path={import.meta.env.BASE_URL} element={<Home />} />
