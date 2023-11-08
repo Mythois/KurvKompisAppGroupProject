@@ -29,7 +29,7 @@ function Item({ itemName, itemID, increment, decrement, quantity}: ItemProps) {
   return (
     <div className="card flex justify-between">
       {/* Display the item id based on 'itemID' prop */}
-      <Link to={`/ItemDetailsPage/${itemID}`} className="w-4/5 text-lg font-semibold">
+      <Link to={`/ItemDetailsPage/${itemID}`} className="text-lg font-semibold col-span-2">
         {itemName}
       </Link>
 
