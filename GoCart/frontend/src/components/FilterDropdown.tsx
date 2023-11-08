@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { X } from 'lucide-react'
 import { SlidersHorizontal } from 'lucide-react'
 import { RotateCcw } from 'lucide-react'

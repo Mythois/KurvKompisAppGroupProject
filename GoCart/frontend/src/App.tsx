@@ -23,10 +23,7 @@ function App() {
             path={import.meta.env.BASE_URL + '/ShoppingListPage/:id'}
             element={<ShoppingListPage title="title" items={[]} />}
           />
-          <Route
-            path={import.meta.env.BASE_URL + '/ItemDetailsPage/:itemName'}
-            element={<ItemDetailsPage/>}
-          />
+          <Route path={import.meta.env.BASE_URL + '/ItemDetailsPage/:itemName'} element={<ItemDetailsPage />} />
 
           <Route path={import.meta.env.BASE_URL} element={<Home />} />
         </Routes>

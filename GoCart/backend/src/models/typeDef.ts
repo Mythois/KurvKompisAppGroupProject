@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from 'graphql-tag'
 
 const typeDefs = gql`
   type Product {
@@ -82,8 +82,7 @@ const typeDefs = gql`
     getProductsByName(name: String!, page: Int!, perPage: Int!): [Product]
     # searchProducts can be used to query by just name, just category, both or to just get all products.
     searchProducts(name: String, category: String, page: Int!, perPage: Int!, sortDirection: String): [Product]
-
   }
-`;
+`
 
-export default typeDefs;
+export default typeDefs

@@ -1,6 +1,5 @@
 // "ListeDetaljer" -> The site that shows details about the shoppinglist with the specific title you choose
 
-import React from 'react'
 import ItemList from './ItemList'
 import { Link } from 'react-router-dom'
 
@@ -22,7 +21,7 @@ interface ShoppingListProps {
   id: string
 }
 
-function ShoppingList({ title, id, items }: ShoppingListProps) {
+function ShoppingList({ title }: ShoppingListProps) {
   return (
     <div className="">
       <h1 className="mb-2 text-2xl font-bold uppercase text-center">{title}</h1>

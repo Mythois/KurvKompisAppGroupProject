@@ -1,9 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
@@ -11,11 +8,9 @@ export default {
         secondary: '#678765', // just put a random color
       },
     },
-
   },
   variants: {
-    fill: ['hover', 'focus'], 
+    fill: ['hover', 'focus'],
   },
   plugins: [],
 }
-
