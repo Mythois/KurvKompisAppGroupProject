@@ -59,30 +59,42 @@ function ItemDetails({ itemID }: ItemDetailsProps) {
     <li><strong>{item.name}</strong></li>
     <li><strong>Nutrition</strong></li>
     <ul>
-      {item.nutrition.map((nutritionItem, index)=>(
-        <li key={index}>
-        <strong>{nutritionItem.display_name}:</strong>
-        {nutritionItem.amount} {nutritionItem.unit}
-        </li>
-      ))}
+      {item.nutrition ? (
+              <ul>
+                {item.nutrition.map((nutritionItem, index) => (
+                  <li key={index}>
+                    <strong>{nutritionItem.display_name}: </strong>
+                    {nutritionItem.amount} {nutritionItem.unit}
+                  </li>
+                ))}
+              </ul>
+            ) : "N/A"}
     </ul>
-    <li><strong>Store:</strong> {item.store.name}</li>
-    <li><strong>Vendor:</strong> {item.vendor}</li>
-    <li><strong>Weight:</strong> {item.weight} {item.weight_unit}</li>
+    <li><strong>Store: </strong> {item.store ? item.store.name : "N/A"}</li>
+    <li><strong>Vendor: </strong> {item.vendor || "N/A"}</li>
+    <li><strong>Weight: </strong> {item.weight || "N/A"} {item.weight_unit || ""}</li>
     <li><strong>Categories</strong></li>
     <ul>
-      {item.category.map((categoryItem, index) => (
-        <li key={index}>{categoryItem.name}</li>
-      ))}
+    {item.category ? (
+              <ul>
+                {item.category.map((categoryItem, index) => (
+                  <li key={index}>{categoryItem.name}</li>
+                ))}
+              </ul>
+            ) : "N/A"}
     </ul>
-    <li><strong>Allergenes</strong></li>
+    <li><strong>Allergens:</strong>
+  {item.allergens ? (
     <ul>
       {item.allergens.map((allergenItem, index) => (
         <li key={index}>{allergenItem.display_name}</li>
-      ))}
-    </ul>
-    <li><strong>Description</strong></li>
-    {item.description}
+      ))
+    }
+  </ul>
+  ) : "N/A"}
+</li>
+    <li><strong>Description:</strong></li>
+    {item.description || "N/A"}
   </ul>
 
   return (
