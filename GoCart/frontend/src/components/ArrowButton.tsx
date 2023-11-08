@@ -16,7 +16,6 @@
  * ```
  */
 
-import React from 'react'
 import { MoveLeft } from 'lucide-react'
 import { MoveRight } from 'lucide-react'
 

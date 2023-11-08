@@ -1,7 +1,5 @@
 // ShoppingListElement component represents an ShoppingListElement in a ListShoppingList
 
-import React from 'react'
-
 interface ListShoppingListElementProps {
   listName: string
   items: string[]

@@ -1,8 +1,6 @@
 // Functional component that renders a list of 'items'
 
-import React from 'react'
 import Item from './Item'
-import { Link } from 'react-router-dom'
 
 // Define the props for the ItemList component
 interface ItemListProps {

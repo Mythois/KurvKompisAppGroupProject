@@ -1,5 +1,5 @@
 // Item component represents an item in an ItemList
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 // It accepts props for item name, id, increment, decrement, and quantity

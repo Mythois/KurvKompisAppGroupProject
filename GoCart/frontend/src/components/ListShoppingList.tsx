@@ -1,7 +1,6 @@
 // Functional component that renders a list of 'ListShoppingListElements'
 
 import ListShoppingListElement from './ListShoppingListElement'
-import ShoppingList from './ShoppingList'
 import { Link } from 'react-router-dom'
 
 import { useState, useEffect } from 'react'
