@@ -34,10 +34,10 @@ client
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ApolloProvider client={client}>
-      <BrowserRouter basename={'/project2'}>
+    <BrowserRouter basename='/project2'>
+      <ApolloProvider client={client}>
         <App />
-      </BrowserRouter>
-    </ApolloProvider>
+      </ApolloProvider>
+    </BrowserRouter>
   </React.StrictMode>,
 )

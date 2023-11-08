@@ -15,17 +15,17 @@ function App() {
       <Navbar title="GoCart" />
       <div className="pt-24 pr-4 pl-4 pb-14 sm:pb-0 h-screen">
         <Routes>
-          <Route path={import.meta.env.BASE_URL + '/Home'} element={<Home />} />
-          <Route path={import.meta.env.BASE_URL + '/AddItemToRegister'} element={<AddItemToRegister />} />
-          <Route path={import.meta.env.BASE_URL + '/ItemRegister'} element={<ItemRegister editable={false} />} />
-          <Route path={import.meta.env.BASE_URL + '/AddItem'} element={<ItemRegister editable={true} />} />
+          <Route path={'/Home'} element={<Home />} />
+          <Route path={'/AddItemToRegister'} element={<AddItemToRegister />} />
+          <Route path={'/ItemRegister'} element={<ItemRegister editable={false} />} />
+          <Route path={'/AddItem'} element={<ItemRegister editable={true} />} />
           <Route
-            path={import.meta.env.BASE_URL + '/ShoppingListPage/:id'}
+            path={'/ShoppingListPage/:id'}
             element={<ShoppingListPage title="title" items={[]} />}
           />
-          <Route path={import.meta.env.BASE_URL + '/ItemDetailsPage/:itemName'} element={<ItemDetailsPage />} />
+          <Route path={'/ItemDetailsPage/:itemName'} element={<ItemDetailsPage />} />
 
-          <Route path={import.meta.env.BASE_URL} element={<Home />} />
+          <Route path={""} element={<Home />} />
         </Routes>
       </div>
     </Fragment>
