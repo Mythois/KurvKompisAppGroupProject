@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.btn {
+  @apply bg-primary border-2 border-transparent rounded-lg py-2 px-3 text-white font-semibold cursor-pointer shadow;
+}
+.btnClicked,
+.btn:hover {
+  @apply bg-white border-primary border-2 stroke-primary rounded-lg py-2 px-3 text-primary font-semibold cursor-pointer shadow;
+}
+
+.card {
+  @apply rounded-md p-4 m-2 shadow cursor-pointer border border-gray-100 bg-white hover:border-primary/50 hover:bg-primary/10;
+}
+
+.inputfield {
+  @apply flex h-9 w-full rounded-md border bg-transparent px-3 py-1 text-sm shadow-sm;
+}
+
+.radio {
+  @apply w-5 h-5 m-1 cursor-pointer;
+}

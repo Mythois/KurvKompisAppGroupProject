@@ -1,5 +1,88 @@
+# Table of Contents
+
+1. [Project 2](#project-2)
+2. [Building and Running the Project](#building-and-running-the-project)
+3. [Prettier](#prettier)
+4. [Development](#development)
+   1. [Built With](#built-with)
+   2. [Dependencies](#dependencies)
+5. [Structure](#structure)
+6. [Functional Requirements](#functional-requirements)
+7. [Technical Requirements](#technical-requirements)
+8. [Testing](#testing)
+9. [Future Work](#future-work)
+
 # Project 2
-We have made a shopping list app, where the user can make their own shopping lists based on an item register.
+We have made a shopping list app, where the user can make their own shopping lists based on an item register, where items represent groceries. The main functionality of this app is making customized shopping lists, to make the everyday shopping easier. The user will have a register of items to choose from, and may also add items to this register as they wish. The user will also have the opportunity to read details about each item.
+
+## Building and Running the Project
+To get started, run the following commands in the following order:
+
+| Command                                                                       | Description                                        |
+| ----------------------------------------------------------------------------- | -------------------------------------------------- |
+| `git clone https://gitlab.stud.idi.ntnu.no/it2810-h23/Team-22/project_2.git ` | clone project                                      |
+| `cd GoCart`                                                                   | navigate into root folder                          |
+| `npm run back`                                                                | install dependencies and run backend server        |
+| `npm run front`                                                               | install dependencies and run frontend server       |
+
+Or manually:
+
+### Cloning the repository
+1. Create a folder on your machine in which you want the project to live, for example the folder "project_2"
+2. Go to the GitLab repository https://gitlab.stud.idi.ntnu.no/it2810-h23/Team-22/project_2 and select "Clone" and copy the URL pertaining to "Clone with HTTPS".
+3. Open the folder created in step 1 in a terminal and enter "git clone the-url-from-clone-with-https"
+4. Wait until the cloning process is finished
+5. Run "git pull" in the terminal just to be sure that you got everything from the repository
+6. Run "git branch -a" to see all branches
+7. Run "git checkout name-of-branch" to switch to another branch
+8. Once you are in the desired branch make sure that you are in the "GoCart" folder. For example, if you created the folder "project_2" folder in step 1, you may want to run "cd GoCart" to enter the correct folder.
+
+### Installing mongodb community edition
+1. Install mongodb community edition on your computer by following the instructions at https://www.mongodb.com/docs/manual/administration/install-community/
+2. During installation of mongodb or thereafter install mongodb compass
+3. Run mongodb using the terminal by following the instructions given at the link above for your platform
+4. After all installation is complete, start mongodb compass
+4. connect to the database with mongodb compass
+5. Create a database called GoCart with a collection called Items
+6. Upload the json file you find at GoCart/frontend/src/utils/mockup/GoCart.Items.json to the Items collection
+
+### Running the project
+1. Going back to the project. From the GoCart folder you can run npm run back to run the backend server and connect the project to the database. Thereafter, you can run npm run front in a new terminal (remember to cd into GoCart if you are not already there). This will start the website.
+2. Interact with our website.
+
+## Prettier
+
+Prettier is recomended to format on save. To activate follow these steps:
+
+```
+- Install Prettier extension
+- Open settings for your VS Code
+- Click on the formatting section of the Text Editor tab and enable Format on Save Mode.
+- Highlight your code and right-click. Select Format Document. Once you click on Format Document, a dialog box will tell you to configure your code formatter. This is to set your default code formatter. Click on the configure button.
+- After you click on configure, select Prettier as the default formatter.
+```
+
+Source for guided step by step tutorial: https://www.educative.io/answers/how-to-set-up-prettier-and-automatic-formatting-on-vs-code
+
+Or use shift + alt + F to format
+
+## Development
+
+### Technology
+
+- [Typescript](https://www.typescriptlang.org/)
+  - JavaScript with syntax for types
+- [React](https://reactjs.org/)
+  - Component based JavaScript library used for creating user interfaces
+- [Vite](https://vitejs.dev/)
+  - Build tool
+
+### Dependencies
+
+This project uses the [npm](https://www.npmjs.com/) package manager.
+
+- [React-router](https://reactrouter.com/en/main)
+- [Tailwind CSS](https://tailwindcss.com/)
 
 ## Structure
 The app is structured in such a way that the various parts of the website are organized into their own folders within common directories with similar elements, as follows:
@@ -59,25 +142,3 @@ The test are set up using vitest and should be covering all the different compon
 
 ## Future Work
 - Our plan includes adding the missing functionality named above, as well as setting up and implementing the usage of a database. We are also planning on making the styling smoother.
-
-## Building and Running the Project
-### How to get started
-1. Create a folder on your machine in which you want the project to live, for example the folder "project_1"
-2. Go to the GitLab repository https://gitlab.stud.idi.ntnu.no/it2810-h23/Team-22/project_2 and select "Clone" and copy the URL pertaining to "Clone with HTTPS".
-3. Open the folder created in step 1 in a terminal and enter "git clone the-url-from-clone-with-https"
-4. Wait until the cloning process is finished
-5. Run "git pull" in the terminal just to be sure that you got everything from the repository
-6. Run "git branch -a" to see all branches
-7. Run "git checkout name-of-branch" to switch to another branch
-8. Once you are in the desired branch make sure that you are in the "GoCart" folder. For example, if you created the folder "project_2" folder in step 1, you may want to run "cd GoCart" to enter the correct folder.
-9. You can now run "npm run dev" to start a live server that should update everytime you make changes to the codebase.
-
-Step 8 and 9 certainly have to be repeated everytime you start your IDE. 
-
-### How to save changes in a branch
-Once you have made changes that you want to save in the branch you are currently working in, do the following:
-1. Run "git status" to see all changed files
-2. Assuming you want to add all changed files / all changes to the branch you are currently working in, run the command "git add --all".
-5. Check that you have added all changes by running: git status
-4. Commit the changes you have made by running: git commit -m"[#issueNumber]your-commit message header" -m"your-detailed-commit-message"
-5. Push the commited changes to the branch: git push

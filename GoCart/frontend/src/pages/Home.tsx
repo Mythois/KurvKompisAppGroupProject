@@ -1,27 +1,23 @@
 /* The home page of the application. */
 
-import React, { useEffect, useState } from 'react';
-import ListShoppingList from '../components/ListShoppingList';
-import useWindowDimensions from '../utils/useWindowDimensions';
-
+import React, { useEffect, useState } from 'react'
+import ListShoppingList from '../components/ListShoppingList'
+import useWindowDimensions from '../utils/useWindowDimensions'
+import ShoppingList from '../components/ShoppingList'
 
 function Home() {
-
-  const { width } = useWindowDimensions(); // Get the window width
+  const { width } = useWindowDimensions() // Get the window width
 
   return (
-    <div className='flex flex-row justify-center'>
-
-      <ListShoppingList/>
-
-
-      {/* {width > 500 && (
-        <div className='bg-green-400 flex-1'>
-          Content to be displayed when the window width is greater than 500 pixels
-        </div>
-      )} */}
+    <div className="grid gap-4 lg:ml-8 lg:mr-8 lg:gap-16 sm:grid-cols-2">
+      <div className="md:col-span-1">
+        <ListShoppingList />
+      </div>
+      <div className="hidden sm:grid">
+        <ShoppingList title={'test'} id={'0'} items={[]} />
+      </div>
     </div>
-  );
+  )
 }
 
-export default Home;
+export default Home

@@ -1,11 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-const DeleteButton = () => {
-  return (
-    <div>
-      This is a default component.
-    </div>
-  );
-};
+function DeleteButton() {
+  return <div>This is a default component.</div>
+}
 
-export default DeleteButton;
+export default DeleteButton
