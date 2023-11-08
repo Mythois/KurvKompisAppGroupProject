@@ -1,6 +1,7 @@
 # Functionality for components, pages & utils
 
 ## Components
+
 - Item: Represents an item in an itemList, with the props itemName (string, name of the Item), increment (boolean, whether to display the increment button), decrement (boolean, whether to display the decrement button) and quantity (boolean, whether to display the quantity field of the Item).
 
 - ItemDetails: Displays details of a food item and allows for editing if specified (although the editable version is not fully implemented yet), with the props itemName (string, name of the Item) and editable (boolean, whether the component should be editable).
@@ -24,6 +25,7 @@
 - ListShoppingList: functional component that renders a list of 'ListShoppingListElements', with functionality such as creating and deleteing shopping lists in localstorage.
 
 ## Pages
+
 - Home: The home page of the application.
 
 - ItemRegister: Either editable or none-editable. The none-editable represents a register for every item in the database, where you get the opportunity to go to a site for adding items to the database. The editable page represents the page where you add items from the register to your shopping list.
@@ -37,12 +39,10 @@
 ## Utils
 
 - mockup
-    - mockup: For retrieving mockup data with getFoodData().
-    - mockupdData.json: Mockup data before the DB is ready
+
+  - mockup: For retrieving mockup data with getFoodData().
+  - mockupdData.json: Mockup data before the DB is ready
 
 - shoppingListStorage: Functions for saving and loading the local shopping list storage.
 
 - useWindowDimensions: Allows components to access and respond to changes in the dimensions of the browser window.
-
-
-

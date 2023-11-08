@@ -22,35 +22,32 @@
     // Your component logic here, utilizing 'width' and 'height'
   }*/
 
-
-import { useState, useEffect } from 'react';
-
+import { useState, useEffect } from 'react'
 
 // getWindowDimensions() retrieves and returns the current window dimensions.
 function getWindowDimensions() {
-  const { innerWidth: width, innerHeight: height } = window;
+  const { innerWidth: width, innerHeight: height } = window
   return {
     width,
-    height
-  };
+    height,
+  }
 }
-
 
 // useWindowDimensions() is a custom hook called.
 export default function useWindowDimensions() {
-  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions())
 
   useEffect(() => {
     // handleResize() updates 'windowDimensions' with the latest dimensions of the window.
     function handleResize() {
-      setWindowDimensions(getWindowDimensions());
+      setWindowDimensions(getWindowDimensions())
     }
 
     // Add an event listener for the 'resize' event that calls 'handleResize' when the window is resized.
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize)
     // Clean up the event listener when the component unmounts.
-    return () => window.removeEventListener('resize', handleResize);
-  }, []); // The empty dependency array ensures that this effect runs only once after the component mounts.
+    return () => window.removeEventListener('resize', handleResize)
+  }, []) // The empty dependency array ensures that this effect runs only once after the component mounts.
 
-  return windowDimensions;
+  return windowDimensions
 }

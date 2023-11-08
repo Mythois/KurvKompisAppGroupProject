@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom'
 // It accepts props for item name, id, increment, decrement, and quantity
 interface ItemProps {
   itemName: string // The name or description of the item
-  itemID: string, // The id of the item
+  itemID: string // The id of the item
   increment?: boolean // Whether to display the increment button
   decrement?: boolean // Whether to display the decrement button
   quantity?: boolean // Whether to display the quantity field
 }
 
-function Item({ itemName, itemID, increment, decrement, quantity}: ItemProps) {
+function Item({ itemName, itemID, increment, decrement, quantity }: ItemProps) {
   const [itemQuantity, setItemQuantity] = useState<number>(0)
 
   // Function to increment the item quantity

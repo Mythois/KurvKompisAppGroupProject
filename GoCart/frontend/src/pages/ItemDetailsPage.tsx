@@ -4,15 +4,11 @@ import React from 'react'
 import ItemDetails from '../components/ItemDetails'
 import { useParams } from 'react-router-dom'
 
-
-
 function ItemDetailsPage() {
   //const { itemId: paramId } = useParams() // Apparently it does not work when we change tha variable name
   const { itemName: paramID } = useParams()
   //const itemId = paramId as string
   const itemName = paramID as string
-
-  
 
   return (
     <div>
