@@ -1,12 +1,9 @@
 /* The home page of the application. */
 
-import React, { useEffect, useState } from 'react'
 import ListShoppingList from '../components/ListShoppingList'
-import useWindowDimensions from '../utils/useWindowDimensions'
 import ShoppingList from '../components/ShoppingList'
 
 function Home() {
-  const { width } = useWindowDimensions() // Get the window width
 
   return (
     <div className="grid gap-4 lg:ml-8 lg:mr-8 lg:gap-16 sm:grid-cols-2">

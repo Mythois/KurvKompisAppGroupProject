@@ -1,7 +1,7 @@
 import { ApolloServer } from '@apollo/server'
 import { startStandaloneServer } from '@apollo/server/standalone'
 import { resolvers } from './resolvers.js'
-import  typeDefs from './models/typeDef.js'
+import typeDefs from './models/typeDef.js'
 import mongoose from 'mongoose'
 
 // Connecting to the MongoDB database

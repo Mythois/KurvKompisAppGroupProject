@@ -1,78 +1,129 @@
-// ItemDetails Component: Displays details of a food item and allows for editing if specified (although the editable version is not fully implemented yet)
+// ItemDetails Component: Displays details of a product (aka item)
 
-import React, { useState } from 'react'
-import { Food, getFoodData } from '../utils/mockup/mockup' // Import the data service
+import { GET_PRODUCT_BY_ID } from '../utils/queryFunctions/getProduct'
+import { useQuery } from '@apollo/client'
 
 interface ItemDetailsProps {
-  itemName: string // The name of the food item to display
-  editable?: boolean // Whether the component should be editable
+  itemID: string // The name of the food item to display
 }
 
-function ItemDetails({ itemName, editable = false }: ItemDetailsProps) {
-  // Get the food data from the data service
-  const foodData = getFoodData()
+// The expected format of the query response
+interface Product {
+  name: string
+  nutrition: {
+    display_name: string
+    amount: number
+    unit: string
+  }[]
+  store: {
+    name: string
+  }
+  vendor: string
+  weight: number
+  weight_unit: string
+  category: {
+    name: string
+  }[]
+  allergens: {
+    display_name: string
+  }[]
+  description: string
+}
 
-  // Find the food item with the given name
-  const foodItem = findFoodItem(foodData, itemName)
+function ItemDetails({ itemID }: ItemDetailsProps) {
+  const { loading, error, data } = useQuery(GET_PRODUCT_BY_ID, {
+    variables: { _id: itemID },
+  })
 
-  // Function to find a food item by name
-  function findFoodItem(data: { [key: string]: Food[] }, name: string): Food | undefined {
-    for (const category in data) {
-      const foods = data[category]
-      const foundItem = foods.find((item) => item.name === name)
-      if (foundItem) {
-        return foundItem
-      }
-    }
-    return undefined
+  if (loading) {
+    return <div>Loading...</div>
   }
 
-  const [editedItem, setEditedItem] = useState<Food | undefined>(foodItem)
-
-  // Handle input changes for editable items
-  function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const { name, value } = event.target
-    setEditedItem((prevItem) => ({
-      ...prevItem,
-      [name]: value,
-    }))
+  if (error) {
+    return <div>Error: {error.message}</div>
   }
 
-  if (!foodItem) {
-    return <div>Food item not found.</div>
+  const item: Product | undefined = data.getProduct || undefined
+
+  if (!item) {
+    return <div>Item not found.</div>
   }
 
   return (
-    <div className="flex justify-center">
-      <div style={{ width: `60%` }} className="my-4 mx-auto p-6 bg-green-100 border border-green-200 rounded-lg">
-        <h2 className="text-2xl  mb-2 pb-2 border-b border-green-200">Information</h2>
-        {editable ? (
-          // Render editable form for editing item details
+    <div>
+      <h2 className="text-2xl">{item.name}</h2>
+      <div className="mt-4 grid sm:grid-cols-2 gap-2">
+        <div className="p-2">
           <ul>
-            {Object.entries(editedItem || {}).map(([key, value]) => (
-              <li key={key} className="mb-2">
-                <strong>{key}: </strong>
-                <input
-                  type="text"
-                  name={key}
-                  value={String(value)}
-                  onChange={handleInputChange}
-                  className="border border-gray-300 rounded-md p-1"
-                />
-              </li>
-            ))}
+            <p className="text-xl">Nutrition</p>
+            {item.nutrition ? (
+              <ul>
+                {item.nutrition.map((nutritionItem, index) => (
+                  <li key={index}>
+                    <strong>{nutritionItem.display_name}: </strong>
+                    {nutritionItem.amount} {nutritionItem.unit}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              'N/A'
+            )}
           </ul>
-        ) : (
-          // Render read-only view of item details
+        </div>
+
+        <div className="p-2">
+          <p className="text-xl">Info</p>
           <ul>
-            {Object.entries(foodItem).map(([key, value]) => (
-              <li key={key} className="mb-2">
-                <strong>{key}: </strong>
-                {String(value)}
-              </li>
-            ))}
+            <strong>Store: </strong>
+            {item.store ? item.store.name : 'N/A'}
           </ul>
-        )}
+          <ul>
+            <strong>Vendor: </strong>
+            {item.vendor || 'N/A'}
+          </ul>
+          <ul>
+            <strong>Weight: </strong>
+            {item.weight || 'N/A'} {item.weight_unit || ''}
+          </ul>
+
+          {/* Categories */}
+          <div className="">
+            <strong>Categories:</strong>
+            <ul>
+              {item.category ? (
+                <li>
+                  {item.category.map((categoryItem, index) => (
+                    <li key={index}>{categoryItem.name}</li>
+                  ))}
+                </li>
+              ) : (
+                'N/A'
+              )}
+            </ul>
+          </div>
+          {/* Allergens */}
+          <div className="">
+            <strong>Allergens:</strong>
+            <ul>
+              {item.allergens ? (
+                <ul>
+                  {item.allergens.map((allergenItem, index) => (
+                    <li key={index}>{allergenItem.display_name}</li>
+                  ))}
+                </ul>
+              ) : (
+                'N/A'
+              )}
+            </ul>
+          </div>
+          {/* Description */}
+        </div>
+        <div className="p-2 sm:col-span-2">
+          <ul>
+            <p className="text-xl">Description</p>
+          </ul>
+          <p>{item.description || 'N/A'}</p>
+        </div>
       </div>
     </div>
   )

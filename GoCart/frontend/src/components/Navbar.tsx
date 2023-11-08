@@ -3,7 +3,6 @@
 // This is the Navbar component
 // in mobile view, it will also contain a footer with buttons to navigate to the home page and browse page
 
-import React from 'react'
 import { Link } from 'react-router-dom'
 
 import BrowseIcon from '../assets/BrowseIcon.svg'
@@ -16,16 +15,16 @@ interface NavbarProps {
 function Navbar({ title }: NavbarProps) {
   return (
     <>
-      <nav className="fixed h-24 w-screen bg-primary py-6 px-8 sm:grid grid-flow-col grid-cols-5">
+      <nav className="fixed h-20 w-screen bg-primary p-4 lg:pl-8 sm:pr-8 sm:grid grid-flow-col grid-cols-5">
         <h1 className="text-center sm:text-left text-5xl text-white font-semibold col-span-4">
           <Link to={'/'}>{title}</Link>
         </h1>
-        <div className="hidden sm:flex text-white font-semibold justify-center gap-10 p-3">
+        <div className="hidden sm:flex text-white text-lg font-semibold justify-center py-3 gap-10">
           <Link className="hover:underline" to={'/'}>
             Home
           </Link>
           <Link className="hover:underline" to={'/ItemRegister'}>
-            Browse
+            Products
           </Link>
         </div>
       </nav>

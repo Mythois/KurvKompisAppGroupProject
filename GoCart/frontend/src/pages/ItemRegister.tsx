@@ -17,6 +17,7 @@ interface ItemRegisterProps {
 
 interface Product {
   name: string
+  _id: string
 }
 
 function ItemRegister({ editable }: ItemRegisterProps) {
@@ -67,19 +68,21 @@ function ItemRegister({ editable }: ItemRegisterProps) {
   const itemPropsList = editable
     ? products.map((item) => ({
         itemName: item.name,
+        itemID: item._id,
         increment: true,
         decrement: true,
         quantity: true,
       }))
     : products.map((item) => ({
         itemName: item.name,
+        itemID: item._id,
         increment: false,
         decrement: false,
         quantity: false,
       }))
 
   return (
-    <div className="h-full flex flex-col justify-center sm:p-2 lg:pl-8 lg:pr-8">
+    <div className="h-full flex flex-col justify-center lg:pl-8 lg:pr-8">
       {/* Render the Searchbar component with the filter callback */}
       <div className="grid sm:flex gap-2 bg-white mb-2">
         <Searchbar onFilter={(value: React.SetStateAction<string>) => setFilter(value)} />
