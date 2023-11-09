@@ -13,7 +13,7 @@ function App() {
   return (
     <Fragment>
       <Navbar title="GoCart" />
-      <div className="pt-24 pr-4 pl-4 pb-14 sm:pb-0 lg:px-12 xl:px-24 h-full">
+      <div className="pt-28 pr-4 pl-4 pb-14 sm:pb-0 lg:px-12 xl:px-24 h-full">
         <Routes>
           <Route path={''} element={<Home />} />
           <Route path={'/Home'} element={<Home />} />

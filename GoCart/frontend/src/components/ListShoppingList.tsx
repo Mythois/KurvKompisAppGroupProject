@@ -43,26 +43,20 @@ function ListShoppingList() {
   }
 
   return (
-    <div className="flex-1 ">
-      <div className="flex items-center space-x-2">
+    <div className="flex-1">
+      <div className="grid gap-4 md:grid-cols-2 m-2">
         <input
-          className="inputfield border-input
-            placeholder:text-muted-foreground 
-            focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-300 ;"
+          className="inputfield span-col-1"
           type="text"
           placeholder="Enter title"
           value={newListTitle}
           onChange={(e) => setNewListTitle(e.target.value)}
         />
-        <button
-          onClick={createShoppingList}
-          className="btn text-lg ml-4 inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium transition-colors 
-            focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-200 disabled:pointer-events-none disabled:opacity-50 text-primary-foreground shadow "
-        >
+        <button onClick={createShoppingList} className="btn w-max mx-auto span-col-1">
           Create Shopping List
         </button>
       </div>
-      <div className="mb-16 sm:mb-5">
+      <div className="mt-4">
         {shoppingLists.map((shoppingList, index) => (
           <div key={index} className="card flex justify-between">
             <div>

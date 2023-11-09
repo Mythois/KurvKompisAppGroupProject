@@ -9,7 +9,7 @@ function Home() {
       <div className="md:col-span-1">
         <ListShoppingList />
       </div>
-      <div className="hidden sm:grid">
+      <div className="hidden sm:grid mt-20 md:mt-4">
         <ShoppingList title={'test'} id={'0'} products={[]} />
       </div>
     </div>
