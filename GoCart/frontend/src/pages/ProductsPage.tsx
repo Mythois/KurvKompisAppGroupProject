@@ -1,9 +1,9 @@
-// The register for every item in the database, where you get the opportunity to go to a site for adding items to the database
+// The register for every product in the database, where you get the opportunity to go to a site for adding products to the database
 
 import React, { useState } from 'react'
 
 import Searchbar from '../components/Searchbar'
-import ItemList from '../components/ItemList'
+import ProductList from '../components/ProductList'
 import NavButton from '../components/NavButton'
 import FilterDropdown from '../components/FilterDropdown'
 import { useQuery } from '@apollo/client'
@@ -11,7 +11,7 @@ import { SEARCH_PRODUCTS } from '../utils/queryFunctions/getProduct'
 import SortButtons from '../components/SortButtons'
 import { ChevronDown, ChevronUp } from 'lucide-react'
 
-interface ItemRegisterProps {
+interface ProductsPageProps {
   editable: boolean
 }
 
@@ -20,7 +20,7 @@ interface Product {
   _id: string
 }
 
-function ItemRegister({ editable }: ItemRegisterProps) {
+function ProductsPage({ editable }: ProductsPageProps) {
   const [filter, setFilter] = useState('') // Filter for product names
   const [selectedCategory, setSelectedCategory] = useState('') // Selected category for filtering
   const [sortDirection, setSortDirection] = useState('asc') // Sort direction for product list
@@ -63,19 +63,19 @@ function ItemRegister({ editable }: ItemRegisterProps) {
 
   const products: Product[] = data ? data.searchProducts : []
 
-  // Map filtered items to objects that include all props
-  // Define the itemPropsList based on the "editable" prop
-  const itemPropsList = editable
-    ? products.map((item) => ({
-        itemName: item.name,
-        itemID: item._id,
+  // Map filtered products to objects that include all props
+  // Define the productPropsList based on the "editable" prop
+  const productPropsList = editable
+    ? products.map((product) => ({
+        productName: product.name,
+        productID: product._id,
         increment: true,
         decrement: true,
         quantity: true,
       }))
-    : products.map((item) => ({
-        itemName: item.name,
-        itemID: item._id,
+    : products.map((product) => ({
+        productName: product.name,
+        productID: product._id,
         increment: false,
         decrement: false,
         quantity: false,
@@ -91,19 +91,19 @@ function ItemRegister({ editable }: ItemRegisterProps) {
           <SortButtons onSortAsc={handleSortAsc} onSortDesc={handleSortDesc} />
         </div>
       </div>
-      {/* Render the ItemList component with the extracted item names */}
+      {/* Render the productList component with the extracted product names */}
       <div className="h-full overflow-y-scroll mt-4 mb-4">
         {loading ? (
           <div>Loading...</div>
         ) : error ? (
           <div>Error: {error.message}</div>
         ) : (
-          <ItemList listView={false} items={itemPropsList} />
+          <ProductList listView={false} products={productPropsList} />
         )}
       </div>
 
       <div className="flex justify-between mb-5 gap-2">
-        <NavButton route="AddItemToRegister" title={'Add product'} />
+        <NavButton route="AddproductToRegister" title={'Add product'} />
         <div className="flex gap-2">
           <button className="btn flex" onClick={() => setPerPage(perPage + 40)}>
             <ChevronDown />
@@ -124,4 +124,4 @@ function ItemRegister({ editable }: ItemRegisterProps) {
   )
 }
 
-export default ItemRegister
+export default ProductsPage

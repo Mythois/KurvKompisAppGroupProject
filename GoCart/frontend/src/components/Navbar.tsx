@@ -23,7 +23,7 @@ function Navbar({ title }: NavbarProps) {
           <Link className="hover:underline" to={'/'}>
             Home
           </Link>
-          <Link className="hover:underline" to={'/ItemRegister'}>
+          <Link className="hover:underline" to={'/ProductsPage'}>
             Products
           </Link>
         </div>
@@ -32,8 +32,8 @@ function Navbar({ title }: NavbarProps) {
         <Link to="/">
           <img src={HomeIcon} className="h-12 pt-2" alt="Home" />
         </Link>
-        <Link to="/ItemRegister">
-          <img src={BrowseIcon} className="h-12 pt-2" alt="Browse Items" />
+        <Link to="/ProductsPage">
+          <img src={BrowseIcon} className="h-12 pt-2" alt="Products" />
         </Link>
       </footer>
     </>

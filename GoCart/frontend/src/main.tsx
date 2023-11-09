@@ -7,7 +7,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client
 
 // Apollo client
 const client = new ApolloClient({
-  uri: import.meta.env.DEV?'http://localhost:4000':'http://it2810-22.idi.ntnu.no:4000', // GraphQL server endpoint (the uri of the apollo server)
+  uri: import.meta.env.DEV ? 'http://localhost:4000' : 'http://it2810-22.idi.ntnu.no:4000', // GraphQL server endpoint (the uri of the apollo server)
 
   cache: new InMemoryCache(),
 })
@@ -34,7 +34,7 @@ client
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter basename='/project2'>
+    <BrowserRouter basename="/project2">
       <ApolloProvider client={client}>
         <App />
       </ApolloProvider>
