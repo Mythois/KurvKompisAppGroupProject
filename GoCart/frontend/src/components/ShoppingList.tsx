@@ -18,7 +18,7 @@ const mockProducts = [
 interface ShoppingListProps {
   title: string
   products: string[]
-  id: string
+  // id: string
 }
 
 function ShoppingList({ title }: ShoppingListProps) {
