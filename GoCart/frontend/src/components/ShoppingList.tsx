@@ -1,7 +1,7 @@
 // "ListeDetaljer" -> The site that shows details about the shoppinglist with the specific title you choose
 
 import { useReactiveVar } from '@apollo/client'
-import { shoppingListProductsVar } from '../main.tsx' // Import your reactive variable
+import { shoppingListProductsVar } from '../utils/reactiveVariables/reactiveVariables.tsx'
 
 import ProductList from './ProductList'
 import { Link } from 'react-router-dom'

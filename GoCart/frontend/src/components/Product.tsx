@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import { useReactiveVar } from '@apollo/client'
-import { shoppingListProductsVar } from '../main.tsx' // Import your reactive variable
+import { shoppingListProductsVar } from '../utils/reactiveVariables/reactiveVariables'
 
 // It accepts props for item name, id, productQuantity, increment, decrement, quantity and showQuantityOnly
 export interface ProductProps {
