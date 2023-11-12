@@ -6,5 +6,3 @@ export const shoppingListProductsVar: ReactiveVar<ProductProps[]> = makeVar<Prod
   // Read the initial state from local storage or default to an empty array
   JSON.parse(localStorage.getItem('shoppingList') || '[]'),
 )
-
-export const shoppingListsVar = makeVar(JSON.parse(localStorage.getItem('shoppingLists') || '[]'))
