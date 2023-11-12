@@ -9,6 +9,7 @@ import { ProductProps } from './Product.tsx'
 
 interface ShoppingListProps {
   title: string
+  id: string
 }
 
 function ShoppingList({ title }: ShoppingListProps) {
