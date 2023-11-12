@@ -21,12 +21,27 @@ function Product({ productName, productID, increment, decrement, quantity, showQ
   const shoppingListProducts: ProductProps[] = useReactiveVar(shoppingListProductsVar)
 
   useEffect(() => {
-    const productInList = shoppingListProducts.find((p) => p.productID === productID)
-    setProductQuantity(productInList?.productQuantity ?? 0)
-  }, [shoppingListProducts, productID])
+    // Retrieve the stored shopping list from local storage
+    const storedShoppingList = localStorage.getItem('shoppingList')
+
+    if (storedShoppingList) {
+      const parsedList: ProductProps[] = JSON.parse(storedShoppingList)
+
+      // Update the reactive variable with the stored shopping list
+      shoppingListProductsVar(parsedList)
+
+      // Find the product in the updated list
+      const productInList = parsedList.find((p) => p.productID === productID)
+
+      // Set the product quantity
+      setProductQuantity(productInList?.productQuantity ?? 0)
+    }
+  }, [productID]) // Only run the effect when productID changes
 
   // Add product to the shopping list
-  const handleAddProduct = () => {
+  function incrementProduct() {
+    setProductQuantity((prevQuantity) => prevQuantity + 1) // Use the state updater function
+
     const existingProductIndex = shoppingListProducts.findIndex((p) => p.productID === productID)
 
     if (existingProductIndex !== -1) {
@@ -42,9 +57,14 @@ function Product({ productName, productID, increment, decrement, quantity, showQ
         { productID, productName, productQuantity: newProductQuantity + 1 },
       ])
     }
+
+    // Save the updated list to local storage
+    localStorage.setItem('shoppingList', JSON.stringify(shoppingListProductsVar()))
   }
 
-  const handleRemoveProduct = () => {
+  function decrementProduct() {
+    setProductQuantity((prevQuantity) => Math.max(prevQuantity - 1, 0)) // Use the state updater function
+
     const existingProductIndex = shoppingListProducts.findIndex((p) => p.productID === productID)
 
     if (existingProductIndex !== -1) {
@@ -58,20 +78,9 @@ function Product({ productName, productID, increment, decrement, quantity, showQ
 
       shoppingListProductsVar(filteredList)
     }
-  }
 
-  // Function to increment the product quantity
-  function incrementProduct() {
-    handleAddProduct()
-    setProductQuantity(newProductQuantity + 1)
-  }
-
-  // Function to decrement the product quantity
-  function decrementProduct() {
-    handleRemoveProduct()
-    if (newProductQuantity > 0) {
-      setProductQuantity(newProductQuantity - 1)
-    }
+    // Save the updated list to local storage
+    localStorage.setItem('shoppingList', JSON.stringify(shoppingListProductsVar()))
   }
 
   return (

@@ -7,24 +7,14 @@ import { ApolloClient, InMemoryCache, ApolloProvider, gql, makeVar, ReactiveVar 
 import { ProductProps } from './components/Product.tsx'
 
 // Apollo client - This should probably be moved to another file Apollo/client.ts
-export const shoppingListProductsVar: ReactiveVar<ProductProps[]> = makeVar<ProductProps[]>([])
-
+export const shoppingListProductsVar: ReactiveVar<ProductProps[]> = makeVar<ProductProps[]>(
+  // Read the initial state from local storage or default to an empty array
+  JSON.parse(localStorage.getItem('shoppingList') || '[]'),
+)
 const client = new ApolloClient({
   uri: import.meta.env.DEV ? 'http://localhost:4000' : 'http://it2810-22.idi.ntnu.no:4000', // GraphQL server endpoint (the uri of the apollo server)
 
-  cache: new InMemoryCache({
-    typePolicies: {
-      Query: {
-        fields: {
-          shoppingList: {
-            read() {
-              return shoppingListProductsVar()
-            },
-          },
-        },
-      },
-    },
-  }),
+  cache: new InMemoryCache(),
 })
 
 /* Test query.
