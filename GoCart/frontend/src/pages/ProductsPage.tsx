@@ -18,6 +18,7 @@ interface ProductsPageProps {
 interface Product {
   name: string
   _id: string
+  quantity: number
 }
 
 function ProductsPage({ editable }: ProductsPageProps) {
@@ -69,6 +70,7 @@ function ProductsPage({ editable }: ProductsPageProps) {
     ? products.map((product) => ({
         productName: product.name,
         productID: product._id,
+        productQuantity: product.quantity,
         increment: true,
         decrement: true,
         quantity: true,

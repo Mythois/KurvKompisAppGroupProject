@@ -3,13 +3,28 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 import { BrowserRouter } from 'react-router-dom'
-import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client'
+import { ApolloClient, InMemoryCache, ApolloProvider, gql, makeVar, ReactiveVar } from '@apollo/client'
+import { ProductProps } from './components/Product.tsx'
 
-// Apollo client
+// Apollo client - This should probably be moved to another file Apollo/client.ts
+export const shoppingListProductsVar: ReactiveVar<ProductProps[]> = makeVar<ProductProps[]>([])
+
 const client = new ApolloClient({
   uri: import.meta.env.DEV ? 'http://localhost:4000' : 'http://it2810-22.idi.ntnu.no:4000', // GraphQL server endpoint (the uri of the apollo server)
 
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          shoppingList: {
+            read() {
+              return shoppingListProductsVar()
+            },
+          },
+        },
+      },
+    },
+  }),
 })
 
 /* Test query.
