@@ -32,7 +32,7 @@ function ProductList({ products, listView }: ProductListProps) {
           increment={product.increment}
           decrement={product.decrement}
           quantity={product.quantity}
-          showQuantityOnly={listView} // Pass the showQuantity prop based on the listView prop
+          listView={listView} // Pass the listview prop based on the listView prop
         />
       ))}
     </div>

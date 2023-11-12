@@ -13,10 +13,10 @@ export interface ProductProps {
   increment?: boolean // Whether to display the increment button
   decrement?: boolean // Whether to display the decrement button
   quantity?: boolean // Whether to display the quantity field
-  showQuantityOnly?: boolean
+  listView?: boolean
 }
 
-function Product({ productName, productID, increment, decrement, quantity, showQuantityOnly }: ProductProps) {
+function Product({ productName, productID, increment, decrement, quantity, listView }: ProductProps) {
   const [newProductQuantity, setProductQuantity] = useState<number>(0)
   const shoppingListProducts: ProductProps[] = useReactiveVar(shoppingListProductsVar)
 
@@ -91,7 +91,7 @@ function Product({ productName, productID, increment, decrement, quantity, showQ
       </Link>
 
       {/* Display the buttons if props is true */}
-      {decrement && quantity && increment && (
+      {((increment && decrement && quantity) || listView) && (
         <div className="flex h-max">
           <button className="btn" onClick={decrementProduct}>
             -
@@ -100,13 +100,6 @@ function Product({ productName, productID, increment, decrement, quantity, showQ
           <button className="btn" onClick={incrementProduct}>
             +
           </button>
-        </div>
-      )}
-
-      {/* Display the quantity if quantity prop is true */}
-      {showQuantityOnly && (
-        <div className="flex h-max">
-          <span className="text-xl p-2">{newProductQuantity}</span>
         </div>
       )}
     </div>
