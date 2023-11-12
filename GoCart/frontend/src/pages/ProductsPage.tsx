@@ -105,7 +105,7 @@ function ProductsPage({ editable }: ProductsPageProps) {
       </div>
 
       <div className="flex justify-between mb-5 gap-2">
-        <NavButton route="AddproductToRegister" title={'Add product'} />
+        {!editable && <NavButton route="AddproductToRegister" title={'Add product to register'} />}
         <div className="flex gap-2">
           <button className="btn flex" onClick={() => setPerPage(perPage + 40)}>
             <ChevronDown />

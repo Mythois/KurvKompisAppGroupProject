@@ -20,7 +20,7 @@ function ShoppingList({ title }: ShoppingListProps) {
       <ProductList listView={true} products={shoppingListProducts} />
       <div className=" flex justify-center py-8">
         <Link to={'/Addproduct'}>
-          <button className="btn">Add product</button>
+          <button className="btn">Add products</button>
         </Link>
       </div>
     </div>
