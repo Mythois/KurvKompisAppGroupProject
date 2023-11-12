@@ -1,14 +1,14 @@
 // // Currently not used
 
-// // ShoppingListElement component represents an ShoppingListElement in a ListShoppingList
+// // ListOfShoppingListsElement component represents an element in a ListOfShoppingLists
 
-// interface ListShoppingListElementProps {
+// interface ListOfShoppingListsElementProps {
 //   listName: string
 //   items: string[]
 //   onClick?: () => void
 // }
 
-// function ListShoppingListElement({ listName, items }: ListShoppingListElementProps) {
+// function ListOfShoppingListsElement({ listName, items }: ListOfShoppingListsElementProps) {
 //   // If there are no items, display a message
 
 //   // If there are more than two items, display the first two and "..."
@@ -45,4 +45,4 @@
 //   )
 // }
 
-// export default ListShoppingListElement
+// export default ListOfShoppingListsElement
