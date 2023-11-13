@@ -97,7 +97,7 @@ function Product({ productName, productID, increment, decrement, quantity, listV
   return (
     <div className="card flex justify-between" onClick={handleCardClick}>
       <div className="text-lg font-semibold col-span-2">{productName}</div>
-      {decrement && quantity && increment && (
+      {((increment && decrement && quantity) || listView) && (
         <div className="flex h-max">
           <button
             className="btn"
