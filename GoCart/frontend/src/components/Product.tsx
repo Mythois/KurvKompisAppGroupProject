@@ -1,6 +1,8 @@
-// product component represents an product in an ItemList
+// This component renders a product card with the product name and the ability to increment or decrement the quantity of the product
+// If the increment or decrement props are false, then the buttons to increment or decrement the quantity are not displayed
+
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import { useReactiveVar } from '@apollo/client'
 import { shoppingListProductsVar } from '../utils/reactiveVariables/reactiveVariables'
@@ -19,6 +21,7 @@ export interface ProductProps {
 function Product({ productName, productID, increment, decrement, quantity, listView }: ProductProps) {
   const [newProductQuantity, setProductQuantity] = useState<number>(0)
   const shoppingListProducts: ProductProps[] = useReactiveVar(shoppingListProductsVar)
+  const navigate = useNavigate()
 
   useEffect(() => {
     // Retrieve the stored shopping list from local storage
@@ -39,7 +42,9 @@ function Product({ productName, productID, increment, decrement, quantity, listV
   }, [productID]) // Only run the effect when productID changes
 
   // Add product to the shopping list
-  function incrementProduct() {
+  function incrementProduct(event: React.MouseEvent<HTMLButtonElement>) {
+    event.stopPropagation() // Stop the event from propagating to the card
+
     setProductQuantity((prevQuantity) => prevQuantity + 1) // Use the state updater function
 
     const existingProductIndex = shoppingListProducts.findIndex((p) => p.productID === productID)
@@ -62,7 +67,9 @@ function Product({ productName, productID, increment, decrement, quantity, listV
     localStorage.setItem('shoppingList', JSON.stringify(shoppingListProductsVar()))
   }
 
-  function decrementProduct() {
+  function decrementProduct(event: React.MouseEvent<HTMLButtonElement>) {
+    event.stopPropagation() // Stop the event from propagating to the card
+
     setProductQuantity((prevQuantity) => Math.max(prevQuantity - 1, 0)) // Use the state updater function
 
     const existingProductIndex = shoppingListProducts.findIndex((p) => p.productID === productID)
@@ -83,21 +90,30 @@ function Product({ productName, productID, increment, decrement, quantity, listV
     localStorage.setItem('shoppingList', JSON.stringify(shoppingListProductsVar()))
   }
 
-  return (
-    <div className="card flex justify-between">
-      {/* Display the product id based on 'productID' prop */}
-      <Link to={`/productDetailsPage/${productID}`} className="text-lg font-semibold col-span-2">
-        {productName}
-      </Link>
+  function handleCardClick() {
+    navigate(`/productDetailsPage/${productID}`)
+  }
 
-      {/* Display the buttons if props is true */}
+  return (
+    <div className="card flex justify-between" onClick={handleCardClick}>
+      <div className="text-lg font-semibold col-span-2">{productName}</div>
       {((increment && decrement && quantity) || listView) && (
         <div className="flex h-max">
-          <button className="btn" onClick={decrementProduct}>
+          <button
+            className="btn"
+            onClick={(e) => {
+              decrementProduct(e)
+            }}
+          >
             -
           </button>
           <span className="text-xl p-2">{newProductQuantity}</span>
-          <button className="btn" onClick={incrementProduct}>
+          <button
+            className="btn"
+            onClick={(e) => {
+              incrementProduct(e)
+            }}
+          >
             +
           </button>
         </div>

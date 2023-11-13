@@ -11,6 +11,7 @@ interface ProductListProps {
     increment?: boolean
     decrement?: boolean
     quantity?: boolean
+    listView?: boolean
   }>
   listView: boolean
 }
@@ -32,7 +33,7 @@ function ProductList({ products, listView }: ProductListProps) {
           increment={product.increment}
           decrement={product.decrement}
           quantity={product.quantity}
-          listView={listView} // Pass the listview prop based on the listView prop
+          listView={listView} // Pass the listview based on the listView prop
         />
       ))}
     </div>
