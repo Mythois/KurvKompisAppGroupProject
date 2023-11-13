@@ -4,18 +4,13 @@
 import ShoppingList from '../components/ShoppingList'
 import { useParams } from 'react-router-dom'
 
-interface ShoppingListProps {
-  title: string
-  products: string[]
-}
-
-function ShoppingListPage({ title, products }: ShoppingListProps) {
+function ShoppingListPage() {
   const { id: paramId } = useParams()
   const id = paramId as string
 
   return (
     <div>
-      <ShoppingList title={title} id={id} products={products} />
+      <ShoppingList title={'My shopping list'} id={id} />
     </div>
   )
 }
