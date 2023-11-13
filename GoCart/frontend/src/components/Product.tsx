@@ -85,6 +85,9 @@ function Product({ productName, productID, increment, decrement, quantity, listV
 
       shoppingListProductsVar(filteredList)
     }
+
+    // Save the updated list to local storage
+    localStorage.setItem('shoppingList', JSON.stringify(shoppingListProductsVar()))
   }
 
   function handleCardClick() {
