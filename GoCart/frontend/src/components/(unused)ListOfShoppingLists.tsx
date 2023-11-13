@@ -1,8 +1,8 @@
 // // Currently not used
 
-// // Functional component that renders a list of 'ListShoppingListElements'
+// // Functional component that renders a list of 'ListOfShoppingListsElement'
 
-// // import ListShoppingListElement from './ListShoppingListElement'
+// // import ListOfShoppingListsElement from './ListOfShoppingListsElement'
 // import { Link } from 'react-router-dom'
 
 // import { useState, useEffect } from 'react'
@@ -15,7 +15,7 @@
 //   id: string
 // }
 
-// function ListShoppingList() {
+// function ListOfShoppingLists() {
 //   // State to store shopping lists and the title of a new list
 //   const [shoppingLists, setShoppingLists] = useState(loadShoppingLists())
 //   const [newListTitle, setNewListTitle] = useState('')
@@ -78,4 +78,4 @@
 //   )
 // }
 
-// export default ListShoppingList
+// export default ListOfShoppingLists

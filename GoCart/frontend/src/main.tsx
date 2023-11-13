@@ -5,7 +5,6 @@ import './index.css'
 import { BrowserRouter } from 'react-router-dom'
 import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client'
 
-// Apollo client
 const client = new ApolloClient({
   uri: import.meta.env.DEV ? 'http://localhost:4000' : 'http://it2810-22.idi.ntnu.no:4000', // GraphQL server endpoint (the uri of the apollo server)
 

@@ -18,6 +18,7 @@ interface ProductsPageProps {
 interface Product {
   name: string
   _id: string
+  quantity: number
 }
 
 function ProductsPage({ editable }: ProductsPageProps) {
@@ -69,6 +70,7 @@ function ProductsPage({ editable }: ProductsPageProps) {
     ? products.map((product) => ({
         productName: product.name,
         productID: product._id,
+        productQuantity: product.quantity,
         increment: true,
         decrement: true,
         quantity: true,
@@ -103,7 +105,7 @@ function ProductsPage({ editable }: ProductsPageProps) {
       </div>
 
       <div className="flex justify-between mb-5 gap-2">
-        <NavButton route="AddproductToRegister" title={'Add product'} />
+        {!editable && <NavButton route="AddproductToRegister" title={'Add product to register'} />}
         <div className="flex gap-2">
           <button className="btn flex" onClick={() => setPerPage(perPage + 40)}>
             <ChevronDown />

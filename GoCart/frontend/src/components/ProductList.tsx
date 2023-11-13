@@ -7,11 +7,12 @@ interface ProductListProps {
   products: Array<{
     productName: string
     productID: string
+    productQuantity?: number
     increment?: boolean
     decrement?: boolean
     quantity?: boolean
   }>
-  listView: Boolean
+  listView: boolean
 }
 
 function ProductList({ products, listView }: ProductListProps) {
@@ -27,9 +28,11 @@ function ProductList({ products, listView }: ProductListProps) {
           key={index}
           productName={product.productName}
           productID={product.productID}
+          productQuantity={product.productQuantity}
           increment={product.increment}
           decrement={product.decrement}
           quantity={product.quantity}
+          listView={listView} // Pass the listview prop based on the listView prop
         />
       ))}
     </div>
