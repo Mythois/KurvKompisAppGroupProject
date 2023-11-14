@@ -86,7 +86,7 @@ function ProductsPage({ editable }: ProductsPageProps) {
   return (
     <div className="h-full flex flex-col justify-center lg:pl-8 lg:pr-8">
       {/* Render the Searchbar component with the filter callback */}
-      <div className="grid sm:flex gap-2 bg-white mb-2">
+      <div className="grid sm:flex gap-2 mb-2">
         <Searchbar onFilter={(value: React.SetStateAction<string>) => setFilter(value)} />
         <div className="flex justify-between gap-2">
           <FilterDropdown onCategoryChange={handleCategoryChange} />

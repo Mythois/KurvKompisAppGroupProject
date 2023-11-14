@@ -21,3 +21,10 @@
 .radio {
   @apply w-5 h-5 m-1 cursor-pointer;
 }
+.bgLight {
+  @apply bg-white;
+}
+
+.bgDark {
+  @apply bg-gray-800;
+}
