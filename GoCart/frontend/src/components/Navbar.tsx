@@ -4,9 +4,9 @@
 // in mobile view, it will also contain a footer with buttons to navigate to the home page and browse page
 
 import { Link } from 'react-router-dom'
-
 import BrowseIcon from '../assets/BrowseIcon.svg'
 import HomeIcon from '../assets/HomeIcon.svg'
+import ModeToggleBtn from './ModeToggleBtn'
 
 interface NavbarProps {
   title: string
@@ -26,6 +26,7 @@ function Navbar({ title }: NavbarProps) {
           <Link className="hover:underline" to={'/ProductsPage'}>
             Products
           </Link>
+          <ModeToggleBtn />
         </div>
       </nav>
       <footer className="sm:hidden fixed bottom-0 w-screen h-14 bg-primary grid grid-flow-col justify-items-center">
