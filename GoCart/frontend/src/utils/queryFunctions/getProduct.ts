@@ -1,3 +1,6 @@
+// File containing gql strings used to query data from the database
+
+
 import { gql } from '@apollo/client'
 
 export const SEARCH_PRODUCTS = gql`
