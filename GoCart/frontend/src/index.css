@@ -22,18 +22,10 @@
   @apply w-5 h-5 m-1 cursor-pointer;
 }
 
-.textLight {
-  @apply text-gray-800;
+.lightMode {
+  @apply bg-white text-gray-800;
 }
 
-.textDark {
-  @apply dark:text-gray-100;
-}
-
-.bgLight {
-  @apply bg-white;
-}
-
-.bgDark {
-  @apply dark:bg-gray-800;
+.darkMode {
+  @apply dark:bg-gray-800 dark:text-gray-100;
 }

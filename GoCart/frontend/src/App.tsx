@@ -8,9 +8,9 @@ import ProductDetailsPage from './pages/ProductDetailsPage'
 
 function App() {
   return (
-    <>
+    <div>
       <Navbar title="GoCart" />
-      <div className="pt-28 pr-4 pl-4 pb-14 sm:pb-0 lg:px-12 xl:px-24 h-screen bgLight bgDark text-gray-800 dark:text-gray-50">
+      <div className="pt-20 pr-4 pl-4 pb-14 sm:pb-0 lg:px-12 xl:px-24 h-screen darkMode lightMode">
         <Routes>
           <Route path={''} element={<Home />} />
           <Route path={'/Home'} element={<Home />} />
@@ -21,7 +21,7 @@ function App() {
           <Route path={'/ProductDetailsPage/:productName'} element={<ProductDetailsPage />} />
         </Routes>
       </div>
-    </>
+    </div>
   )
 }
 
