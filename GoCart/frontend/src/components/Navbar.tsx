@@ -19,11 +19,11 @@ function Navbar({ title }: NavbarProps) {
         <h1 className="text-center sm:text-left text-5xl text-white font-semibold col-span-4">
           <Link to={'/'}>{title}</Link>
         </h1>
-        <div className="hidden sm:flex text-white text-lg font-semibold justify-center py-3 gap-10">
-          <Link className="hover:underline" to={'/'}>
+        <div className="hidden sm:flex text-white text-lg justify-between gap-8 font-semibold">
+          <Link className="hover:underline p-2" to={'/'}>
             Home
           </Link>
-          <Link className="hover:underline" to={'/ProductsPage'}>
+          <Link className="hover:underline p-2" to={'/ProductsPage'}>
             Products
           </Link>
           <ModeToggleBtn />

@@ -27,7 +27,7 @@
 }
 
 .textDark {
-  @apply text-gray-100;
+  @apply dark:text-gray-100;
 }
 
 .bgLight {
@@ -35,5 +35,5 @@
 }
 
 .bgDark {
-  @apply bg-gray-800;
+  @apply dark:bg-gray-800;
 }

@@ -7,12 +7,10 @@ import AddCustomProduct from './pages/AddCustomProduct'
 import ProductDetailsPage from './pages/ProductDetailsPage'
 
 function App() {
-  // TODO: add logic for toggling dark mode
-
   return (
     <>
       <Navbar title="GoCart" />
-      <div className="pt-28 pr-4 pl-4 pb-14 sm:pb-0 lg:px-12 xl:px-24 h-full bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-50">
+      <div className="pt-28 pr-4 pl-4 pb-14 sm:pb-0 lg:px-12 xl:px-24 h-screen bgLight bgDark text-gray-800 dark:text-gray-50">
         <Routes>
           <Route path={''} element={<Home />} />
           <Route path={'/Home'} element={<Home />} />
