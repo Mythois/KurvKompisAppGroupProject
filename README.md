@@ -164,15 +164,15 @@ Use of good and relevant components and libraries (freedom to choose, and we enc
 
 ## Sustainability
 
-- We have chose to put implement darkmode and set it as the default as darker colors often use less power for lighting the screen making the page less energy consuming.
+- We have opted to implement dark mode and set it as the default, as darker colors often require less power for screen lighting, making the page more energy-efficient.
 
-- By making a lot of the information (f.eks. the information about a product when clicked) be showed as a pop up and not as it own page we reduse the number of page switches and also reduces the number of reloads as the product pages does not have to be reloaded when you go back.
+- By displaying a significant amount of information (e.g., product details when clicked) in a pop-up rather than on a separate page, we reduce the number of page switches and minimize reloads, as product pages don't need to be reloaded when navigating back.
 
-- We have removed the show more button on the products pages when there is no more products to show as this only result in people sending unnessesary database queries. Tho this whould probably have been implemented either way as this enhances the user experience.
+- We've removed the "show more" button on product pages when there are no additional products to display. This not only streamlines the user experience but also prevents unnecessary database queries.
 
-- We have considered adding pictures to the products. This will however make the page less sustainable as pictures uses generaly more power to be loaded, tho how bad it is depends on the picture formate. We tok into consideration the effect it will have on the user experience and concluded with that it was worth the extra cost as long as we make sure that not more pictures than needed is loaded.
+- We've contemplated adding pictures to the products. However, this could potentially make the page less sustainable, considering that images generally consume more power to load. The impact on sustainability depends on the picture format. Despite this, we've evaluated its effect on user experience and concluded that it's worth the extra cost, as long as we ensure that only essential pictures are loaded.
 
-- We have also chosen to keep the page somewhat minimal redusing the number of elements having to be rendered on the page.
+- We've also chosen to maintain a somewhat minimal page design, reducing the number of elements that need to be rendered on the page.
 
 ## Testing
 
