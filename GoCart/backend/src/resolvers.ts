@@ -25,7 +25,6 @@ const resolvers = (db) => ({
         throw new Error(`Error retrieving products: ${error.message}`)
       }
     },
-
     // Resolver to retrieve a list of products by category
     getProductsByCategory: async (_, { category, page, perPage }) => {
       const skip = (page - 1) * perPage
@@ -98,10 +97,32 @@ const resolvers = (db) => ({
       }
     },
   },
+ // Things that can change the content of the database
+  Mutation: {
+    addCustomProduct: async (_, { input }) => {
+      try {
+        // Add user_generated field to the input
+        const productWithUserGenerated = { ...input };
+  
+        // Insert the new product into the database
+        const result = await db.collection('Products').insertOne(productWithUserGenerated);
+  
+        // Check if the insertion was successful
+        if (result.acknowledged === true) {
+          return true; // Return true if the product was successfully added
+        } else {
+          return false; // Return false if the product was not added
+        }
+      } catch (error) {
+        console.error(`Error adding custom product: ${error.message}`);
+        throw new Error('Failed to add custom product.'); // Throw an error for better handling
+      }
+    },
+  }
+  
+  
 
-  Product: {
-    // Add any additional resolvers for the Product type here if needed.
-  },
+
 })
 
 export { resolvers }
