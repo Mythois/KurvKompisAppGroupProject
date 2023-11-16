@@ -15,7 +15,7 @@ interface NavbarProps {
 function Navbar({ title }: NavbarProps) {
   return (
     <>
-      <nav className="flex h-20 w-screen bg-primary p-4 lg:pl-8 sm:pr-8 justify-between">
+      <nav className="fixed flex justify-between h-20 w-screen bg-primary p-4 lg:pl-8 sm:pr-8 ">
         <h1 className="text-center sm:text-left text-5xl text-white font-semibold col-span-4">
           <Link to={'/'}>{title}</Link>
         </h1>

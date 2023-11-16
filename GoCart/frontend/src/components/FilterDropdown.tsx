@@ -39,7 +39,7 @@ function FilterDropdown({ onCategoryChange }: FilterDropdownProps) {
       )}
 
       {isFilterVisible && (
-        <div className="sm:gap-4 absolute w-max bgLight bgDark border-2 border-primary rounded-lg p-2 text-xl z-0">
+        <div className="sm:gap-4 absolute w-max darkMode lightMode border-2 border-primary rounded-lg p-2 text-xl z-0">
           <div className="flex justify-between mb-4">
             <button className="btn flex gap-1" onClick={handleFilterClick}>
               <X size={30} />

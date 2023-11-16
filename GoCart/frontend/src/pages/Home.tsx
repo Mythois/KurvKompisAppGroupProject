@@ -5,16 +5,10 @@ import ShoppingListPage from './ShoppingListPage'
 
 function Home() {
   return (
-    <div className="grid gap-4 lg:gap-16 sm:grid-cols-2">
-      <div className="sm:grid mt-20 md:mt-4">
+    <div className="h-full mx-auto sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-5/12">
+      <div className="overflow-y-scroll sm:grid pt-4">
         <ShoppingListPage />
       </div>
-      {/* <div className="md:col-span-1">
-        <ListShoppingList />
-      </div>
-      <div className="hidden sm:grid mt-20 md:mt-4">
-        <ShoppingList title={'test'} id={'0'} products={[]} />
-      </div> */}
     </div>
   )
 }
