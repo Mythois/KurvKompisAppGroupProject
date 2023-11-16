@@ -15,18 +15,20 @@ interface NavbarProps {
 function Navbar({ title }: NavbarProps) {
   return (
     <>
-      <nav className="fixed h-20 w-screen bg-primary p-4 lg:pl-8 sm:pr-8 sm:flex sm:justify-between">
+      <nav className="flex h-20 w-screen bg-primary p-4 lg:pl-8 sm:pr-8 justify-between">
         <h1 className="text-center sm:text-left text-5xl text-white font-semibold col-span-4">
           <Link to={'/'}>{title}</Link>
         </h1>
-        <div className="hidden sm:flex text-white text-lg justify-between gap-8 font-semibold">
-          <Link className="hover:underline p-2" to={'/'}>
-            Home
-          </Link>
-          <Link className="hover:underline p-2" to={'/ProductsPage'}>
-            Products
-          </Link>
-          <ModeToggleBtn />
+        <div className="flex text-white text-lg justify-between gap-8 font-semibold py-2">
+          <div className="py-1 hidden sm:flex gap-8">
+            <Link className="hover:underline" to={'/'}>
+              Home
+            </Link>
+            <Link className="hover:underline" to={'/ProductsPage'}>
+              Products
+            </Link>
+          </div>
+          <ModeToggleBtn /> {/* This is the dark mode toggle button */}
         </div>
       </nav>
       <footer className="sm:hidden fixed bottom-0 w-screen h-14 bg-primary grid grid-flow-col justify-items-center">

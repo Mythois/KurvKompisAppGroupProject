@@ -5,12 +5,14 @@ import { useState } from 'react'
 function ModeToggleBtn() {
   const [isDarkMode, setIsDarkMode] = useState(localStorage.theme === 'dark')
 
+  // Check if user has dark mode preference
   if (isDarkMode || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
     document.documentElement.classList.add('dark')
   } else {
     document.documentElement.classList.remove('dark')
   }
 
+  // Toggle light/dark mode
   function toggleTheme() {
     if (isDarkMode) {
       localStorage.theme = 'light'
