@@ -26,7 +26,7 @@ function ModeToggleBtn() {
   }
 
   return (
-    <button onClick={toggleTheme}>
+    <button aria-label="Toggle dark/light mode" onClick={toggleTheme}>
       {isDarkMode ? <Sun size={35} className="hover:fill-white" /> : <Moon size={35} className="hover:fill-white" />}
     </button>
   )

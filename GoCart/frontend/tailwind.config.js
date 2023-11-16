@@ -5,7 +5,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#f97316',
+        primary: '#993333',
         secondary: '#678765', // just put a random color
       },
     },
