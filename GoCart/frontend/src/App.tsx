@@ -17,7 +17,6 @@ function App() {
           <Route path={'/AddCustomProduct'} element={<AddCustomProduct />} />
           <Route path={'/ProductsPage'} element={<ProductsPage editable={false} />} />
           <Route path={'/AddProduct'} element={<ProductsPage editable={true} />} />
-          <Route path={'/ShoppingListPage/:id'} element={<ShoppingListPage />} />
           <Route path={'/ProductDetailsPage/:productName'} element={<ProductDetailsPage />} />
         </Routes>
       </div>
