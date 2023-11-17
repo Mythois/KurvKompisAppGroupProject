@@ -13,8 +13,10 @@ function AddCustomProduct() {
   const initialInputFields: InputField[] = [
     { label: 'Product name', stateKey: 'productName', type: 'text', value: '' },
     { label: 'Product categories', stateKey: 'productCategories', type: 'text', value: '' },
-    { label: 'Nutrition ', stateKey: 'productCategories', type: 'text', value: '' },
-    { label: 'Description', stateKey: 'description', type: 'textarea', value: '' },
+    { label: 'Nutrition ', stateKey: 'nutrition', type: 'text', value: '' },
+    { label: 'Store ', stateKey: 'store', type: 'text', value: '' },
+    { label: 'Brand ', stateKey: 'brand', type: 'text', value: '' },
+    { label: 'More info', stateKey: 'more_info', type: 'textarea', value: '' },
     // Add more input fields as needed
   ]
 
@@ -30,7 +32,7 @@ function AddCustomProduct() {
     // Add your logic to save the item to the register here
   }
   return (
-    <div>
+    <div className="pt-8 contentCenter">
       <h1 className="text-2xl">Add product to database</h1>
       <div className="grid gap-2 my-2">
         {inputFields.map((field) => (

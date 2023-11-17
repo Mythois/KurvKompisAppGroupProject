@@ -18,6 +18,10 @@
   @apply flex w-full rounded-md border bg-transparent px-3 py-2 text-sm shadow-sm;
 }
 
+.textarea {
+  @apply flex w-full rounded-md border bg-transparent px-3 py-2 text-sm shadow-sm;
+}
+
 .radio {
   @apply w-5 h-5 m-1 cursor-pointer;
 }
@@ -28,4 +32,8 @@
 
 .darkMode {
   @apply dark:bg-gray-800 dark:text-gray-100;
+}
+
+.contentCenter {
+  @apply mx-auto sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-5/12;
 }
