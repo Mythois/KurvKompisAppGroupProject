@@ -1,6 +1,6 @@
 import React from 'react'
 import { test, expect, vi, describe } from 'vitest'
-import { render, fireEvent, getByText } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 import FilterDropdown from '../src/components/FilterDropdown'
 
 describe('FilterDropdown Component', () => {
@@ -27,9 +27,9 @@ describe('FilterDropdown Component', () => {
     expect(filterButtonAfterClose).toBeDefined()
   })
 
-  test('calls onCategoryChange when a category is selected', () => {
-    // Missing test here
-  })
+  //   test('calls onCategoryChange when "Fruit & Vegetables" is selected', () => {
+  //     // Missing test
+  //   })
 
   test('resets selected category on Reset button click', () => {
     const onCategoryChange = vi.fn()
