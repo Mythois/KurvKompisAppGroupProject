@@ -84,7 +84,7 @@ function ProductsPage({ editable }: ProductsPageProps) {
       }))
 
   return (
-    <div className="h-full flex flex-col justify-center lg:pl-8 lg:pr-8 pt-4">
+    <div className="h-full flex flex-col justify-center lg:pl-8 lg:pr-8 pt-8">
       {/* Render the Searchbar component with the filter callback */}
       <div className="grid sm:flex gap-2 mb-2">
         <Searchbar onFilter={(value: React.SetStateAction<string>) => setFilter(value)} />

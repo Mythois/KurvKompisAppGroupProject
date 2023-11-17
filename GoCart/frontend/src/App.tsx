@@ -2,7 +2,6 @@ import Navbar from './components/Navbar'
 import { Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import ProductsPage from './pages/ProductsPage'
-import ShoppingListPage from './pages/ShoppingListPage'
 import AddCustomProduct from './pages/AddCustomProduct'
 import ProductDetailsPage from './pages/ProductDetailsPage'
 
@@ -17,7 +16,6 @@ function App() {
           <Route path={'/AddCustomProduct'} element={<AddCustomProduct />} />
           <Route path={'/ProductsPage'} element={<ProductsPage editable={false} />} />
           <Route path={'/AddProduct'} element={<ProductsPage editable={true} />} />
-          <Route path={'/ShoppingListPage/:id'} element={<ShoppingListPage />} />
           <Route path={'/ProductDetailsPage/:productName'} element={<ProductDetailsPage />} />
         </Routes>
       </div>

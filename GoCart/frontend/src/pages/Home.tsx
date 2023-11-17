@@ -1,14 +1,11 @@
 /* The home page of the application. */
 
-// import ListShoppingList from '../components/ListShoppingList'
-import ShoppingListPage from './ShoppingListPage'
+import ShoppingList from '../components/ShoppingList'
 
 function Home() {
   return (
-    <div className="h-full mx-auto sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-5/12">
-      <div className="overflow-y-scroll sm:grid pt-4">
-        <ShoppingListPage />
-      </div>
+    <div className="h-full mx-auto sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-5/12 pt-8">
+      <ShoppingList title={'My shopping list'} />
     </div>
   )
 }

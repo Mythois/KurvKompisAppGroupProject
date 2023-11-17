@@ -9,17 +9,18 @@ import { ProductProps } from './Product.tsx'
 
 interface ShoppingListProps {
   title: string
-  id: string
 }
 
 function ShoppingList({ title }: ShoppingListProps) {
   const shoppingListProducts: ProductProps[] = useReactiveVar(shoppingListProductsVar)
 
   return (
-    <div className="">
+    <div className="h-full flex-col">
       <h1 className="mb-2 text-2xl font-bold uppercase text-center">{title}</h1>
-      <ProductList listView={true} products={shoppingListProducts} />
-      <div className=" flex justify-center py-8">
+      <div className="h-3/4 overflow-auto mb-4 sm:mb-8">
+        <ProductList listView={true} products={shoppingListProducts} />
+      </div>
+      <div className="flex justify-center">
         <Link to={'/Addproduct'}>
           <button className="btn">Add products</button>
         </Link>
