@@ -4,12 +4,12 @@ import React, { useState } from 'react'
 
 import Searchbar from '../components/Searchbar'
 import ProductList from '../components/ProductList'
-import NavButton from '../components/NavButton'
 import FilterDropdown from '../components/FilterDropdown'
 import { useQuery } from '@apollo/client'
 import { SEARCH_PRODUCTS } from '../utils/queryFunctions/getProduct'
 import SortButtons from '../components/SortButtons'
 import { ChevronDown, ChevronUp } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 interface ProductsPageProps {
   editable: boolean
@@ -105,7 +105,11 @@ function ProductsPage({ editable }: ProductsPageProps) {
       </div>
 
       <div className="flex justify-between mb-5 gap-2">
-        {!editable && <NavButton route="AddproductToRegister" title={'Add product to register'} />}
+        {!editable && (
+          <Link to={'/AddCustomProduct'}>
+            <button className="btn">Add product to database</button>
+          </Link>
+        )}
         <div className="flex gap-2">
           <button className="btn flex" onClick={() => setPerPage(perPage + 40)}>
             <ChevronDown />
