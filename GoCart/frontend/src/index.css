@@ -26,6 +26,14 @@
   @apply rounded-md p-4 m-2 shadow cursor-pointer border border-gray-300 bg-gray-100 dark:bg-slate-700 dark:border-gray-500;
 }
 
+.addCategory {
+  @apply rounded-md p-2 shadow cursor-pointer border border-gray-100 bg-gray-100 dark:bg-slate-700 dark:border-gray-500 hover:border-primary/50 hover:bg-primary/10 dark:hover:bg-gray-600 dark:hover:border-gray-400;
+}
+
+.addCategoryClicked {
+  @apply rounded-md p-2 shadow cursor-pointer border border-gray-100 bg-primary/20 dark:bg-gray-600 dark:border-gray-400;
+}
+
 .inputfield {
   @apply flex w-full rounded-md border bg-transparent px-3 py-2 text-sm shadow-sm;
 }
@@ -56,6 +64,9 @@
 .modalContent {
   @apply p-4 flex justify-center;
 }
+<<<<<<< HEAD
 .productImage {
   @apply rounded-md;
 }
+=======
+>>>>>>> 0eaa6a7 ([#36]style: modal and input fields)
