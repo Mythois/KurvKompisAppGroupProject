@@ -2,13 +2,22 @@
 import { useState } from 'react'
 import ConfirmationModal from '../components/ConfirmationModal'
 import { Link } from 'react-router-dom'
+import { useMutation } from '@apollo/client'
+import { ADD_CUSTOM_PRODUCT } from '../utils/mutationFunctions/addCustomProduct'
 
 function AddCustomProduct() {
+  // State variables to toggle the input fields
   const [showCategories, setShowCategories] = useState(false)
   const [showNutrition, setShowNutrition] = useState(false)
   const [showOther, setShowOther] = useState(false)
   const [showModal, setShowModal] = useState(false)
 
+  // Mutation function to add a custom product to the database
+  const [addCustomProduct, { data, loading, error }] = useMutation(ADD_CUSTOM_PRODUCT)
+  if (loading) return 'Loading...'
+  if (error) return `Error! ${error.message}`
+
+  // Function to toggle the input fields
   function toggleInput(inputType: string) {
     setShowCategories(inputType === 'categories')
     setShowNutrition(inputType === 'nutrition')
@@ -37,6 +46,24 @@ function AddCustomProduct() {
   }
 
   function handleAddItem() {
+    // try {
+    //   // Your logic to prepare input data
+    //   const inputData = productInfo
+
+    //   const result = await addCustomProduct({
+    //     variables: {
+    //       input: inputData,
+    //     },
+    //   })
+
+    //   console.log('Product added:', result)
+
+    //   // Handle success, show confirmation, or any other actions
+    // } catch (error: any) {
+    //   console.error('Error adding product:', error.message)
+    //   // Handle error, show error message, or any other actions
+    // }
+
     // Show the modal after adding the product
     setShowModal(true)
 
@@ -49,13 +76,15 @@ function AddCustomProduct() {
     setTimeout(() => {
       setShowModal(false)
     }, 3000)
+
+    console.log(productInfo)
   }
 
   return (
     <div className="pt-4 sm:pt-8 contentCenter">
       <h1 className="text-2xl">Add product to database</h1>
+
       <div className="grid gap-1 my-2 mb-4">
-        {/* name input */}
         <input
           type="text"
           placeholder="Product name*"
@@ -65,9 +94,7 @@ function AddCustomProduct() {
           required
         />
 
-        {/* product info input */}
         <div className="grid gap-2 ">
-          {/* categories input */}
           <button
             className={`text-left ${showCategories ? 'addCategoryClicked' : 'addCategory'}`}
             onClick={() => {
@@ -113,7 +140,6 @@ function AddCustomProduct() {
             )}
           </div>
 
-          {/* nutrition input */}
           <button
             className={`text-left ${showNutrition ? 'addCategoryClicked' : 'addCategory'}`}
             onClick={() => {
@@ -179,8 +205,6 @@ function AddCustomProduct() {
             )}
           </div>
 
-          {/* ... other input fields */}
-
           <button
             className={`text-left ${showOther ? 'addCategoryClicked' : 'addCategory'}`}
             onClick={() => {
@@ -219,6 +243,7 @@ function AddCustomProduct() {
           </div>
         </div>
       </div>
+
       <div className="flex justify-between gap-2">
         {/* add product button */}
         <button className="btn" onClick={handleAddItem}>
@@ -228,6 +253,7 @@ function AddCustomProduct() {
           <Link to="/ProductsPage">Back to products</Link>
         </button>
       </div>
+
       <div className="my-2">
         {/* Render the modal if showModal is true */}
         {showModal && <ConfirmationModal productName={productInfo.name} />}
