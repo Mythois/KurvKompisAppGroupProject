@@ -52,7 +52,7 @@ function AddCustomProduct() {
   }
 
   return (
-    <div className="pt-8 contentCenter">
+    <div className="pt-4 sm:pt-8 contentCenter">
       <h1 className="text-2xl">Add product to database</h1>
       <div className="grid gap-1 my-2 mb-4">
         {/* name input */}
@@ -193,7 +193,7 @@ function AddCustomProduct() {
           </button>
           <div>
             {showOther && (
-              <div className="grid grid-cols-2 gap-2 mb-4 mt-1">
+              <div className="grid grid-cols-2 gap-2 mt-1">
                 <input
                   type="text"
                   placeholder="Store"
