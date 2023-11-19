@@ -1,17 +1,13 @@
 // "Add product" -> The site where you get the opportunity to add products to the register, containing the product info you wish
-
-interface InputField {
-  label: string
-  stateKey: string
-  type: string
-  value: string
-}
-import React, { useState } from 'react'
+import { useState } from 'react'
+import ConfirmationModal from '../components/ConfirmationModal'
+import { Link } from 'react-router-dom'
 
 function AddCustomProduct() {
   const [showCategories, setShowCategories] = useState(false)
   const [showNutrition, setShowNutrition] = useState(false)
   const [showOther, setShowOther] = useState(false)
+  const [showModal, setShowModal] = useState(false)
 
   function toggleInput(inputType: string) {
     setShowCategories(inputType === 'categories')
@@ -41,10 +37,18 @@ function AddCustomProduct() {
   }
 
   function handleAddItem() {
-    // Here you can handle adding the item to the register with the productInfo state.
-    // For example, you can send a request to your backend API to save the product.
-    // Add your logic to save the product to the register here
-    console.log('Product Info:', productInfo)
+    // Show the modal after adding the product
+    setShowModal(true)
+
+    // Close the input fields
+    setShowCategories(false)
+    setShowNutrition(false)
+    setShowOther(false)
+
+    // Set a timeout to close the modal after 3 seconds
+    setTimeout(() => {
+      setShowModal(false)
+    }, 3000)
   }
 
   return (
@@ -65,7 +69,7 @@ function AddCustomProduct() {
         <div className="grid gap-2 ">
           {/* categories input */}
           <button
-            className={`text-left ${showCategories ? 'btnClicked' : 'btn'}`}
+            className={`text-left ${showCategories ? 'addCategoryClicked' : 'addCategory'}`}
             onClick={() => {
               toggleInput('categories')
               setShowCategories(!showCategories)
@@ -111,7 +115,7 @@ function AddCustomProduct() {
 
           {/* nutrition input */}
           <button
-            className={`text-left ${showNutrition ? 'btnClicked' : 'btn'}`}
+            className={`text-left ${showNutrition ? 'addCategoryClicked' : 'addCategory'}`}
             onClick={() => {
               toggleInput('nutrition')
               setShowNutrition(!showNutrition)
@@ -178,7 +182,7 @@ function AddCustomProduct() {
           {/* ... other input fields */}
 
           <button
-            className={`text-left ${showOther ? 'btnClicked' : 'btn'}`}
+            className={`text-left ${showOther ? 'addCategoryClicked' : 'addCategory'}`}
             onClick={() => {
               toggleInput('other')
               setShowOther(!showOther)
@@ -214,12 +218,20 @@ function AddCustomProduct() {
             )}
           </div>
         </div>
-
-        {/* add product button */}
       </div>
-      <button className="btn" onClick={handleAddItem}>
-        Add Product
-      </button>
+      <div className="flex justify-between gap-2">
+        {/* add product button */}
+        <button className="btn" onClick={handleAddItem}>
+          Add Product
+        </button>
+        <button className="btn">
+          <Link to="/ProductsPage">Back to products</Link>
+        </button>
+      </div>
+      <div className="my-2">
+        {/* Render the modal if showModal is true */}
+        {showModal && <ConfirmationModal productName={productInfo.name} />}
+      </div>
     </div>
   )
 }
