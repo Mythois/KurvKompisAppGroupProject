@@ -15,8 +15,7 @@ function AddCustomProduct() {
 
   // Mutation function to add a custom product to the database
   const [addCustomProduct, { data, loading, error }] = useMutation(ADD_CUSTOM_PRODUCT)
-  if (loading) return 'Loading...'
-  if (error) return `Error! ${error.message}`
+
 
   // Function to toggle the input fields
   function toggleInput(inputType: string) {
@@ -46,8 +45,11 @@ function AddCustomProduct() {
     setProductInfo((info) => ({ ...info, [key]: value }))
   }
 
-  async function handleAddItem() {
+  async function handleAddProduct() {
     try {
+      if (loading) return 'Loading...'
+      if (error) return `Error! ${error.message}`
+
       const { data } = await addCustomProduct({
         variables: {
           input: {
@@ -270,7 +272,7 @@ function AddCustomProduct() {
         </button>
 
         {/* Add Product button */}
-        <button type="submit" className="btn" onClick={handleAddItem}>
+        <button type="submit" className="btn" onClick={handleAddProduct}>
           + Add product
         </button>
       </div>
