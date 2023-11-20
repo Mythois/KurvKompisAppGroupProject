@@ -96,7 +96,15 @@ function ProductDetails({ productID }: ProductDetailsProps) {
             <strong>Categories:</strong>
             <ul>
               {product.category ? (
+<<<<<<< HEAD
                 product.category.map((categoryproduct, index) => <li key={index}>{categoryproduct.name}</li>)
+=======
+                <>
+                  {product.category.map((categoryproduct, index) => (
+                    <li key={index}>{categoryproduct.name}</li>
+                  ))}
+                </>
+>>>>>>> 4898d65 ([#101] move product details to popup)
               ) : (
                 <li>N/A</li>
               )}

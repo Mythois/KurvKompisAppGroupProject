@@ -22,6 +22,10 @@
   @apply rounded-md p-2 shadow cursor-pointer border border-gray-400 bg-primary/10 dark:bg-gray-600 dark:hover:border-gray-100 hover:border-primary/50;
 }
 
+.popup {
+  @apply rounded-md p-4 m-2 shadow cursor-pointer border border-gray-300 bg-gray-100 dark:bg-slate-700 dark:border-gray-500;
+}
+
 .inputfield {
   @apply flex w-full rounded-md border bg-transparent px-3 py-2 text-sm shadow-sm;
 }
