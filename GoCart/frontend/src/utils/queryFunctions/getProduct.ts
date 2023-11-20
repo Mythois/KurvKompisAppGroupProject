@@ -32,6 +32,7 @@ export const GET_PRODUCT_BY_ID = gql`
       }
       allergens {
         display_name
+        contains
       }
       description
     }
