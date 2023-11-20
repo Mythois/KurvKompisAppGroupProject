@@ -98,16 +98,18 @@ function AddCustomProduct() {
       <h1 className="text-2xl">Add product to database</h1>
 
       <div className="grid gap-1 my-2 mb-4">
-        <input
-          type="text"
-          placeholder="Product name*"
-          className="inputfield mb-4"
-          value={productInfo.name}
-          onChange={(e) => handleInputChange('name', e.target.value)}
-          required
-        />
+        <form>
+          <input
+            type="text"
+            placeholder="Product name*"
+            className="inputfield mb-4"
+            value={productInfo.name}
+            onChange={(e) => handleInputChange('name', e.target.value)}
+            required
+          />
+        </form>
 
-        <div className="grid gap-2 ">
+        <div className="grid gap-2">
           <button
             className={`text-left ${showCategories ? 'addCategoryClicked' : 'addCategory'}`}
             onClick={() => {
@@ -120,7 +122,7 @@ function AddCustomProduct() {
           </button>
           <div>
             {showCategories && (
-              <div className="grid grid-cols-2 gap-2 mb-4 mt-1">
+              <form className="grid grid-cols-2 gap-2 mb-4 mt-1">
                 <input
                   type="text"
                   placeholder="Category 1"
@@ -149,10 +151,9 @@ function AddCustomProduct() {
                   value={productInfo.category4}
                   onChange={(e) => handleInputChange('category4', e.target.value)}
                 />
-              </div>
+              </form>
             )}
           </div>
-
           <button
             className={`text-left ${showNutrition ? 'addCategoryClicked' : 'addCategory'}`}
             onClick={() => {
@@ -165,7 +166,7 @@ function AddCustomProduct() {
           </button>
           <div>
             {showNutrition && (
-              <div className="grid grid-cols-2 gap-2 mb-4 mt-1">
+              <form className="grid grid-cols-2 gap-2 mb-4 mt-1">
                 <input
                   type="number"
                   placeholder="Kcal (per 100g)"
@@ -214,7 +215,7 @@ function AddCustomProduct() {
                   onChange={(e) => handleInputChange('sugar', e.target.value)}
                   min="0"
                 />
-              </div>
+              </form>
             )}
           </div>
 
@@ -230,7 +231,7 @@ function AddCustomProduct() {
           </button>
           <div>
             {showOther && (
-              <div className="grid grid-cols-2 gap-2 mt-1">
+              <form className="grid grid-cols-2 gap-2 mt-1">
                 <input
                   type="text"
                   placeholder="Store"
@@ -251,14 +252,14 @@ function AddCustomProduct() {
                   value={productInfo.additionalInfo}
                   onChange={(e) => handleInputChange('additionalInfo', e.target.value)}
                 />
-              </div>
+              </form>
             )}
           </div>
         </div>
       </div>
 
-      <div className="flex justify-between">
-        {/* add product button */}
+      <div className="flex justify-between gap-2">
+        {/* Back to products button */}
         <button className="btn">
           <Link to="/ProductsPage">
             <div className="flex gap-1">
@@ -267,14 +268,18 @@ function AddCustomProduct() {
             </div>
           </Link>
         </button>
-        <button className="btn" onClick={handleAddItem}>
-          + Add Product
+
+        {/* Add Product button */}
+        <button type="submit" className="btn" onClick={handleAddItem}>
+          + Add product
         </button>
       </div>
 
-      <div className="my-2">
-        {/* Render the modal if showModal is true */}
-        {showModal && <ConfirmationModal productName={productInfo.name} />}
+      <div>
+        <div className="my-2">
+          {/* Render the modal if showModal is true */}
+          {showModal && <ConfirmationModal productName={productInfo.name} />}
+        </div>
       </div>
     </div>
   )
