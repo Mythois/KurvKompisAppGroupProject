@@ -4,6 +4,7 @@ import ConfirmationModal from '../components/ConfirmationModal'
 import { Link } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
 import { ADD_CUSTOM_PRODUCT } from '../utils/mutationFunctions/addCustomProduct'
+import { MoveLeft } from 'lucide-react'
 
 function AddCustomProduct() {
   // State variables to toggle the input fields
@@ -45,39 +46,51 @@ function AddCustomProduct() {
     setProductInfo((info) => ({ ...info, [key]: value }))
   }
 
-  function handleAddItem() {
-    // try {
-    //   // Your logic to prepare input data
-    //   const inputData = productInfo
+  async function handleAddItem() {
+    try {
+      const { data } = await addCustomProduct({
+        variables: {
+          input: {
+            name: productInfo.name,
+            category: [
+              { name: productInfo.category1 },
+              { name: productInfo.category2 },
+              { name: productInfo.category3 },
+              { name: productInfo.category4 },
+            ],
+            nutrition: [
+              { display_name: 'calories', amount: parseFloat(productInfo.calories), unit: 'kcal' },
+              { display_name: 'fat', amount: parseFloat(productInfo.fat), unit: 'g' },
+              { display_name: 'carbohydrates', amount: parseFloat(productInfo.carbohydrates), unit: 'g' },
+              { display_name: 'proteins', amount: parseFloat(productInfo.proteins), unit: 'g' },
+              { display_name: 'salt', amount: parseFloat(productInfo.salt), unit: 'g' },
+              { display_name: 'sugar', amount: parseFloat(productInfo.sugar), unit: 'g' },
+            ],
+            store: { name: productInfo.store },
+            brand: productInfo.brand,
+            description: productInfo.additionalInfo,
+          },
+        },
+      })
 
-    //   const result = await addCustomProduct({
-    //     variables: {
-    //       input: inputData,
-    //     },
-    //   })
+      // Mutation completed successfully
+      console.log(productInfo) // Check the actual response data
 
-    //   console.log('Product added:', result)
+      // Show the modal after adding the product
+      setShowModal(true)
 
-    //   // Handle success, show confirmation, or any other actions
-    // } catch (error: any) {
-    //   console.error('Error adding product:', error.message)
-    //   // Handle error, show error message, or any other actions
-    // }
+      // Close the input fields
+      setShowCategories(false)
+      setShowNutrition(false)
+      setShowOther(false)
 
-    // Show the modal after adding the product
-    setShowModal(true)
-
-    // Close the input fields
-    setShowCategories(false)
-    setShowNutrition(false)
-    setShowOther(false)
-
-    // Set a timeout to close the modal after 3 seconds
-    setTimeout(() => {
-      setShowModal(false)
-    }, 3000)
-
-    console.log(productInfo)
+      // Set a timeout to close the modal after 3 seconds
+      setTimeout(() => {
+        setShowModal(false)
+      }, 3000)
+    } catch (error) {
+      console.error('Error adding custom product:', error)
+    }
   }
 
   return (
@@ -155,7 +168,7 @@ function AddCustomProduct() {
               <div className="grid grid-cols-2 gap-2 mb-4 mt-1">
                 <input
                   type="number"
-                  placeholder="Calories (per 100g)"
+                  placeholder="Kcal (per 100g)"
                   className="inputfield"
                   value={productInfo.calories}
                   onChange={(e) => handleInputChange('calories', e.target.value)}
@@ -244,13 +257,18 @@ function AddCustomProduct() {
         </div>
       </div>
 
-      <div className="flex justify-between gap-2">
+      <div className="flex justify-between">
         {/* add product button */}
-        <button className="btn" onClick={handleAddItem}>
-          Add Product
-        </button>
         <button className="btn">
-          <Link to="/ProductsPage">Back to products</Link>
+          <Link to="/ProductsPage">
+            <div className="flex gap-1">
+              <MoveLeft />
+              Back to products
+            </div>
+          </Link>
+        </button>
+        <button className="btn" onClick={handleAddItem}>
+          + Add Product
         </button>
       </div>
 

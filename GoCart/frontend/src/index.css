@@ -19,7 +19,7 @@
 }
 
 .addCategoryClicked {
-  @apply rounded-md p-2 shadow cursor-pointer border border-gray-100 bg-primary/20 dark:bg-gray-600 dark:border-gray-400;
+  @apply rounded-md p-2 shadow cursor-pointer border border-gray-400 bg-primary/10 dark:bg-gray-600 dark:hover:border-gray-100 hover:border-primary/50;
 }
 
 .inputfield {
