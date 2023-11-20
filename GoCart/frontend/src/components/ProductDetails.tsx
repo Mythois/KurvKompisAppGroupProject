@@ -26,6 +26,7 @@ interface Product {
   }[]
   allergens: {
     display_name: string
+    contains: string
   }[]
   description: string
 }
@@ -106,11 +107,20 @@ function ProductDetails({ productID }: ProductDetailsProps) {
             <strong>Allergens:</strong>
             <ul>
               {product.allergens ? (
-                <ul>
-                  {product.allergens.map((allergenproduct, index) => (
-                    <li key={index}>{allergenproduct.display_name}</li>
-                  ))}
-                </ul>
+                product.allergens.every((allergenproduct) => allergenproduct.contains === 'NO') ? (
+                  'N/A'
+                ) : (
+                  <ul>
+                    {product.allergens.map((allergenproduct, index) =>
+                      allergenproduct.contains === 'YES' || allergenproduct.contains === 'CAN_CONTAIN_TRACES' ? (
+                        <li key={index}>
+                          {allergenproduct.display_name}
+                          {allergenproduct.contains === 'CAN_CONTAIN_TRACES' ? ' (kan inneholde spor)' : null}
+                        </li>
+                      ) : null,
+                    )}
+                  </ul>
+                )
               ) : (
                 'N/A'
               )}
