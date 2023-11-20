@@ -96,7 +96,11 @@ function ProductDetails({ productID }: ProductDetailsProps) {
             <strong>Categories:</strong>
             <ul>
               {product.category ? (
-                product.category.map((categoryproduct, index) => <li key={index}>{categoryproduct.name}</li>)
+                <>
+                  {product.category.map((categoryproduct, index) => (
+                    <li key={index}>{categoryproduct.name}</li>
+                  ))}
+                </>
               ) : (
                 <li>N/A</li>
               )}
