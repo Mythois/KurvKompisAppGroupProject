@@ -107,12 +107,15 @@ function ProductsPage({ editable }: ProductsPageProps) {
       <div className="flex justify-between mb-5 gap-2">
         {!editable && <NavButton route="AddproductToRegister" title={'Add product to register'} />}
         <div className="flex gap-2">
-          <button className="btn flex" onClick={() => setPerPage(perPage + 40)}>
+          <button
+            className={`btn flex ${productPropsList.length < perPage && 'invisible'}`}
+            onClick={() => setPerPage(perPage + 40)}
+          >
             <ChevronDown />
             <p className="hidden sm:block">Show more</p>
           </button>
           <button
-            className="btn flex"
+            className={`btn flex ${productPropsList.length === 40 && 'invisible'}`}
             onClick={() => {
               if (perPage > 40) setPerPage(perPage - 40)
             }}
