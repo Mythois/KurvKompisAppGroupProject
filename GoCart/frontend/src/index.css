@@ -14,8 +14,20 @@
   @apply rounded-md p-4 m-2 shadow cursor-pointer border border-gray-100 bg-gray-100 dark:bg-slate-700 dark:border-gray-500 hover:border-primary/50 hover:bg-primary/10 dark:hover:bg-gray-600 dark:hover:border-gray-400;
 }
 
+.addCategory {
+  @apply rounded-md p-2 shadow cursor-pointer border border-gray-100 bg-gray-100 dark:bg-slate-700 dark:border-gray-500 hover:border-primary/50 hover:bg-primary/10 dark:hover:bg-gray-600 dark:hover:border-gray-400;
+}
+
+.addCategoryClicked {
+  @apply rounded-md p-2 shadow cursor-pointer border border-gray-400 bg-primary/10 dark:bg-gray-600 dark:hover:border-gray-100 hover:border-primary/50;
+}
+
 .inputfield {
   @apply flex w-full rounded-md border bg-transparent px-3 py-2 text-sm shadow-sm;
+}
+
+.textarea {
+  @apply flex w-full rounded-md border bg-transparent px-3 py-2 text-sm shadow-sm resize-none h-28;
 }
 
 .radio {
@@ -28,4 +40,15 @@
 
 .darkMode {
   @apply dark:bg-gray-800 dark:text-gray-100;
+}
+
+.contentCenter {
+  @apply mx-auto sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-5/12;
+}
+
+.modal {
+  @apply border-2 border-primary rounded-lg lightMode darkMode p-1;
+}
+.modalContent {
+  @apply p-4 flex justify-center;
 }

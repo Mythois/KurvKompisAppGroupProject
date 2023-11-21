@@ -16,8 +16,6 @@
 
 - Searchbar: A reusable input field for filtering items. We decided to use the same searchbar component as in project_1. Props: onFilter, a callback function that will be called when the filter value changes.
 
-- NavButton: A reusable navigation button, that sends you to another page when being clicked. Props: Title (string, title/text for the button) and route (string, the route to navigate to when the button is clicked).
-
 - DeleteButton: Not yet implemented, but is supposed to be a reusable delete button, for deleting a user made object.
 
 - ArrowButton: A reusable button that represents going from one object to another, either forward or backward. Not yet implemented.
