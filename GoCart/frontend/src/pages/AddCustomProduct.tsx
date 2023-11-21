@@ -11,11 +11,13 @@ function AddCustomProduct() {
   const [showCategories, setShowCategories] = useState(false)
   const [showNutrition, setShowNutrition] = useState(false)
   const [showOther, setShowOther] = useState(false)
+
+  // State variable for modal
   const [showModal, setShowModal] = useState(false)
+  const [productName, setProductName] = useState('')
 
   // Mutation function to add a custom product to the database
   const [addCustomProduct, { data, loading, error }] = useMutation(ADD_CUSTOM_PRODUCT)
-
 
   // Function to toggle the input fields
   function toggleInput(inputType: string) {
@@ -24,7 +26,8 @@ function AddCustomProduct() {
     setShowOther(inputType === 'other')
   }
 
-  const [productInfo, setProductInfo] = useState({
+  // initial (and reset) state for the product info
+  const [initialProductInfo] = useState({
     name: '',
     category1: '',
     category2: '',
@@ -41,11 +44,15 @@ function AddCustomProduct() {
     additionalInfo: '',
   })
 
+  const [productInfo, setProductInfo] = useState(initialProductInfo)
+
   function handleInputChange(key: string, value: string) {
     setProductInfo((info) => ({ ...info, [key]: value }))
   }
 
   async function handleAddProduct() {
+    setProductName(productInfo.name) // Save the product name to use in the modal
+
     try {
       if (loading) return 'Loading...'
       if (error) return `Error! ${error.message}`
@@ -81,10 +88,11 @@ function AddCustomProduct() {
       // Show the modal after adding the product
       setShowModal(true)
 
-      // Close the input fields
+      // Close and reset input fields
       setShowCategories(false)
       setShowNutrition(false)
       setShowOther(false)
+      setProductInfo(initialProductInfo)
 
       // Set a timeout to close the modal after 3 seconds
       setTimeout(() => {
@@ -280,7 +288,7 @@ function AddCustomProduct() {
       <div>
         <div className="my-2">
           {/* Render the modal if showModal is true */}
-          {showModal && <ConfirmationModal productName={productInfo.name} />}
+          {showModal && <ConfirmationModal productName={productName} />}
         </div>
       </div>
     </div>
