@@ -8,6 +8,7 @@ export const SEARCH_PRODUCTS = gql`
     searchProducts(page: $page, perPage: $perPage, category: $category, name: $name, sortDirection: $sortDirection) {
       name
       _id
+      image
     }
   }
 `

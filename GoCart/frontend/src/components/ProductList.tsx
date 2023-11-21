@@ -7,6 +7,7 @@ interface ProductListProps {
   products: Array<{
     productName: string
     productID: string
+    productImage: string
     productQuantity?: number
     increment?: boolean
     decrement?: boolean
@@ -28,6 +29,7 @@ function ProductList({ products, listView }: ProductListProps) {
           key={index}
           productName={product.productName}
           productID={product.productID}
+          productImage={product.productImage}
           productQuantity={product.productQuantity}
           increment={product.increment}
           decrement={product.decrement}
