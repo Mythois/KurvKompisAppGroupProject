@@ -1,6 +1,6 @@
 // "Add product" -> The site where you get the opportunity to add products to the register, containing the product info you wish
 import { useState } from 'react'
-import ConfirmationModal from '../components/ConfirmationModal'
+import Modal from '../components/Modal'
 import { Link } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
 import { ADD_CUSTOM_PRODUCT } from '../utils/mutationFunctions/addCustomProduct'
@@ -14,7 +14,7 @@ function AddCustomProduct() {
 
   // State variable for modal
   const [showModal, setShowModal] = useState(false)
-  const [productName, setProductName] = useState('')
+  const [modalText, setModalText] = useState('')
 
   // Mutation function to add a custom product to the database
   const [addCustomProduct, { data, loading, error }] = useMutation(ADD_CUSTOM_PRODUCT)
@@ -51,7 +51,42 @@ function AddCustomProduct() {
   }
 
   async function handleAddProduct() {
-    setProductName(productInfo.name) // Save the product name to use in the modal
+    // Show the modal for 3 seconds, either with success or error message
+    setShowModal(true)
+    setTimeout(() => {
+      setShowModal(false)
+    }, 3000)
+
+    // Close input fields
+    setShowCategories(false)
+    setShowNutrition(false)
+    setShowOther(false)
+
+    // Validate name input
+    if (!productInfo.name) {
+      console.error('Product name is required')
+      setModalText('Product name is required')
+      return // Stop execution if validation fails
+    }
+
+    // Validate numeric values
+    const numericFields: Array<keyof typeof productInfo> = [
+      'calories',
+      'fat',
+      'carbohydrates',
+      'proteins',
+      'salt',
+      'sugar',
+    ]
+
+    for (const field of numericFields) {
+      const value = parseFloat(productInfo[field])
+      if (value < 0 || value > 100) {
+        console.error(`${field} must be a number between 0 and 100.`)
+        setModalText(`${field} must be a number between 0 and 100.`)
+        return // Stop execution if validation fails
+      }
+    }
 
     try {
       if (loading) return 'Loading...'
@@ -85,19 +120,11 @@ function AddCustomProduct() {
       // Mutation completed successfully
       console.log(productInfo) // Check the actual response data
 
-      // Show the modal after adding the product
-      setShowModal(true)
-
-      // Close and reset input fields
-      setShowCategories(false)
-      setShowNutrition(false)
-      setShowOther(false)
+      // Reset input fields
       setProductInfo(initialProductInfo)
 
-      // Set a timeout to close the modal after 3 seconds
-      setTimeout(() => {
-        setShowModal(false)
-      }, 3000)
+      // Show success message
+      setModalText(`${productInfo.name} added successfully!`)
     } catch (error) {
       console.error('Error adding custom product:', error)
     }
@@ -108,16 +135,14 @@ function AddCustomProduct() {
       <h1 className="text-2xl">Add product to database</h1>
 
       <div className="grid gap-1 my-2 mb-4">
-        <form>
-          <input
-            type="text"
-            placeholder="Product name*"
-            className="inputfield mb-4"
-            value={productInfo.name}
-            onChange={(e) => handleInputChange('name', e.target.value)}
-            required
-          />
-        </form>
+        <input
+          type="text"
+          placeholder="Product name*"
+          className="inputfield mb-4"
+          value={productInfo.name}
+          onChange={(e) => handleInputChange('name', e.target.value)}
+          required
+        />
 
         <div className="grid gap-2">
           <button
@@ -132,7 +157,7 @@ function AddCustomProduct() {
           </button>
           <div>
             {showCategories && (
-              <form className="grid grid-cols-2 gap-2 mb-4 mt-1">
+              <div className="grid grid-cols-2 gap-2 mb-4 mt-1">
                 <input
                   type="text"
                   placeholder="Category 1"
@@ -161,7 +186,7 @@ function AddCustomProduct() {
                   value={productInfo.category4}
                   onChange={(e) => handleInputChange('category4', e.target.value)}
                 />
-              </form>
+              </div>
             )}
           </div>
           <button
@@ -176,14 +201,13 @@ function AddCustomProduct() {
           </button>
           <div>
             {showNutrition && (
-              <form className="grid grid-cols-2 gap-2 mb-4 mt-1">
+              <div className="grid grid-cols-2 gap-2 mb-4 mt-1">
                 <input
                   type="number"
                   placeholder="Kcal (per 100g)"
                   className="inputfield"
                   value={productInfo.calories}
                   onChange={(e) => handleInputChange('calories', e.target.value)}
-                  min="0"
                 />
                 <input
                   type="number"
@@ -225,7 +249,7 @@ function AddCustomProduct() {
                   onChange={(e) => handleInputChange('sugar', e.target.value)}
                   min="0"
                 />
-              </form>
+              </div>
             )}
           </div>
 
@@ -241,7 +265,7 @@ function AddCustomProduct() {
           </button>
           <div>
             {showOther && (
-              <form className="grid grid-cols-2 gap-2 mt-1">
+              <div className="grid grid-cols-2 gap-2 mt-1">
                 <input
                   type="text"
                   placeholder="Store"
@@ -257,12 +281,12 @@ function AddCustomProduct() {
                   onChange={(e) => handleInputChange('brand', e.target.value)}
                 />
                 <textarea
-                  placeholder="Additional information"
+                  placeholder="Additional indivation"
                   className="textarea col-span-2"
                   value={productInfo.additionalInfo}
                   onChange={(e) => handleInputChange('additionalInfo', e.target.value)}
                 />
-              </form>
+              </div>
             )}
           </div>
         </div>
@@ -288,7 +312,7 @@ function AddCustomProduct() {
       <div>
         <div className="my-2">
           {/* Render the modal if showModal is true */}
-          {showModal && <ConfirmationModal productName={productName} />}
+          {showModal && <Modal text={modalText} />}
         </div>
       </div>
     </div>
