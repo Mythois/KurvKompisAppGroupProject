@@ -64,9 +64,6 @@
 .modalContent {
   @apply p-4 flex justify-center;
 }
-<<<<<<< HEAD
 .productImage {
   @apply rounded-md;
 }
-=======
->>>>>>> 0eaa6a7 ([#36]style: modal and input fields)
