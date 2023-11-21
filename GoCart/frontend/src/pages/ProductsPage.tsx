@@ -8,7 +8,7 @@ import FilterDropdown from '../components/FilterDropdown'
 import { useQuery } from '@apollo/client'
 import { SEARCH_PRODUCTS } from '../utils/queryFunctions/getProduct'
 import SortButtons from '../components/SortButtons'
-import { ChevronDown, ChevronUp } from 'lucide-react'
+import { ArrowLeft, ChevronDown, ChevronUp } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 interface ProductsPageProps {
@@ -110,16 +110,24 @@ function ProductsPage({ editable }: ProductsPageProps) {
             <button className="btn">Add product to database</button>
           </Link>
         )}
+        {editable && (
+          <Link to={'/'}>
+            <button className="btn flex">
+              <ArrowLeft />
+              <p className="hidden sm:block">Back to shopping list</p>
+            </button>
+          </Link>
+        )}
         <div className="flex gap-2">
           <button
-            className={`btn flex ${productPropsList.length < perPage && 'invisible'}`}
+            className={`btn flex ${productPropsList.length < perPage && 'hidden'}`}
             onClick={() => setPerPage(perPage + 40)}
           >
             <ChevronDown />
             <p className="hidden sm:block">Show more</p>
           </button>
           <button
-            className={`btn flex ${productPropsList.length === 40 && 'invisible'}`}
+            className={`btn flex ${productPropsList.length === 40 && 'hidden'}`}
             onClick={() => {
               if (perPage > 40) setPerPage(perPage - 40)
             }}

@@ -4,7 +4,7 @@ import ConfirmationModal from '../components/ConfirmationModal'
 import { Link } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
 import { ADD_CUSTOM_PRODUCT } from '../utils/mutationFunctions/addCustomProduct'
-import { MoveLeft } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
 
 function AddCustomProduct() {
   // State variables to toggle the input fields
@@ -272,9 +272,9 @@ function AddCustomProduct() {
         {/* Back to products button */}
         <button className="btn">
           <Link to="/ProductsPage">
-            <div className="flex gap-1">
-              <MoveLeft />
-              Back to products
+            <div className="flex">
+              <ArrowLeft />
+              <p className="hidden sm:block">Back to products</p>
             </div>
           </Link>
         </button>
