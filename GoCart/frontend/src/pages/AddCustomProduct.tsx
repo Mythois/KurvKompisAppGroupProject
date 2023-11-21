@@ -57,6 +57,11 @@ function AddCustomProduct() {
       setShowModal(false)
     }, 3000)
 
+    // Close input fields
+    setShowCategories(false)
+    setShowNutrition(false)
+    setShowOther(false)
+
     // Validate name input
     if (!productInfo.name) {
       console.error('Product name is required')
@@ -115,10 +120,7 @@ function AddCustomProduct() {
       // Mutation completed successfully
       console.log(productInfo) // Check the actual response data
 
-      // Close and reset input fields
-      setShowCategories(false)
-      setShowNutrition(false)
-      setShowOther(false)
+      // Reset input fields
       setProductInfo(initialProductInfo)
 
       // Show success message
