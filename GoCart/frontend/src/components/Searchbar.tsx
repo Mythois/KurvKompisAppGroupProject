@@ -27,7 +27,7 @@ function Searchbar({ onFilter }: SearchbarProps) {
       {/* Input field for filtering with controlled value */}
       <input
         type="text"
-        placeholder="Search..."
+        placeholder="Søk..."
         value={filter}
         // The onChange event handler is used to call the handleFilterChange function when the input value changes.
         onChange={(e) => handleFilterChange(e.target.value)}
