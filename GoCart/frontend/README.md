@@ -16,7 +16,7 @@
 
 - Navbar: A navigation bar component, that makes it possible to navigate between different pages in the app. Props: title (string).
 
-- Searchbar: A reusable input field for filtering products. We decided to use the same searchbar component as in project_1. Props: onFilter, a callback function that will be called when the filter value changes.
+- Searchbar: A reusable input field for filtering products. We decided to use the some of the same features from the searchbar component as in project_1. Props: onFilter, a callback function that will be called when the filter value changes.
 
 - ShoppingList: Shows details about your shoppinglist and the items you have added to the reactive variable. Props: title (String, the title of the shopping list).
 
