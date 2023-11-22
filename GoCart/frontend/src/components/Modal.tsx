@@ -4,7 +4,7 @@ interface ModalProps {
 
 function Modal({ text }: ModalProps) {
   return (
-    <div className="modal">
+    <div className="modal" data-testid="cypress-modal">
       <div className="modalContent">
         <p>{text}</p>
       </div>
