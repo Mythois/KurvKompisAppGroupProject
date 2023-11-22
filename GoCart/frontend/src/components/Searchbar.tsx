@@ -34,6 +34,7 @@ function Searchbar({ onFilter }: SearchbarProps) {
         className="inputfield h-12
         placeholder:text-muted-foreground 
         focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-300"
+        data-testid="search-field"
       />
     </div>
   )
