@@ -12,6 +12,8 @@
 
 - ProductList: Renders a list of "products". Props: products (array), an array of objects representing products to display.
 
+- ProductImage: Component designed to display product images with responsive width based on their aspect ratio. This component dynamically adjusts the width of the displayed image, ensuring optimal presentation for both landscape and portrait-oriented images. Props: src (required): A string representing the URL or path to the image file. alt (required): A string providing alternative text for the image for accessibility purposes.
+
 - Navbar: A navigation bar component, that makes it possible to navigate between different pages in the app. Props: title (string).
 
 - Searchbar: A reusable input field for filtering products. We decided to use the same searchbar component as in project_1. Props: onFilter, a callback function that will be called when the filter value changes.
@@ -20,13 +22,13 @@
 
 - FilterDropDown: The FilterDropdown component is used to create a filter for products based on categories. It displays a dropdown menu with radio buttons for selecting different categories. When a category is selected, the component triggers a callback function to notify the parent component of the selected category. Props: onCategoryChange (Function, a callback function that will be called when the filter category changes. It should accept a single argument, the selected category).
 
-- DeleteButton: Not yet implemented, but is supposed to be a reusable delete button, for deleting a user made object.
-
 - SortButtons: The SortButtons component provides buttons for sorting products in ascending and descending order. It allows users to toggle between sorting options. When a sorting option is selected, the component triggers callback functions to notify the parent component about the chosen sorting order. Props: onSortAsc (function, a callback function that is called when the ascending sort button is clicked) and onSortDesc (function, a callback function that is called when the descending sort button is clicked).
 
 - Modal: Takes a text string as a prop and displays a simple modal containing this text.
 
 - ModeToggleBtn: Toggle button between light and dark mode.
+
+- ConfirmationModal: Functional component designed to display a confirmation message within a modal window. It serves the purpose of confirming the addition of a product to a database or any other similar action. This component takes in a single prop: productName - A string representing the name of the product that has been added to the database.
 
 ## Pages
 
@@ -40,10 +42,6 @@
 
 ## Utils
 
-- mockup
-
-  - GoCart.Products.json: Our data set as a json file.
-
 - mutationFunctions
 
   - addCustomProduct.ts: Mutation for adding products to the database
@@ -54,4 +52,4 @@
 
 - reactiveVariables
 
-  - reativeVariables: The reactive variable for saving products to the shopping list is defined and the initial state from local storage is read if it exist.
+  - reactiveVariables: The reactive variable for saving products to the shopping list is defined and the initial state from local storage is read if it exist.
