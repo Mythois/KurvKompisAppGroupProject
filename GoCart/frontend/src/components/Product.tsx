@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { useReactiveVar } from '@apollo/client'
 import { shoppingListProductsVar } from '../utils/reactiveVariables/reactiveVariables'
+import ProductImage from './ProductImage'
 
 // It accepts props for item name, id, productQuantity, increment, decrement, quantity and showQuantityOnly
 export interface ProductProps {
@@ -97,10 +98,13 @@ function Product({ productName, productID, productImage, increment, decrement, q
 
   return (
     <div className="card flex justify-between" onClick={handleCardClick}>
-      {/* Display the product name */}
-      <div className="text-lg font-semibold col-span-2">{productName}</div>
-      {/* Display the product image */}
-      {!listView && <img src={productImage} alt={productName} />}
+      <div className="grid">
+        {/* Display the product name */}
+        <div className="text-lg font-semibold col-span-2">{productName}</div>
+        {/* Display the product image */}
+        {!listView && <ProductImage src={productImage} alt={productName} />}
+      </div>
+      {/* Display the product quantity */}
       {((increment && decrement && quantity) || listView) && (
         <div className="flex h-max">
           <button
