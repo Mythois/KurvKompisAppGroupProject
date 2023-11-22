@@ -28,6 +28,8 @@
 
 - ModeToggleBtn: Toggle button between light and dark mode.
 
+- ConfirmationModal: Functional component designed to display a confirmation message within a modal window. It serves the purpose of confirming the addition of a product to a database or any other similar action. This component takes in a single prop: productName - A string representing the name of the product that has been added to the database.
+
 ## Pages
 
 - Home: The home page of the application, displaying your shopping list.

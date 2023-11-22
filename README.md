@@ -178,8 +178,8 @@ The test are set up using vitest and should be covering both frontend and backen
 You can run the component tests by running: npm run test (from the frontend folder)
 - Component tests: The component tests utilize vitest, a testing framework for React components. These tests focus on the functionalities of individual components, ensuring they perform as expected.
 
-You can run the E2E tests by running: ---------------------FILL IN ÅSHILD------------------
-- E2E testing: The E2E tests employ Cypress, a testing framework for end-to-end testing of web applications. These tests cover the functionality of the application from a user's perspective, interacting with the UI elements as a real user would.
+You can run the E2E tests by running: npx cypress open from GoCart/frontend/
+- E2E testing: The E2E tests employ Cypress, a testing framework for end-to-end testing of web applications. These tests cover the functionality of the application from a user's perspective, interacting with the UI elements as a real user would. The tests in the end-to-end testing cover the requirements we've set through the user stories for the website's functionality. Also tests covering each page are made.
 
 ## Future Work
 If we were to continue working on this project, these are some parts we would considering implementing:
