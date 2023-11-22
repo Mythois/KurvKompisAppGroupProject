@@ -92,13 +92,9 @@ function ProductDetails({ productID }: ProductDetailsProps) {
             <strong>Categories:</strong>
             <ul>
               {product.category ? (
-                <li>
-                  {product.category.map((categoryproduct, index) => (
-                    <li key={index}>{categoryproduct.name}</li>
-                  ))}
-                </li>
+                product.category.map((categoryproduct, index) => <li key={index}>{categoryproduct.name}</li>)
               ) : (
-                'N/A'
+                <li>N/A</li>
               )}
             </ul>
           </div>
@@ -122,16 +118,14 @@ function ProductDetails({ productID }: ProductDetailsProps) {
                   </ul>
                 )
               ) : (
-                'N/A'
+                <li>N/A</li>
               )}
             </ul>
           </div>
           {/* Description */}
         </div>
         <div className="p-2 sm:col-span-2">
-          <ul>
-            <p className="text-xl">Description</p>
-          </ul>
+          <p className="text-xl">Description</p>
           <p>{product.description || 'N/A'}</p>
         </div>
       </div>

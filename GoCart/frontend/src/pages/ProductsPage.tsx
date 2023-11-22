@@ -84,7 +84,7 @@ function ProductsPage({ editable }: ProductsPageProps) {
       }))
 
   return (
-    <div className="h-full flex flex-col justify-center lg:pl-8 lg:pr-8 pt-8">
+    <div className="h-full flex flex-col justify-center lg:pl-8 lg:pr-8 pt-8" data-testid="products-page">
       {/* Render the Searchbar component with the filter callback */}
       <div className="grid sm:flex gap-2 mb-2">
         <Searchbar onFilter={(value: React.SetStateAction<string>) => setFilter(value)} />
@@ -107,7 +107,9 @@ function ProductsPage({ editable }: ProductsPageProps) {
       <div className="flex justify-between mb-5 gap-2">
         {!editable && (
           <Link to={'/AddCustomProduct'}>
-            <button className="btn">Add product to database</button>
+            <button className="btn" data-testid="add-product-to-register">
+              Add product to database
+            </button>
           </Link>
         )}
         {editable && (

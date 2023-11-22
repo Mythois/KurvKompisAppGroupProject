@@ -32,7 +32,7 @@ function FilterDropdown({ onCategoryChange }: FilterDropdownProps) {
     <div className="flex">
       {!isFilterVisible && (
         // Filter button
-        <button className="btn flex gap-2 text-xl" onClick={handleFilterClick}>
+        <button className="btn flex gap-2 text-xl" onClick={handleFilterClick} data-testid="filter-button">
           <SlidersHorizontal size={30} />
           Filter
         </button>
@@ -41,11 +41,11 @@ function FilterDropdown({ onCategoryChange }: FilterDropdownProps) {
       {isFilterVisible && (
         <div className="sm:gap-4 absolute w-max darkMode lightMode border-2 border-primary rounded-lg p-2 text-xl z-0">
           <div className="flex justify-between mb-4">
-            <button className="btn flex gap-1" onClick={handleFilterClick}>
+            <button className="btn flex gap-1" onClick={handleFilterClick} data-testid="close-button">
               <X size={30} />
               Close
             </button>
-            <button className="btn flex gap-1" onClick={handleResetClick}>
+            <button className="btn flex gap-1" onClick={handleResetClick} data-testid="reset-button">
               <RotateCcw size={30} />
               Reset
             </button>
@@ -61,6 +61,7 @@ function FilterDropdown({ onCategoryChange }: FilterDropdownProps) {
                 value="Fruit & Vegetables"
                 checked={selectedCategory === 'Fruit & Vegetables'}
                 onChange={handleCategoryChange}
+                data-testid="fruite-and-vegies"
               />
               <label>Fruit & Vegetables</label>
             </div>

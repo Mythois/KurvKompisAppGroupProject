@@ -294,7 +294,7 @@ function AddCustomProduct() {
 
       <div className="flex justify-between gap-2">
         {/* Back to products button */}
-        <button className="btn">
+        <button className="btn" data-testid="back-to-products-button">
           <Link to="/ProductsPage">
             <div className="flex">
               <ArrowLeft />
