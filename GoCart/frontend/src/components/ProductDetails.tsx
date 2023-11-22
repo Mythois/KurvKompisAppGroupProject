@@ -1,6 +1,5 @@
 // ProductDetails Component: Displays details of a product (aka Product)
 
-import { useEffect, useState } from 'react'
 import { GET_PRODUCT_BY_ID } from '../utils/queryFunctions/getProduct'
 import { useQuery } from '@apollo/client'
 import ProductImage from './ProductImage'
