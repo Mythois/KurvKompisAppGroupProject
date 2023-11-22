@@ -3,6 +3,8 @@ import { describe, test, vi, expect } from 'vitest'
 import { render, fireEvent } from '@testing-library/react'
 import SortButtons from '../src/components/SortButtons'
 
+// State: Passed
+
 describe('SortButtons component', () => {
   test('renders with default ascending order', () => {
     const onSortAscMock = vi.fn()

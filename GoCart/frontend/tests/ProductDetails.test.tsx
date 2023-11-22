@@ -5,6 +5,9 @@ import ProductDetails from '../src/components/ProductDetails'
 import React from 'react'
 import { GET_PRODUCT_BY_ID } from '../src/utils/queryFunctions/getProduct'
 
+// TODO: figure out why the test fails
+// State: failed
+
 const mockProduct = {
   name: 'Test Product',
   nutrition: [
@@ -28,6 +31,7 @@ const mockProduct = {
   allergens: [
     {
       display_name: 'Test Allergen',
+      contains: 'YES',
     },
   ],
   description: 'Test Description',
@@ -65,7 +69,7 @@ describe('ProductDetails Component', () => {
       </MockedProvider>,
     )
 
-    expect(screen.getByText('Loading...')).toBeTruthy()
+    expect(screen.getByText('Laster...')).toBeTruthy()
   })
 
   test('renders error state', async () => {
@@ -76,7 +80,7 @@ describe('ProductDetails Component', () => {
     )
 
     await waitFor(() => {
-      expect(screen.getByText('Error: Failed to fetch product details')).toBeTruthy()
+      expect(screen.getByText('Feilmelding: Failed to fetch product details')).toBeTruthy()
     })
   })
 
@@ -91,17 +95,17 @@ describe('ProductDetails Component', () => {
       expect(screen.getByText('Test Product')).toBeTruthy()
       expect(screen.getByText('Test Nutrition:')).toBeTruthy()
       expect(screen.getByText('10 g')).toBeTruthy()
-      expect(screen.getByText('Store:')).toBeTruthy()
+      expect(screen.getByText('Butikk:')).toBeTruthy()
       expect(screen.getByText('Test Store')).toBeTruthy()
-      expect(screen.getByText('Vendor:')).toBeTruthy()
+      expect(screen.getByText('Forhandler:')).toBeTruthy()
       expect(screen.getByText('Test Vendor')).toBeTruthy()
-      expect(screen.getByText('Weight:')).toBeTruthy()
+      expect(screen.getByText('Vekt:')).toBeTruthy()
       expect(screen.getByText('100 kg')).toBeTruthy()
-      expect(screen.getByText('Categories:')).toBeTruthy()
+      expect(screen.getByText('Kategorier:')).toBeTruthy()
       expect(screen.getByText('Test Category')).toBeTruthy()
-      expect(screen.getByText('Allergens:')).toBeTruthy()
+      expect(screen.getByText('Allergener:')).toBeTruthy()
       expect(screen.getByText('Test Allergen')).toBeTruthy()
-      expect(screen.getByText('Description')).toBeTruthy()
+      expect(screen.getByText('Beskrivelse')).toBeTruthy()
       expect(screen.getByText('Test Description')).toBeTruthy()
     })
   })

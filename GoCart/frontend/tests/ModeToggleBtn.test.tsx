@@ -3,6 +3,8 @@ import { test, describe, expect, vi } from 'vitest'
 import { render, fireEvent } from '@testing-library/react'
 import ModeToggleBtn from '../src/components/ModeToggleBtn'
 
+// State: Passed
+
 // Mock window.matchMedia
 Object.defineProperty(window, 'matchMedia', {
   writable: true,

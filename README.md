@@ -100,6 +100,7 @@ This project uses the [npm](https://www.npmjs.com/) package manager.
 The app is structured in such a way that the various parts of the website are organized into their own folders within common directories with similar elements, as follows:
 
 - "backend", including every element of the backend:
+
   - The "models" directory contains type definitions (typeDefs) using GraphQL schema syntax that define the structure of the data models used in the application. These models include types such as Product, Category, Store, PriceHistory, Allergen, Nutrition, Label, and corresponding input types used for mutations.
   - The "resolvers.js" file contains resolver functions that define how the GraphQL queries and mutations defined in the type definitions (typeDefs) are resolved. Resolvers interact with the database (MongoDB) to retrieve, manipulate, or modify data based on the incoming GraphQL operations.
   - The "index.js" file is the entry point for the backend application. It sets up the Apollo Server using the provided typeDefs, resolvers, and connects to a MongoDB database using Mongoose. It also starts the server to listen for incoming requests.
@@ -116,7 +117,7 @@ The actual app is under "project_2/frontend/src/App.tsx."
 
 Search functionality, e.g., through a dialog/form/search field for search input
 
-- We have implemented a "Searchbar" component, which updates the displayed products while writing so that the products matches the search input. We have chosen to implement this functionality in a way that the search is made based on whether or not the product contains the sequence of letters that are searched for. This makes it easier for users to search for products even though they might not remember the full name.
+- We have implemented a "Searchbar" component, which updates the displayed products by doing a query 500ms after the user stops writing, so that the products matches the search input consequently. We have chosen to implement this functionality in a way that the search is made based on whether or not the product contains the sequence of letters that are searched for. This makes it easier for users to search for products even though they might not remember the full name.
 
 List-based presentation of searches with provisions for handling large result sets, either by paging through them or dynamically loading more results through scrolling.
 
@@ -146,7 +147,7 @@ The solution should demonstrate aspects of sustainable web development through d
 - By displaying a significant amount of information (e.g., product details when clicked) in a pop-up rather than on a separate page, we reduce the number of page switches and minimize reloads, as product pages don't need to be reloaded when navigating back.
 - We've removed the "show more" button on product pages when there are no additional products to display. This not only streamlines the user experience but also prevents unnecessary database queries.
 
-- -------------------- THIS AIN'T RIGHT ANYMORE----------------We've contemplated adding pictures to the products. However, this could potentially make the page less sustainable, considering that images generally consume more power to load. The impact on sustainability depends on the picture format. Despite this, we've evaluated its effect on user experience and concluded that it's worth the extra cost, as long as we ensure that only essential pictures are loaded.
+- We've contemplated adding pictures to the products. However, this could potentially make the page less sustainable, considering that images generally consume more power to load. The impact on sustainability depends on the picture format. Despite this, we've evaluated its effect on user experience and concluded that it's worth the extra cost, as long as we ensure that only essential pictures are loaded.
 - We've also chosen to maintain a somewhat minimal page design, reducing the number of elements that need to be rendered on the page.
 
 Good design, sensible choices, and solutions that align with the type of data you choose.
@@ -175,10 +176,18 @@ Use of good and relevant components and libraries (freedom to choose, and we enc
 
 The test are set up using vitest and should be covering both frontend and backend.
 
-- Component tests: WRITE STUFF HERE
-- E2E testing: WRITE STUFF HERE
+You can run the component tests by running: `npm run test` from GoCart/frontend/
+
+- Component tests: The component tests utilize vitest, a testing framework for React components. These tests focus on the functionalities of individual components, ensuring they perform as expected.
+
+You can run the E2E tests by running: `npx cypress open` from GoCart/frontend/
+
+- E2E testing: The E2E tests employ Cypress, a testing framework for end-to-end testing of web applications. These tests cover the functionality of the application from a user's perspective, interacting with the UI elements as a real user would. The tests in the end-to-end testing cover the requirements we've set through the user stories for the website's functionality. Also the tests are made covering a page.
 
 ## Future Work
+
 If we were to continue working on this project, these are some parts we would considering implementing:
-  - Implementing functionality for deleting products you have added to the database. This could be a good implementation, although we have chosen to let the managing of the data be done by the developers for now.
-  - Enable multiple categories in filtering function. This could be done so that people can narrow the searchf or a product down even more, although we do not see the need for this as we already have plenty of options for finding your desired product.
+
+- Implementing functionality for deleting products you have added to the database. This could be a good implementation, although we have chosen to let the managing of the data be done by the developers for now.
+- Enable multiple categories in filtering function. This could be done so that people can narrow the searchf or a product down even more, although we do not see the need for this as we already have plenty of options for finding your desired product.
+- Extend test to cover more of the components and the apps functionallity.

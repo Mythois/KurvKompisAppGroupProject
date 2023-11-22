@@ -147,6 +147,7 @@ function AddCustomProduct() {
         <div className="grid gap-2">
           <button
             className={`text-left ${showCategories ? 'addCategoryClicked' : 'addCategory'}`}
+            data-testid="add-categories"
             onClick={() => {
               toggleInput('categories')
               setShowCategories(!showCategories)
@@ -191,6 +192,7 @@ function AddCustomProduct() {
           </div>
           <button
             className={`text-left ${showNutrition ? 'addCategoryClicked' : 'addCategory'}`}
+            data-testid="add-nutrition"
             onClick={() => {
               toggleInput('nutrition')
               setShowNutrition(!showNutrition)
@@ -255,6 +257,7 @@ function AddCustomProduct() {
 
           <button
             className={`text-left ${showOther ? 'addCategoryClicked' : 'addCategory'}`}
+            data-testid="add-other-info"
             onClick={() => {
               toggleInput('other')
               setShowOther(!showOther)
@@ -304,7 +307,7 @@ function AddCustomProduct() {
         </button>
 
         {/* Add Product button */}
-        <button type="submit" className="btn" onClick={handleAddProduct}>
+        <button type="submit" className="btn" onClick={handleAddProduct} data-testid="add-product">
           + Legg til produkt
         </button>
       </div>

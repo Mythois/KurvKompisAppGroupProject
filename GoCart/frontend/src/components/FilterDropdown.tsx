@@ -43,11 +43,11 @@ function FilterDropdown({ onCategoryChange }: FilterDropdownProps) {
           <div className="flex justify-between mb-4">
             <button className="btn flex gap-1" onClick={handleFilterClick} data-testid="close-button">
               <X size={30} />
-              Close
+              Lukk
             </button>
             <button className="btn flex gap-1" onClick={handleResetClick} data-testid="reset-button">
               <RotateCcw size={30} />
-              Reset
+              Nullstill
             </button>
           </div>
 
