@@ -26,7 +26,6 @@ const typeDefs = gql`
     updated_at: String
   }
 
-  
   type Category {
     id: Int
     depth: Int
@@ -149,12 +148,6 @@ const typeDefs = gql`
     png: String
   }
 
-
-
-
-
-
-
   type Query {
     getProduct(_id: ID!): Product
     getProducts(page: Int!, perPage: Int!): [Product]
@@ -164,13 +157,9 @@ const typeDefs = gql`
     searchProducts(name: String, category: String, page: Int!, perPage: Int!, sortDirection: String): [Product]
   }
 
-  type Mutation{
+  type Mutation {
     addCustomProduct(input: ProductInput): Boolean
   }
-
-
-
-
 `
 
 export default typeDefs

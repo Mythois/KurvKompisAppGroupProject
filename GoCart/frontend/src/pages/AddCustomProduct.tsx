@@ -17,7 +17,7 @@ function AddCustomProduct() {
   const [modalText, setModalText] = useState('')
 
   // Mutation function to add a custom product to the database
-  const [addCustomProduct, { data, loading, error }] = useMutation(ADD_CUSTOM_PRODUCT)
+  const [addCustomProduct, { loading, error }] = useMutation(ADD_CUSTOM_PRODUCT)
 
   // Function to toggle the input fields
   function toggleInput(inputType: string) {
@@ -92,7 +92,7 @@ function AddCustomProduct() {
       if (loading) return 'Laster...'
       if (error) return `Feilmelding! ${error.message}`
 
-      const { data } = await addCustomProduct({
+      const {  } = await addCustomProduct({
         variables: {
           input: {
             name: productInfo.name,

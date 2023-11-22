@@ -2,7 +2,6 @@
 // If the increment or decrement props are false, then the buttons to increment or decrement the quantity are not displayed
 
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 import { useReactiveVar } from '@apollo/client'
 import { shoppingListProductsVar } from '../utils/reactiveVariables/reactiveVariables'
@@ -25,7 +24,6 @@ export interface ProductProps {
 function Product({ productName, productID, productImage, increment, decrement, quantity, listView }: ProductProps) {
   const [newProductQuantity, setProductQuantity] = useState<number>(0)
   const shoppingListProducts: ProductProps[] = useReactiveVar(shoppingListProductsVar)
-  const navigate = useNavigate()
   const [isShow, setShow] = useState(false)
 
   useEffect(() => {
@@ -94,7 +92,6 @@ function Product({ productName, productID, productImage, increment, decrement, q
     // Save the updated list to local storage
     localStorage.setItem('shoppingList', JSON.stringify(shoppingListProductsVar()))
   }
-  console.log(isShow)
 
   return (
     <>

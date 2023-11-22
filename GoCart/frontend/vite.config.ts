@@ -7,8 +7,8 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   base: '/project2',
   plugins: [react()],
-  server:{
-    open:true,
+  server: {
+    open: true,
   },
   test: {
     globals: true,

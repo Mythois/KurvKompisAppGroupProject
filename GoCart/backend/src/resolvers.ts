@@ -97,32 +97,28 @@ const resolvers = (db) => ({
       }
     },
   },
- // Things that can change the content of the database
+  // Things that can change the content of the database
   Mutation: {
     addCustomProduct: async (_, { input }) => {
       try {
         // Add user_generated field to the input
-        const productWithUserGenerated = { ...input };
-  
+        const productWithUserGenerated = { ...input }
+
         // Insert the new product into the database
-        const result = await db.collection('Products').insertOne(productWithUserGenerated);
-  
+        const result = await db.collection('Products').insertOne(productWithUserGenerated)
+
         // Check if the insertion was successful
         if (result.acknowledged === true) {
-          return true; // Return true if the product was successfully added
+          return true // Return true if the product was successfully added
         } else {
-          return false; // Return false if the product was not added
+          return false // Return false if the product was not added
         }
       } catch (error) {
-        console.error(`Error adding custom product: ${error.message}`);
-        throw new Error('Failed to add custom product.'); // Throw an error for better handling
+        console.error(`Error adding custom product: ${error.message}`)
+        throw new Error('Failed to add custom product.') // Throw an error for better handling
       }
     },
-  }
-  
-  
-
-
+  },
 })
 
 export { resolvers }
