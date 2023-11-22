@@ -52,3 +52,6 @@
 .modalContent {
   @apply p-4 flex justify-center;
 }
+.productImage {
+  @apply rounded-md;
+}
