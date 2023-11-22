@@ -146,7 +146,7 @@ The solution should demonstrate aspects of sustainable web development through d
 - By displaying a significant amount of information (e.g., product details when clicked) in a pop-up rather than on a separate page, we reduce the number of page switches and minimize reloads, as product pages don't need to be reloaded when navigating back.
 - We've removed the "show more" button on product pages when there are no additional products to display. This not only streamlines the user experience but also prevents unnecessary database queries.
 
-- -------------------- THIS AIN'T RIGHT ANYMORE----------------We've contemplated adding pictures to the products. However, this could potentially make the page less sustainable, considering that images generally consume more power to load. The impact on sustainability depends on the picture format. Despite this, we've evaluated its effect on user experience and concluded that it's worth the extra cost, as long as we ensure that only essential pictures are loaded.
+- We've contemplated adding pictures to the products. However, this could potentially make the page less sustainable, considering that images generally consume more power to load. The impact on sustainability depends on the picture format. Despite this, we've evaluated its effect on user experience and concluded that it's worth the extra cost, as long as we ensure that only essential pictures are loaded.
 - We've also chosen to maintain a somewhat minimal page design, reducing the number of elements that need to be rendered on the page.
 
 Good design, sensible choices, and solutions that align with the type of data you choose.
@@ -175,8 +175,11 @@ Use of good and relevant components and libraries (freedom to choose, and we enc
 
 The test are set up using vitest and should be covering both frontend and backend.
 
-- Component tests: WRITE STUFF HERE
-- E2E testing: WRITE STUFF HERE
+You can run the component tests by running: npm run test (from the frontend folder)
+- Component tests: The component tests utilize vitest, a testing framework for React components. These tests focus on the functionalities of individual components, ensuring they perform as expected.
+
+You can run the E2E tests by running: ---------------------FILL IN ÅSHILD------------------
+- E2E testing: The E2E tests employ Cypress, a testing framework for end-to-end testing of web applications. These tests cover the functionality of the application from a user's perspective, interacting with the UI elements as a real user would.
 
 ## Future Work
 If we were to continue working on this project, these are some parts we would considering implementing:
