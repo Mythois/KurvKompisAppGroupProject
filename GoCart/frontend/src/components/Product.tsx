@@ -6,7 +6,9 @@ import { useNavigate } from 'react-router-dom'
 
 import { useReactiveVar } from '@apollo/client'
 import { shoppingListProductsVar } from '../utils/reactiveVariables/reactiveVariables'
+import ProductDetails from './ProductDetails'
 import ProductImage from './ProductImage'
+import { X } from 'lucide-react'
 
 // It accepts props for item name, id, productQuantity, increment, decrement, quantity and showQuantityOnly
 export interface ProductProps {
@@ -24,6 +26,7 @@ function Product({ productName, productID, productImage, increment, decrement, q
   const [newProductQuantity, setProductQuantity] = useState<number>(0)
   const shoppingListProducts: ProductProps[] = useReactiveVar(shoppingListProductsVar)
   const navigate = useNavigate()
+  const [isShow, setShow] = useState(false)
 
   useEffect(() => {
     // Retrieve the stored shopping list from local storage
@@ -91,52 +94,54 @@ function Product({ productName, productID, productImage, increment, decrement, q
     // Save the updated list to local storage
     localStorage.setItem('shoppingList', JSON.stringify(shoppingListProductsVar()))
   }
-
-  function handleCardClick() {
-    navigate(`/productDetailsPage/${productID}`)
-  }
+  console.log(isShow)
 
   return (
-    <div
-      className={`card  ${listView ? 'grid' : 'grid grid-cols-2'} gap-2`}
-      onClick={handleCardClick}
-      data-testid={`productid-${productID}`}
-    >
-      {/* Display the product image */}
-      <div>{!listView && <ProductImage src={productImage} alt={productName} />}</div>
+    <>
+      <div className={`card  ${listView ? 'grid' : 'grid grid-cols-2'} gap-2`} onClick={() => setShow(true)}>
+        {/* Display the product image */}
+        <div>{!listView && <ProductImage src={productImage} alt={productName} />}</div>
 
-      <div className={`flex justify-between h-full ${listView ? '' : 'flex-col justify-end'}`}>
-        {/* Display the product name */}
-        <div className="text-lg font-semibold">{productName}</div>
+        <div className={`flex justify-between h-full ${listView ? '' : 'flex-col justify-end'}`}>
+          {/* Display the product name */}
+          <div className="text-lg font-semibold col-span-2">{productName}</div>
 
-        {/* Display the product quantity */}
-        {((increment && decrement && quantity) || listView) && (
-          <div className="flex h-max justify-end">
-            <button
-              data-testid={`decrement-button-${productID}`}
-              className="btn"
-              onClick={(e) => {
-                decrementProduct(e)
-              }}
-            >
-              -
-            </button>
-            <span className="text-xl p-2" data-testid={`quantity-${productID}`}>
-              {newProductQuantity}
-            </span>
-            <button
-              data-testid={`increment-button-${productID}`}
-              className="btn"
-              onClick={(e) => {
-                incrementProduct(e)
-              }}
-            >
-              +
+          {/* Display the product quantity */}
+          {((increment && decrement && quantity) || listView) && (
+            <div className="flex h-max justify-end">
+              <button
+                className="btn"
+                onClick={(e) => {
+                  decrementProduct(e)
+                }}
+              >
+                -
+              </button>
+              <span className="text-xl p-2">{newProductQuantity}</span>
+              <button
+                className="btn"
+                onClick={(e) => {
+                  incrementProduct(e)
+                }}
+              >
+                +
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+
+      <dialog open={isShow} className="h-full w-full fixed top-0 py-20 bg-transparent">
+        <div className="popup">
+          <div className="relative h-8">
+            <button className="btn absolute right-0" onClick={() => setShow(false)}>
+              <X size={24} />
             </button>
           </div>
-        )}
-      </div>
-    </div>
+          <ProductDetails productID={productID} />
+        </div>
+      </dialog>
+    </>
   )
 }
 

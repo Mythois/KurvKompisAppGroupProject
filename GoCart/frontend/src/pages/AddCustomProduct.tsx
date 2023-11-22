@@ -11,9 +11,9 @@ function AddCustomProduct() {
   const [showCategories, setShowCategories] = useState(false)
   const [showNutrition, setShowNutrition] = useState(false)
   const [showOther, setShowOther] = useState(false)
+  const [showModal, setShowModal] = useState(false)
 
   // State variable for modal
-  const [showModal, setShowModal] = useState(false)
   const [modalText, setModalText] = useState('')
 
   // Mutation function to add a custom product to the database

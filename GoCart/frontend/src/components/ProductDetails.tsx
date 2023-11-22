@@ -57,7 +57,9 @@ function ProductDetails({ productID }: ProductDetailsProps) {
     <div className="h-full">
       <h2 className="text-2xl">{product.name}</h2>
       <div className="mt-4 grid sm:grid-cols-2 gap-2 overflow-y-scroll h-5/6">
-        <ProductImage src={product.image} alt={product.name} />
+        <div className="sm:col-span-2">
+          <ProductImage src={product.image} alt={product.name} />
+        </div>
         <div className="p-2">
           <ul>
             <p className="text-xl">Nutrition</p>
@@ -96,7 +98,11 @@ function ProductDetails({ productID }: ProductDetailsProps) {
             <strong>Categories:</strong>
             <ul>
               {product.category ? (
-                product.category.map((categoryproduct, index) => <li key={index}>{categoryproduct.name}</li>)
+                <>
+                  {product.category.map((categoryproduct, index) => (
+                    <li key={index}>{categoryproduct.name}</li>
+                  ))}
+                </>
               ) : (
                 <li>N/A</li>
               )}

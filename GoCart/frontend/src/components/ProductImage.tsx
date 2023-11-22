@@ -13,9 +13,9 @@ function ProductImage({ src, alt }: ProductImageProps) {
 
   productImage.onload = () => {
     if (productImage.width < productImage.height) {
-      setImageWidth('w-1/2')
+      setImageWidth('w-1/2 mx-auto')
     } else {
-      setImageWidth('w-3/4')
+      setImageWidth('w-3/4 mx-auto')
     }
   }
   return (

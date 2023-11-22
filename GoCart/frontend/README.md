@@ -20,6 +20,8 @@
 
 - FilterDropDown: The FilterDropdown component is used to create a filter for products based on categories. It displays a dropdown menu with radio buttons for selecting different categories. When a category is selected, the component triggers a callback function to notify the parent component of the selected category. Props: onCategoryChange (Function, a callback function that will be called when the filter category changes. It should accept a single argument, the selected category).
 
+- DeleteButton: Not yet implemented, but is supposed to be a reusable delete button, for deleting a user made object.
+
 - SortButtons: The SortButtons component provides buttons for sorting products in ascending and descending order. It allows users to toggle between sorting options. When a sorting option is selected, the component triggers callback functions to notify the parent component about the chosen sorting order. Props: onSortAsc (function, a callback function that is called when the ascending sort button is clicked) and onSortDesc (function, a callback function that is called when the descending sort button is clicked).
 
 - Modal: Takes a text string as a prop and displays a simple modal containing this text.
