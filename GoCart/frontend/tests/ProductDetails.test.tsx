@@ -28,6 +28,7 @@ const mockProduct = {
   allergens: [
     {
       display_name: 'Test Allergen',
+      contains: 'YES',
     },
   ],
   description: 'Test Description',
@@ -76,7 +77,7 @@ describe('ProductDetails Component', () => {
     )
 
     await waitFor(() => {
-      expect(screen.getByText('Error: Failed to fetch product details')).toBeTruthy()
+      expect(screen.getByText('Feilmelding: Failed to fetch product details')).toBeTruthy()
     })
   })
 
