@@ -5,6 +5,9 @@ import ProductDetails from '../src/components/ProductDetails'
 import React from 'react'
 import { GET_PRODUCT_BY_ID } from '../src/utils/queryFunctions/getProduct'
 
+// TODO: figure out why the test fails
+// State: failed
+
 const mockProduct = {
   name: 'Test Product',
   nutrition: [

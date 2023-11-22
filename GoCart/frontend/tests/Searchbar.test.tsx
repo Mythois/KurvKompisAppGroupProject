@@ -3,6 +3,8 @@ import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import Searchbar from '../src/components/Searchbar'
 
+// State: Passed
+
 describe('Searchbar Component', () => {
   test('calls onFilter callback with correct value', async ({ expect }) => {
     const mockFilterHandler = vi.fn()
