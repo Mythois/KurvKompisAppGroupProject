@@ -4,12 +4,15 @@ import { MemoryRouter } from 'react-router-dom'
 import ShoppingList from '../src/components/ShoppingList'
 import React from 'react'
 
+// State: Passed
+// TODO: expand
+
 describe('ShoppingList Component Tests', () => {
   test('renders ShoppingList component with title', async () => {
     const title = 'Test Shopping List'
     render(
       <MemoryRouter>
-        <ShoppingList title={title} id="1" />
+        <ShoppingList title={title} />
       </MemoryRouter>,
     )
 

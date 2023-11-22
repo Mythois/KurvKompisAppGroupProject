@@ -3,6 +3,9 @@ import { render, fireEvent } from '@testing-library/react'
 import Product, { ProductProps } from '../src/components/Product'
 import React from 'react'
 
+// TODO: figure out why the test
+// State: Failed
+
 // Mocking the react-router-dom context for testing
 vi.mock('react-router-dom', () => ({
   useNavigate: vi.fn(), // Mocking useNavigate if needed
@@ -37,7 +40,7 @@ describe('Product Component', () => {
     fireEvent.click(incrementButton)
 
     // Get the quantity display element
-    const quantityDisplay = getByText('1') // Update this based on how your quantity is displayed
+    const quantityDisplay = getByText('12') // Update this based on how your quantity is displayed
 
     // Assert that the quantity is incremented by 1
     expect(quantityDisplay.textContent).toBe('1') // Use .textContent to access the text content and perform assertions

@@ -3,6 +3,9 @@ import { render } from '@testing-library/react'
 import ProductList from '../src/components/ProductList'
 import React from 'react'
 
+// TODO: figure out why the test fails
+// State: Failed
+
 // Mock data for testing
 const mockProducts = [
   {

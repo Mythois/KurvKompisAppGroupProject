@@ -3,6 +3,8 @@ import { test, expect, vi, describe } from 'vitest'
 import { render, fireEvent } from '@testing-library/react'
 import FilterDropdown from '../src/components/FilterDropdown'
 
+// State: Passed
+
 describe('FilterDropdown Component', () => {
   test('renders correctly', () => {
     const onCategoryChange = vi.fn()
