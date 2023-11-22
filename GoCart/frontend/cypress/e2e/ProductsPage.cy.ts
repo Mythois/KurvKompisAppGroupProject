@@ -77,6 +77,15 @@ describe('Products Page', () => {
     cy.get('[data-testid="reset-button"]').should('exist')
     cy.get('[data-testid="reset-button"]').click()
     cy.get('[data-testid="close-button"]').click()
-    cy.contains('&Co Superfiber rug, 100g 100 g').should('be.visible')
+    cy.get('[data-testid="productid-654a23d4a609b87c60908e95"]').should('exist')
+  })
+
+  it('show product details', () => {
+    // Check that product exists and click
+    cy.get('[data-testid="productid-654a23d4a609b87c60908e95"]').should('exist')
+    cy.get('[data-testid="productid-654a23d4a609b87c60908e95"]').click()
+    // Check that Nutrition is shown when product is clicked
+    cy.contains('Nutrition').should('be.visible')
+    // TODO add test for close button on popup
   })
 })
