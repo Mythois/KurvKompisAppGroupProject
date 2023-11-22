@@ -1,6 +1,5 @@
 // File containing gql strings used to query data from the database
 
-
 import { gql } from '@apollo/client'
 
 export const SEARCH_PRODUCTS = gql`
@@ -8,6 +7,7 @@ export const SEARCH_PRODUCTS = gql`
     searchProducts(page: $page, perPage: $perPage, category: $category, name: $name, sortDirection: $sortDirection) {
       name
       _id
+      image
     }
   }
 `
@@ -35,6 +35,7 @@ export const GET_PRODUCT_BY_ID = gql`
         contains
       }
       description
+      image
     }
   }
 `

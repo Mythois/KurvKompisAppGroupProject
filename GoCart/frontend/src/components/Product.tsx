@@ -6,11 +6,13 @@ import { useNavigate } from 'react-router-dom'
 
 import { useReactiveVar } from '@apollo/client'
 import { shoppingListProductsVar } from '../utils/reactiveVariables/reactiveVariables'
+import ProductImage from './ProductImage'
 
 // It accepts props for item name, id, productQuantity, increment, decrement, quantity and showQuantityOnly
 export interface ProductProps {
-  productName: string // The name or description of the item
-  productID: string // The id of the item
+  productName: string // The name or description of the product
+  productID: string // The id of the product
+  productImage: string // The image of the product
   productQuantity?: number
   increment?: boolean // Whether to display the increment button
   decrement?: boolean // Whether to display the decrement button
@@ -18,7 +20,7 @@ export interface ProductProps {
   listView?: boolean
 }
 
-function Product({ productName, productID, increment, decrement, quantity, listView }: ProductProps) {
+function Product({ productName, productID, productImage, increment, decrement, quantity, listView }: ProductProps) {
   const [newProductQuantity, setProductQuantity] = useState<number>(0)
   const shoppingListProducts: ProductProps[] = useReactiveVar(shoppingListProductsVar)
   const navigate = useNavigate()
@@ -59,7 +61,7 @@ function Product({ productName, productID, increment, decrement, quantity, listV
       // Product doesn't exist, add to the list with quantity 1
       shoppingListProductsVar([
         ...shoppingListProducts,
-        { productID, productName, productQuantity: newProductQuantity + 1 },
+        { productID, productName, productImage, productQuantity: newProductQuantity + 1 },
       ])
     }
 
@@ -95,29 +97,37 @@ function Product({ productName, productID, increment, decrement, quantity, listV
   }
 
   return (
-    <div className="card flex justify-between" onClick={handleCardClick}>
-      <div className="text-lg font-semibold col-span-2">{productName}</div>
-      {((increment && decrement && quantity) || listView) && (
-        <div className="flex h-max">
-          <button
-            className="btn"
-            onClick={(e) => {
-              decrementProduct(e)
-            }}
-          >
-            -
-          </button>
-          <span className="text-xl p-2">{newProductQuantity}</span>
-          <button
-            className="btn"
-            onClick={(e) => {
-              incrementProduct(e)
-            }}
-          >
-            +
-          </button>
-        </div>
-      )}
+    <div className="card grid grid-cols-2 gap-2" onClick={handleCardClick}>
+      {/* Display the product image */}
+      <div>{!listView && <ProductImage src={productImage} alt={productName} />}</div>
+
+      <div className="flex flex-col justify-between h-full justify-end">
+        {/* Display the product name */}
+        <div className="text-lg font-semibold">{productName}</div>
+
+        {/* Display the product quantity */}
+        {((increment && decrement && quantity) || listView) && (
+          <div className="flex h-max justify-end">
+            <button
+              className="btn"
+              onClick={(e) => {
+                decrementProduct(e)
+              }}
+            >
+              -
+            </button>
+            <span className="text-xl p-2">{newProductQuantity}</span>
+            <button
+              className="btn"
+              onClick={(e) => {
+                incrementProduct(e)
+              }}
+            >
+              +
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   )
 }

@@ -1,7 +1,9 @@
 // ProductDetails Component: Displays details of a product (aka Product)
 
+import { useEffect, useState } from 'react'
 import { GET_PRODUCT_BY_ID } from '../utils/queryFunctions/getProduct'
 import { useQuery } from '@apollo/client'
+import ProductImage from './ProductImage'
 
 interface ProductDetailsProps {
   productID: string // The name of the food product to display
@@ -29,6 +31,7 @@ interface Product {
     contains: string
   }[]
   description: string
+  image: string
 }
 
 function ProductDetails({ productID }: ProductDetailsProps) {
@@ -51,9 +54,10 @@ function ProductDetails({ productID }: ProductDetailsProps) {
   }
 
   return (
-    <div>
+    <div className="h-full">
       <h2 className="text-2xl">{product.name}</h2>
-      <div className="mt-4 grid sm:grid-cols-2 gap-2">
+      <div className="mt-4 grid sm:grid-cols-2 gap-2 overflow-y-scroll h-5/6">
+        <ProductImage src={product.image} alt={product.name} />
         <div className="p-2">
           <ul>
             <p className="text-xl">Nutrition</p>

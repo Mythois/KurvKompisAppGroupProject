@@ -10,7 +10,7 @@ function ProductDetailsPage() {
   const productName = paramID as string
 
   return (
-    <div>
+    <div className="h-full">
       <ProductDetails productID={productName} />
     </div>
   )
