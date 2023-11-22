@@ -12,6 +12,7 @@ describe('Product Component', () => {
   const sampleProduct: ProductProps = {
     productName: 'Sample Product',
     productID: '123',
+    productImage: '',
     increment: true,
     decrement: true,
     quantity: true,

@@ -18,7 +18,7 @@ describe('FilterDropdown Component', () => {
     const filterButton = getByText('Filter')
     fireEvent.click(filterButton)
 
-    const closeButton = getByText('Close')
+    const closeButton = getByText('Nullstill')
     expect(closeButton).toBeDefined()
 
     fireEvent.click(closeButton)
@@ -27,10 +27,6 @@ describe('FilterDropdown Component', () => {
     expect(filterButtonAfterClose).toBeDefined()
   })
 
-  //   test('calls onCategoryChange when "Fruit & Vegetables" is selected', () => {
-  //     // Missing test
-  //   })
-
   test('resets selected category on Reset button click', () => {
     const onCategoryChange = vi.fn()
     const { getByText } = render(<FilterDropdown onCategoryChange={onCategoryChange} />)
@@ -38,7 +34,7 @@ describe('FilterDropdown Component', () => {
     const filterButton = getByText('Filter')
     fireEvent.click(filterButton)
 
-    const resetButton = getByText('Reset')
+    const resetButton = getByText('Nullstill')
     fireEvent.click(resetButton)
 
     expect(onCategoryChange).toHaveBeenCalledWith('')

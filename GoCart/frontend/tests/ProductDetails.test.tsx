@@ -65,7 +65,7 @@ describe('ProductDetails Component', () => {
       </MockedProvider>,
     )
 
-    expect(screen.getByText('Loading...')).toBeTruthy()
+    expect(screen.getByText('Laster...')).toBeTruthy()
   })
 
   test('renders error state', async () => {
@@ -91,17 +91,17 @@ describe('ProductDetails Component', () => {
       expect(screen.getByText('Test Product')).toBeTruthy()
       expect(screen.getByText('Test Nutrition:')).toBeTruthy()
       expect(screen.getByText('10 g')).toBeTruthy()
-      expect(screen.getByText('Store:')).toBeTruthy()
+      expect(screen.getByText('Butikk:')).toBeTruthy()
       expect(screen.getByText('Test Store')).toBeTruthy()
-      expect(screen.getByText('Vendor:')).toBeTruthy()
+      expect(screen.getByText('Forhandler:')).toBeTruthy()
       expect(screen.getByText('Test Vendor')).toBeTruthy()
-      expect(screen.getByText('Weight:')).toBeTruthy()
+      expect(screen.getByText('Vekt:')).toBeTruthy()
       expect(screen.getByText('100 kg')).toBeTruthy()
-      expect(screen.getByText('Categories:')).toBeTruthy()
+      expect(screen.getByText('Kategorier:')).toBeTruthy()
       expect(screen.getByText('Test Category')).toBeTruthy()
-      expect(screen.getByText('Allergens:')).toBeTruthy()
+      expect(screen.getByText('Allergener:')).toBeTruthy()
       expect(screen.getByText('Test Allergen')).toBeTruthy()
-      expect(screen.getByText('Description')).toBeTruthy()
+      expect(screen.getByText('Beskrivelse')).toBeTruthy()
       expect(screen.getByText('Test Description')).toBeTruthy()
     })
   })

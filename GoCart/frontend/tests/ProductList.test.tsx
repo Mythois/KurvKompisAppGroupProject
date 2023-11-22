@@ -8,6 +8,7 @@ const mockProducts = [
   {
     productName: 'Product 1',
     productID: '1',
+    productImage: '',
     productQuantity: 5,
     increment: true,
     decrement: true,

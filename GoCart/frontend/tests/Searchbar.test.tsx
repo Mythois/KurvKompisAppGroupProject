@@ -9,7 +9,7 @@ describe('Searchbar Component', () => {
 
     const { getByPlaceholderText } = render(<Searchbar onFilter={mockFilterHandler} />)
 
-    const searchInput = getByPlaceholderText('Search...')
+    const searchInput = getByPlaceholderText('Søk...')
     fireEvent.change(searchInput, { target: { value: 'Test' } })
 
     expect(mockFilterHandler).toHaveBeenCalledWith('Test')
@@ -20,7 +20,7 @@ describe('Searchbar Component', () => {
 
     const { getByPlaceholderText } = render(<Searchbar onFilter={mockFilterHandler} />)
 
-    const searchInput = getByPlaceholderText('Search...')
+    const searchInput = getByPlaceholderText('Søk...')
     fireEvent.change(searchInput, { target: { value: 'Test' } })
     fireEvent.change(searchInput, { target: { value: '' } })
 
@@ -32,7 +32,7 @@ describe('Searchbar Component', () => {
 
     const { getByPlaceholderText } = render(<Searchbar onFilter={mockFilterHandler} />)
 
-    const searchInput = getByPlaceholderText('Search...')
+    const searchInput = getByPlaceholderText('Søk...')
     fireEvent.change(searchInput, { target: { value: 'Apple' } })
 
     expect(mockFilterHandler).toHaveBeenCalledWith('Apple')
