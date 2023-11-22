@@ -97,37 +97,37 @@ function Product({ productName, productID, productImage, increment, decrement, q
   }
 
   return (
-    <div className="card flex justify-between" onClick={handleCardClick}>
-      <div className="grid gap-2">
+    <div className="card grid grid-cols-2 gap-2" onClick={handleCardClick}>
+      {/* Display the product image */}
+      <div>{!listView && <ProductImage src={productImage} alt={productName} />}</div>
+
+      <div className="flex flex-col justify-between h-full justify-end">
         {/* Display the product name */}
-        <div className="text-lg font-semibold col-span-2">{productName}</div>
-        {/* Display the product image */}
-        <div className={`${listView ? '' : 'col-span-2'}`}>
-          {!listView && <ProductImage src={productImage} alt={productName} />}
-        </div>
+        <div className="text-lg font-semibold">{productName}</div>
+
+        {/* Display the product quantity */}
+        {((increment && decrement && quantity) || listView) && (
+          <div className="flex h-max justify-end">
+            <button
+              className="btn"
+              onClick={(e) => {
+                decrementProduct(e)
+              }}
+            >
+              -
+            </button>
+            <span className="text-xl p-2">{newProductQuantity}</span>
+            <button
+              className="btn"
+              onClick={(e) => {
+                incrementProduct(e)
+              }}
+            >
+              +
+            </button>
+          </div>
+        )}
       </div>
-      {/* Display the product quantity */}
-      {((increment && decrement && quantity) || listView) && (
-        <div className="flex h-max">
-          <button
-            className="btn"
-            onClick={(e) => {
-              decrementProduct(e)
-            }}
-          >
-            -
-          </button>
-          <span className="text-xl p-2">{newProductQuantity}</span>
-          <button
-            className="btn"
-            onClick={(e) => {
-              incrementProduct(e)
-            }}
-          >
-            +
-          </button>
-        </div>
-      )}
     </div>
   )
 }
