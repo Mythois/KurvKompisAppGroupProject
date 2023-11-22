@@ -14,7 +14,7 @@
 
 # Project 2
 
-We have made a shopping list app, where the user can make their own shopping lists based on an item register, where items represent groceries. The main functionality of this app is making customized shopping lists, to make the everyday shopping easier. The user will have a register of items to choose from, and may also add items to this register as they wish. The user will also have the opportunity to read details about each item.
+We have made a shopping list app, where the user can make their own shopping list based on a product register, where products represent groceries. The main functionality of this app is making a customized shopping list, to make the everyday shopping easier. The user will have a register of products to choose from, and may also add products to this register as they wish. The user will also have the opportunity to read details about each product.
 
 ## Building and Running the Project
 
@@ -99,11 +99,16 @@ This project uses the [npm](https://www.npmjs.com/) package manager.
 
 The app is structured in such a way that the various parts of the website are organized into their own folders within common directories with similar elements, as follows:
 
+- "backend", including every element of the backend:
+  - The "models" directory contains type definitions (typeDefs) using GraphQL schema syntax that define the structure of the data models used in the application. These models include types such as Product, Category, Store, PriceHistory, Allergen, Nutrition, Label, and corresponding input types used for mutations.
+  - The "resolvers.js" file contains resolver functions that define how the GraphQL queries and mutations defined in the type definitions (typeDefs) are resolved. Resolvers interact with the database (MongoDB) to retrieve, manipulate, or modify data based on the incoming GraphQL operations.
+  - The "index.js" file is the entry point for the backend application. It sets up the Apollo Server using the provided typeDefs, resolvers, and connects to a MongoDB database using Mongoose. It also starts the server to listen for incoming requests.
+
 - "frontend", including every element of the frontend:
-  - The different pages are grouped under "pages."
-  - The various components that make up the different pages are located under "components."
-  - The different tools used to assist in various parts are located under "utils."
-  - Icons are located under "assets."
+  - The different pages are grouped under "pages".
+  - The various components that are used in different pages are located under "components".
+  - The different tools used to assist in various parts are located under "utils".
+  - Icons are located under "assets".
 
 The actual app is under "project_2/frontend/src/App.tsx."
 
@@ -111,34 +116,38 @@ The actual app is under "project_2/frontend/src/App.tsx."
 
 Search functionality, e.g., through a dialog/form/search field for search input
 
-- We have implemented a "Searchbar" component, which updates the displayed shopping items while writing so that the items matches the search input.
+- We have implemented a "Searchbar" component, which updates the displayed products while writing so that the products matches the search input. We have chosen to implement this functionality in a way that the search is made based on whether or not the product contains the sequence of letters that are searched for. This makes it easier for users to search for products even though they might not remember the full name.
 
 List-based presentation of searches with provisions for handling large result sets, either by paging through them or dynamically loading more results through scrolling.
 
-- The ItemRegister page shows a list-based presentation of possible shopping items depending on the input of the search field. Large result sets are handled by dynamically loading more items if the user choose to, by clicking "show more" or "show less".
+- The ProductRegister page shows a list-based presentation of possible shopping products depending on the input of the search field. Large result sets are handled by dynamically loading more products if the user choose to, by clicking "show more" or "show less".
 
 The ability to view more details about each object.
 
-- By clicking on an item in the list one will be sent to a page showing more information about the selected item, gathered from the database.
+- By clicking on a product in the list one will be sent to a page showing more information about the selected product, gathered from the database.
 
 Sorting and filtering options for the result set (note that sorting and filtering should be applied to the entire result set, not just what happens to be loaded on the client).
 
-- We have implemented filtering based on the categories of the items in the database, where the filtering is applied to the entire result set, and shown on the page as the category changes.
+- We have implemented filtering based on the categories of the products in the database, where the filtering is applied to the entire result set, and shown on the page as the category changes. We have chosen to only allow selecting one category, this is due to the users ability to sort and search as well as filter, and we did not see the need to be able to filter for several categories on the same time.
 - We have implemented sorting options in an alphabetic order or reversed alphabetic order, where the alphabetic order is default. This is also applied to the entire result set, and displayed on the screen in the chosen order.
 
 Inclusion of some form of user-generated data that should be stored persistently on the database server and presented (either user-added information, reviews, ratings, search history, or other data like a shopping list).
 
-- The user will be able to add shopping items to the item register, but this is yet to be implemented.
+- The user is able to add custom products to the product register. Our system handles user-generated data by integrating GraphQL mutations and MongoDB database operations to ensure the persistent storage of user inputs. Inside our resolvers we utilize the addCustomProduct mutation, which receives user input (ProductInput) and inserts new products into the database. The resolver validates the input and performs the insertion operation, ensuring that user-generated product data is stored persistently. The AddCustomProduct component in the frontend facilitates user interaction by providing input fields for various product details. It interacts with the Apollo Client to execute the ADD_CUSTOM_PRODUCT mutation, passing the user-entered data to the backend.
 
 The solution should demonstrate aspects of universal design and web accessibility.
 
 - The website is designed to change the layout of the page based on the size of the user device.
-- On desktop the home page will have a double view showing one component on the left side and one component on the right side. If the screen turns small enough (about phone size) the page will be split into two different pages.
 - If the screen turns small phone sized a footer will appear.
 
 The solution should demonstrate aspects of sustainable web development through design choices.
 
-- Yet to be discussed within the team.
+- We have opted to implement dark mode and set it as the default, as darker colors often require less power for screen lighting, making the page more energy-efficient.
+- By displaying a significant amount of information (e.g., product details when clicked) in a pop-up rather than on a separate page, we reduce the number of page switches and minimize reloads, as product pages don't need to be reloaded when navigating back.
+- We've removed the "show more" button on product pages when there are no additional products to display. This not only streamlines the user experience but also prevents unnecessary database queries.
+
+- -------------------- THIS AIN'T RIGHT ANYMORE----------------We've contemplated adding pictures to the products. However, this could potentially make the page less sustainable, considering that images generally consume more power to load. The impact on sustainability depends on the picture format. Despite this, we've evaluated its effect on user experience and concluded that it's worth the extra cost, as long as we ensure that only essential pictures are loaded.
+- We've also chosen to maintain a somewhat minimal page design, reducing the number of elements that need to be rendered on the page.
 
 Good design, sensible choices, and solutions that align with the type of data you choose.
 
@@ -152,7 +161,7 @@ The user interface should be based on React and programmed in TypeScript. The pr
 
 Use of state management, for example, redux, mobx, recoil, apollo local state management, etc.
 
-- Yet to be implemented, but we are planning on implementing this for created shopping lists.
+- Our application incorporates Apollo Client's reactive variables (ReactiveVar) to manage local state, specifically focusing on maintaining a shopping list's state within the client-side environment. We initiate a reactive variable named shoppingListProductsVar using makeVar() from @apollo/client. This variable encapsulates an array representing the shopping list, retrieving the initial state either from local storage or defaulting to an empty array if no prior state exists (happens within the reactiveVariables under utils in the frontend). The Product component utilizes useState to manage the local state of newProductQuantity, representing the quantity of a specific product within the component and retrieves the shopping list from the reactive variable using useReactiveVar hook to reflect any changes in the shopping list. When a user increments or decrements the product quantity, the component updates the newProductQuantity state and interacts with the reactive variable (shoppingListProductsVar) accordingly. Upon modifying the shopping list in the reactive variable, the component updates the local storage to persist the changes, ensuring that the shopping list state persists across sessions.
 
 A custom/developer GraphQL backend, with the freedom to choose the type of database server on the backend, but the project should use a backend database set up by the group.
 
@@ -166,15 +175,10 @@ Use of good and relevant components and libraries (freedom to choose, and we enc
 
 The test are set up using vitest and should be covering both frontend and backend.
 
-- Yet to be implemented.
+- Component tests: WRITE STUFF HERE
+- E2E testing: WRITE STUFF HERE
 
 ## Future Work
-
-- Our plan includes:
-  - Implementing functionality for adding items to the database.
-  - Implementing functionality for adding items to a shoppingList.
-  - Switching from the use of local storage to local state management.
-  - Implementing darkmode and other styling choices should be smoother.
-  - Implementing functionality for deleting items you have added to the database.
-  - Making the website accesible.
-  - Setting up tests.
+If we were to continue working on this project, these are some parts we would considering implementing:
+  - Implementing functionality for deleting products you have added to the database. This could be a good implementation, although we have chosen to let the managing of the data be done by the developers for now.
+  - Enable multiple categories in filtering function. This could be done so that people can narrow the searchf or a product down even more, although we do not see the need for this as we already have plenty of options for finding your desired product.

@@ -35,10 +35,20 @@ function SortButtons(props: SortButtonsProps) {
     <div>
       {/* Sort buttons */}
       <div className={'flex gap-2'}>
-        <button className={isAscClicked ? 'btnClicked' : 'btn'} onClick={handleAscClick}>
+        <button
+          aria-label="Sort on ascending"
+          className={isAscClicked ? 'btnClicked' : 'btn'}
+          onClick={handleAscClick}
+          data-testid="sort-asc-button"
+        >
           <ArrowDownAZ size={30} />
         </button>
-        <button className={!isAscClicked ? 'btnClicked' : 'btn'} onClick={handleDescClick}>
+        <button
+          aria-label="Sort on decending"
+          className={!isAscClicked ? 'btnClicked' : 'btn'}
+          onClick={handleDescClick}
+          data-testid="sort-des-button"
+        >
           <ArrowUpZA size={30} />
         </button>
       </div>
