@@ -13,7 +13,7 @@ describe('Products Page', () => {
     cy.get('[data-testid="product-list"]').should('be.visible')
 
     // Verify that a specific product is in the list
-    cy.contains('Kylling Vingeklubb Grillet 500g Prior').should('be.visible')
+    cy.contains('Couscous Kylling 8mnd 190g Nestle').should('be.visible')
   })
 
   it('can move to adding products to the register', () => {
@@ -76,6 +76,7 @@ describe('Products Page', () => {
     cy.get('[data-testid="filter-button"]').click()
     cy.get('[data-testid="reset-button"]').should('exist')
     cy.get('[data-testid="reset-button"]').click()
+    cy.get('[data-testid="close-button"]').click()
     cy.contains('&Co Superfiber rug, 100g 100 g').should('be.visible')
   })
 })

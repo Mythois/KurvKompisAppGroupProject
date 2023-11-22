@@ -117,7 +117,7 @@ function ProductsPage({ editable }: ProductsPageProps) {
         )}
         {editable && (
           <Link to={'/'}>
-            <button className="btn flex">
+            <button className="btn flex" data-testid="back-to-shopping-list-button">
               <ArrowLeft />
               <p className="hidden sm:block">Back to shopping list</p>
             </button>

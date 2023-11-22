@@ -97,7 +97,11 @@ function Product({ productName, productID, productImage, increment, decrement, q
   }
 
   return (
-    <div className={`card  ${listView ? 'grid' : 'grid grid-cols-2'} gap-2`} onClick={handleCardClick}>
+    <div
+      className={`card  ${listView ? 'grid' : 'grid grid-cols-2'} gap-2`}
+      onClick={handleCardClick}
+      data-testid={`productid-${productID}`}
+    >
       {/* Display the product image */}
       <div>{!listView && <ProductImage src={productImage} alt={productName} />}</div>
 
@@ -109,6 +113,7 @@ function Product({ productName, productID, productImage, increment, decrement, q
         {((increment && decrement && quantity) || listView) && (
           <div className="flex h-max justify-end">
             <button
+              data-testid={`decrement-button-${productID}`}
               className="btn"
               onClick={(e) => {
                 decrementProduct(e)
@@ -116,8 +121,11 @@ function Product({ productName, productID, productImage, increment, decrement, q
             >
               -
             </button>
-            <span className="text-xl p-2">{newProductQuantity}</span>
+            <span className="text-xl p-2" data-testid={`quantity-${productID}`}>
+              {newProductQuantity}
+            </span>
             <button
+              data-testid={`increment-button-${productID}`}
               className="btn"
               onClick={(e) => {
                 incrementProduct(e)

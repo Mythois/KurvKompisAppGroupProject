@@ -32,7 +32,9 @@ function ShoppingList({ title }: ShoppingListProps) {
       </div>
       <div className="flex justify-center">
         <Link to={'/Addproduct'}>
-          <button className="btn">Legg til produkter</button>
+          <button className="btn" data-testid="add-products-button">
+            Legg til produkter
+          </button>
         </Link>
       </div>
     </div>
