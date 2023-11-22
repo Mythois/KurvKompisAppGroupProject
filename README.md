@@ -100,6 +100,7 @@ This project uses the [npm](https://www.npmjs.com/) package manager.
 The app is structured in such a way that the various parts of the website are organized into their own folders within common directories with similar elements, as follows:
 
 - "backend", including every element of the backend:
+
   - The "models" directory contains type definitions (typeDefs) using GraphQL schema syntax that define the structure of the data models used in the application. These models include types such as Product, Category, Store, PriceHistory, Allergen, Nutrition, Label, and corresponding input types used for mutations.
   - The "resolvers.js" file contains resolver functions that define how the GraphQL queries and mutations defined in the type definitions (typeDefs) are resolved. Resolvers interact with the database (MongoDB) to retrieve, manipulate, or modify data based on the incoming GraphQL operations.
   - The "index.js" file is the entry point for the backend application. It sets up the Apollo Server using the provided typeDefs, resolvers, and connects to a MongoDB database using Mongoose. It also starts the server to listen for incoming requests.
@@ -176,12 +177,17 @@ Use of good and relevant components and libraries (freedom to choose, and we enc
 The test are set up using vitest and should be covering both frontend and backend.
 
 You can run the component tests by running: npm run test (from the frontend folder)
+
 - Component tests: The component tests utilize vitest, a testing framework for React components. These tests focus on the functionalities of individual components, ensuring they perform as expected.
 
-You can run the E2E tests by running: npx cypress open from GoCart/frontend/
-- E2E testing: The E2E tests employ Cypress, a testing framework for end-to-end testing of web applications. These tests cover the functionality of the application from a user's perspective, interacting with the UI elements as a real user would. The tests in the end-to-end testing cover the requirements we've set through the user stories for the website's functionality. Also tests covering each page are made.
+You can run the E2E tests by running: `npx cypress open` from GoCart/frontend/
+
+- E2E testing: The E2E tests employ Cypress, a testing framework for end-to-end testing of web applications. These tests cover the functionality of the application from a user's perspective, interacting with the UI elements as a real user would. The tests in the end-to-end testing cover the requirements we've set through the user stories for the website's functionality. Also the tests are made covering a page.
 
 ## Future Work
+
 If we were to continue working on this project, these are some parts we would considering implementing:
-  - Implementing functionality for deleting products you have added to the database. This could be a good implementation, although we have chosen to let the managing of the data be done by the developers for now.
-  - Enable multiple categories in filtering function. This could be done so that people can narrow the searchf or a product down even more, although we do not see the need for this as we already have plenty of options for finding your desired product.
+
+- Implementing functionality for deleting products you have added to the database. This could be a good implementation, although we have chosen to let the managing of the data be done by the developers for now.
+- Enable multiple categories in filtering function. This could be done so that people can narrow the searchf or a product down even more, although we do not see the need for this as we already have plenty of options for finding your desired product.
+- Extend test to cover more of the components and the apps functionallity.
