@@ -97,11 +97,11 @@ function Product({ productName, productID, productImage, increment, decrement, q
   }
 
   return (
-    <div className="card grid grid-cols-2 gap-2" onClick={handleCardClick}>
+    <div className={`card  ${listView ? 'grid' : 'grid grid-cols-2'} gap-2`} onClick={handleCardClick}>
       {/* Display the product image */}
       <div>{!listView && <ProductImage src={productImage} alt={productName} />}</div>
 
-      <div className="flex flex-col justify-between h-full justify-end">
+      <div className={`flex justify-between h-full ${listView ? '' : 'flex-col justify-end'}`}>
         {/* Display the product name */}
         <div className="text-lg font-semibold">{productName}</div>
 
