@@ -115,37 +115,50 @@ const handleSearch = (input: string) => {
 
   }
 
-  // Handle ascending sort
-  const handleSortAsc = () => {
-    fetchMore({
-      variables:{ 
-        page: page, 
-        perPage: perPage,
-        category: selectedCategory,
-        name: filter,
-        sortDirection: 'asc' }
-    }).then(({data}) =>{
-      setSortDirection('asc')
-      setProducts(data.searchProducts)
-      setShowMoreBtn(true)
-    })
-  }
+// Handle ascending sort
+const handleSortAsc = () => {
+  const variables = {
+    page: 1,
+    perPage: perPage,
+    category: selectedCategory,
+    name: filter,
+    sortDirection: 'asc',
+  };
 
-  // Handle descending sort
-  const handleSortDesc = () => {
-    fetchMore({
-      variables:{ 
-        page: page, 
-        perPage: perPage,
-        category: selectedCategory,
-        name: filter,
-        sortDirection: 'desc' }
-    }).then(({data}) =>{
-      setSortDirection('desc')
-      setProducts(data.searchProducts)
-      setShowMoreBtn(true)
+  fetchMore({ variables })
+    .then(({ data }) => {
+      setSortDirection('asc');
+      setProducts(data.searchProducts);
+      setPage(1);
+      setShowMoreBtn(true);
     })
-  }
+    .catch((error) => {
+      console.log("Error sorting:", error);
+    });
+};
+
+// Handle descending sort
+const handleSortDesc = () => {
+  const variables = {
+    page: 1,
+    perPage: perPage,
+    category: selectedCategory,
+    name: filter,
+    sortDirection: 'desc',
+  };
+
+  fetchMore({ variables })
+    .then(({ data }) => {
+      setSortDirection('desc');
+      setProducts(data.searchProducts);
+      setPage(1);
+      setShowMoreBtn(true);
+    })
+    .catch((error) => {
+      console.log("Error sorting:", error);
+    });
+};
+
 
   // Fetch product data from GraphQL using Apollo Client
   const { loading, error, data, fetchMore, refetch } = useQuery(SEARCH_PRODUCTS, {
