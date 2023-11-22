@@ -117,7 +117,7 @@ The actual app is under "project_2/frontend/src/App.tsx."
 
 Search functionality, e.g., through a dialog/form/search field for search input
 
-- We have implemented a "Searchbar" component, which updates the displayed products while writing so that the products matches the search input. We have chosen to implement this functionality in a way that the search is made based on whether or not the product contains the sequence of letters that are searched for. This makes it easier for users to search for products even though they might not remember the full name.
+- We have implemented a "Searchbar" component, which updates the displayed products by doing a query 500ms after the user stops writing, so that the products matches the search input consequently. We have chosen to implement this functionality in a way that the search is made based on whether or not the product contains the sequence of letters that are searched for. This makes it easier for users to search for products even though they might not remember the full name.
 
 List-based presentation of searches with provisions for handling large result sets, either by paging through them or dynamically loading more results through scrolling.
 
@@ -176,7 +176,7 @@ Use of good and relevant components and libraries (freedom to choose, and we enc
 
 The test are set up using vitest and should be covering both frontend and backend.
 
-You can run the component tests by running: npm run test (from the frontend folder)
+You can run the component tests by running: `npm run test` from GoCart/frontend/
 
 - Component tests: The component tests utilize vitest, a testing framework for React components. These tests focus on the functionalities of individual components, ensuring they perform as expected.
 
