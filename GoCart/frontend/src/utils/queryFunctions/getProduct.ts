@@ -1,6 +1,5 @@
 // File containing gql strings used to query data from the database
 
-
 import { gql } from '@apollo/client'
 
 export const SEARCH_PRODUCTS = gql`
@@ -36,6 +35,7 @@ export const GET_PRODUCT_BY_ID = gql`
         contains
       }
       description
+      image
     }
   }
 `

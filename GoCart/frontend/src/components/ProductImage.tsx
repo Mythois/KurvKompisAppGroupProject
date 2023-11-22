@@ -11,6 +11,8 @@ function ProductImage({ src, alt }: ProductImageProps) {
   const productImage = new Image()
   productImage.src = src
 
+  // TODO: compress image before rendering
+
   productImage.onload = () => {
     if (productImage.width < productImage.height) {
       setImageWidth('w-1/3')
