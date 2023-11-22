@@ -58,111 +58,111 @@ function FilterDropdown({ onCategoryChange }: FilterDropdownProps) {
                 type="radio"
                 className="radio"
                 name="category"
-                value="Fruit & Vegetables"
-                checked={selectedCategory === 'Fruit & Vegetables'}
+                value="Frukt & grønt"
+                checked={selectedCategory === 'Frukt & grønt'}
                 onChange={handleCategoryChange}
                 data-testid="fruite-and-vegies"
               />
-              <label>Fruit & Vegetables</label>
+              <label>Frukt & grønt</label>
             </div>
             <div>
               <input
                 type="radio"
                 className="radio"
                 name="category"
-                value="Fish & Seafood"
-                checked={selectedCategory === 'Fish & Seafood'}
+                value="Fisk & skalldyr"
+                checked={selectedCategory === 'Fisk & skalldyr'}
                 onChange={handleCategoryChange}
               />
-              <label>Fish & Seafood</label>
+              <label>Fisk & skalldyr</label>
             </div>
             <div>
               <input
                 type="radio"
                 className="radio"
                 name="category"
-                value="Beverages"
-                checked={selectedCategory === 'Beverages'}
+                value="Drikke"
+                checked={selectedCategory === 'Drikke'}
                 onChange={handleCategoryChange}
               />
-              <label>Beverages</label>
+              <label>Drikke</label>
             </div>
             <div>
               <input
                 type="radio"
                 className="radio"
                 name="category"
-                value="Baked Goods and Biscuits"
-                checked={selectedCategory === 'Baked Goods and Biscuits'}
+                value="Bakevarer og kjeks"
+                checked={selectedCategory === 'Bakevarer og kjeks'}
                 onChange={handleCategoryChange}
               />
-              <label>Baked Goods and Biscuits</label>
+              <label>Bakevarer og kjeks</label>
             </div>
             <div>
               <input
                 type="radio"
                 className="radio"
                 name="category"
-                value="Meat"
-                checked={selectedCategory === 'Meat'}
+                value="Kjøtt"
+                checked={selectedCategory === 'Kjøtt'}
                 onChange={handleCategoryChange}
               />
-              <label>Meat</label>
+              <label>Kjøtt</label>
             </div>
             <div>
               <input
                 type="radio"
                 className="radio"
                 name="category"
-                value="Chicken & Poultry"
-                checked={selectedCategory === 'Chicken & Poultry'}
+                value="Kylling og fjærkre"
+                checked={selectedCategory === 'Kylling og fjærkre'}
                 onChange={handleCategoryChange}
               />
-              <label>Chicken & Poultry</label>
+              <label>Kylling og fjærkre</label>
             </div>
             <div>
               <input
                 type="radio"
                 className="radio"
                 name="category"
-                value="Dairy & Eggs"
-                checked={selectedCategory === 'Dairy & Eggs'}
+                value="Meieri & egg"
+                checked={selectedCategory === 'Meieri & egg'}
                 onChange={handleCategoryChange}
               />
-              <label>Dairy & Eggs</label>
+              <label>Meieri & egg</label>
             </div>
             <div>
               <input
                 type="radio"
                 className="radio"
                 name="category"
-                value="Snacks & Sweets"
-                checked={selectedCategory === 'Snacks & Sweets'}
+                value="Snacks & godteri"
+                checked={selectedCategory === 'Snacks & godteri'}
                 onChange={handleCategoryChange}
               />
-              <label>Snacks & Sweets</label>
+              <label>Snacks & godteri</label>
             </div>
             <div>
               <input
                 type="radio"
                 className="radio"
                 name="category"
-                value="Cheese"
-                checked={selectedCategory === 'Cheese'}
+                value="Ost"
+                checked={selectedCategory === 'Ost'}
                 onChange={handleCategoryChange}
               />
-              <label>Cheese</label>
+              <label>Ost</label>
             </div>
             <div>
               <input
                 type="radio"
                 className="radio"
                 name="category"
-                value="Spread & Breakfast"
-                checked={selectedCategory === 'Spread & Breakfast'}
+                value="Pålegg & frokost"
+                checked={selectedCategory === 'Pålegg & frokost'}
                 onChange={handleCategoryChange}
               />
-              <label>Spread & Breakfast</label>
+              <label>Pålegg & frokost</label>
             </div>
           </div>
         </div>

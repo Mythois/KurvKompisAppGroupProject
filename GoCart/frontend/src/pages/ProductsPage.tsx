@@ -34,23 +34,6 @@ function ProductsPage({ editable }: ProductsPageProps) {
   const [perPage, setPerPage] = useState(40) // Used for pagination to allow for more Products to be displayed on a page
   const [showMoreBtn, setShowMoreBtn] = useState(true) // Control visibility of showMoreBtn
   const [products, setProducts] = useState<Product[]>([]);
-  console.log(page)
-  console.log(perPage)
-
-  // Translations for category names
-  const categoryTranslations: { [key: string]: string } = {
-    'Fruit & Vegetables': 'Frukt & grønt',
-    'Fish & Seafood': 'Fisk & skalldyr',
-    Beverages: 'Drikke',
-    'Baked Goods and Biscuits': 'Bakevarer og kjeks',
-    Meat: 'Kjøtt',
-    'Chicken & Poultry': 'Kylling og fjærkre',
-    'Dairy & Eggs': 'Meieri & egg',
-    'Snacks & Sweets': 'Snacks & godteri',
-    Cheese: 'Ost',
-    'Spread & Breakfast': 'Pålegg & frokost',
-  }
-
 
 // Hande search
 const handleSearch = (input: string) => {
@@ -93,18 +76,17 @@ const handleSearch = (input: string) => {
 
   // Handle category change
   const handleCategoryChange = (category: string) => {
-    const translatedCategory = categoryTranslations[category] || category
     fetchMore({
       variables:{ 
         page: 1, 
         perPage: 40,
-        category: translatedCategory,
+        category: category,
         name: filter,
         sortDirection: sortDirection }
     }).then(({data}) =>{
       // Check whether there is more data to load
       const newProducts: Product[] = data.searchProducts
-      setSelectedCategory(translatedCategory)
+      setSelectedCategory(category)
       setPage(1)
       setPerPage(40)
       setProducts(newProducts)
@@ -182,16 +164,15 @@ const handleSortDesc = () => {
   }, []);
 
   if (loading) {
-    console.log("loading")
-    return <div>Loading...</div>;
+    return <div>Laster...</div>;
   }
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    return <div>Feilmelding: {error.message}</div>;
   }
 
   if (!data) {
-    return <div>Data is undefined</div>;
+    return <div>Data er udefinert</div>;
   }
 
   const loadMoreProduct = () => {
@@ -287,7 +268,7 @@ const handleSortDesc = () => {
       {/* Render the productList component with the extracted product names */}
       <div className="h-full overflow-y-scroll mt-4 mb-4">
         {loading ? (
-          <div>Loading...</div>
+          <div>Laster...</div>
         )  : (
           <ProductList listView={false} products={productPropsList} />
         )}
@@ -297,7 +278,7 @@ const handleSortDesc = () => {
         {!editable && (
           <Link to={'/AddCustomProduct'}>
             <button className="btn" data-testid="add-product-to-register">
-              Add product to database
+              Legg til produkt i databasen
             </button>
           </Link>
         )}
@@ -305,7 +286,7 @@ const handleSortDesc = () => {
           <Link to={'/'}>
             <button className="btn flex" data-testid="back-to-shopping-list-button">
               <ArrowLeft />
-              <p className="hidden sm:block">Back to shopping list</p>
+              <p className="hidden sm:block">Tilbake til handlelisten</p>
             </button>
           </Link>
         )}
@@ -315,13 +296,13 @@ const handleSortDesc = () => {
             onClick={() => loadMoreProduct()}
           >
             <ChevronDown />
-            <p className="hidden sm:block">Show more</p>
+            <p className="hidden sm:block">Vis mer</p>
           </button>
           <button
             className={`btn flex ${productPropsList.length === 40 && 'hidden'}`}
             onClick={() => showLess()}
           >
-            <p className="hidden sm:block">Show less</p>
+            <p className="hidden sm:block">Vis mindre</p>
             <ChevronUp />
           </button>
         </div>

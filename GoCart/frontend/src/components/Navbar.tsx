@@ -22,10 +22,10 @@ function Navbar({ title }: NavbarProps) {
         <div className="flex text-white text-lg justify-between gap-8 font-semibold py-2">
           <div className="py-1 hidden sm:flex gap-8">
             <Link className="hover:underline" to={'/'}>
-              Home
+              Hjem
             </Link>
             <Link className="hover:underline" to={'/ProductsPage'}>
-              Products
+              Produkter
             </Link>
           </div>
           <ModeToggleBtn /> {/* This is the dark mode toggle button */}
@@ -33,10 +33,10 @@ function Navbar({ title }: NavbarProps) {
       </nav>
       <footer className="sm:hidden fixed bottom-0 w-screen h-14 bg-primary grid grid-flow-col justify-items-center">
         <Link to="/">
-          <img src={HomeIcon} className="h-12 pt-2" alt="Home" />
+          <img src={HomeIcon} className="h-12 pt-2" alt="Hjem" />
         </Link>
         <Link to="/ProductsPage">
-          <img src={BrowseIcon} className="h-12 pt-2" alt="Products" />
+          <img src={BrowseIcon} className="h-12 pt-2" alt="Produkter" />
         </Link>
       </footer>
     </>

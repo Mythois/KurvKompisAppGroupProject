@@ -40,17 +40,17 @@ function ProductDetails({ productID }: ProductDetailsProps) {
   })
 
   if (loading) {
-    return <div>Loading...</div>
+    return <div>Laster...</div>
   }
 
   if (error) {
-    return <div>Error: {error.message}</div>
+    return <div>Feilmelding: {error.message}</div>
   }
 
   const product: Product | undefined = data.getProduct || undefined
 
   if (!product) {
-    return <div>product not found.</div>
+    return <div>Kan ikke finne produktet.</div>
   }
 
   return (
@@ -62,7 +62,7 @@ function ProductDetails({ productID }: ProductDetailsProps) {
         </div>
         <div className="p-2">
           <ul>
-            <p className="text-xl">Nutrition</p>
+            <p className="text-xl">Næringsinnhold</p>
             {product.nutrition ? (
               <ul>
                 {product.nutrition.map((nutritionproduct, index) => (
@@ -81,21 +81,21 @@ function ProductDetails({ productID }: ProductDetailsProps) {
         <div className="p-2">
           <p className="text-xl">Info</p>
           <ul>
-            <strong>Store: </strong>
+            <strong>Butikk: </strong>
             {product.store ? product.store.name : 'N/A'}
           </ul>
           <ul>
-            <strong>Vendor: </strong>
+            <strong>Forhandler: </strong>
             {product.vendor || 'N/A'}
           </ul>
           <ul>
-            <strong>Weight: </strong>
+            <strong>Vekt: </strong>
             {product.weight || 'N/A'} {product.weight_unit || ''}
           </ul>
 
           {/* Categories */}
           <div className="">
-            <strong>Categories:</strong>
+            <strong>Kategorier:</strong>
             <ul>
               {product.category ? (
                 <>
@@ -110,7 +110,7 @@ function ProductDetails({ productID }: ProductDetailsProps) {
           </div>
           {/* Allergens */}
           <div className="">
-            <strong>Allergens:</strong>
+            <strong>Allergener:</strong>
             <ul>
               {product.allergens ? (
                 product.allergens.every((allergenproduct) => allergenproduct.contains === 'NO') ? (
@@ -135,7 +135,7 @@ function ProductDetails({ productID }: ProductDetailsProps) {
           {/* Description */}
         </div>
         <div className="p-2 sm:col-span-2">
-          <p className="text-xl">Description</p>
+          <p className="text-xl">Beskrivelse</p>
           <p>{product.description || 'N/A'}</p>
         </div>
       </div>

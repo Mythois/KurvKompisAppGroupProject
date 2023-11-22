@@ -65,7 +65,7 @@ function AddCustomProduct() {
     // Validate name input
     if (!productInfo.name) {
       console.error('Product name is required')
-      setModalText('Product name is required')
+      setModalText('Produktnavn er påkrevd')
       return // Stop execution if validation fails
     }
 
@@ -83,14 +83,14 @@ function AddCustomProduct() {
       const value = parseFloat(productInfo[field])
       if (value < 0 || value > 100) {
         console.error(`${field} must be a number between 0 and 100.`)
-        setModalText(`${field} must be a number between 0 and 100.`)
+        setModalText(`${field} må være et tall mellom 0 og 100.`)
         return // Stop execution if validation fails
       }
     }
 
     try {
-      if (loading) return 'Loading...'
-      if (error) return `Error! ${error.message}`
+      if (loading) return 'Laster...'
+      if (error) return `Feilmelding! ${error.message}`
 
       const { data } = await addCustomProduct({
         variables: {
@@ -124,7 +124,7 @@ function AddCustomProduct() {
       setProductInfo(initialProductInfo)
 
       // Show success message
-      setModalText(`${productInfo.name} added successfully!`)
+      setModalText(`${productInfo.name} er lagt til databasen!`)
     } catch (error) {
       console.error('Error adding custom product:', error)
     }
@@ -132,12 +132,12 @@ function AddCustomProduct() {
 
   return (
     <div className="pt-4 sm:pt-8 contentCenter">
-      <h1 className="text-2xl">Add product to database</h1>
+      <h1 className="text-2xl">Legg til produkt i databasen</h1>
 
       <div className="grid gap-1 my-2 mb-4">
         <input
           type="text"
-          placeholder="Product name*"
+          placeholder="Produktnavn*"
           className="inputfield mb-4"
           value={productInfo.name}
           onChange={(e) => handleInputChange('name', e.target.value)}
@@ -153,35 +153,35 @@ function AddCustomProduct() {
             }}
           >
             {showCategories ? ' - ' : ' + '}
-            Add categories
+            Legg til kategorier
           </button>
           <div>
             {showCategories && (
               <div className="grid grid-cols-2 gap-2 mb-4 mt-1">
                 <input
                   type="text"
-                  placeholder="Category 1"
+                  placeholder="Kategori 1"
                   className="inputfield"
                   value={productInfo.category1}
                   onChange={(e) => handleInputChange('category1', e.target.value)}
                 />
                 <input
                   type="text"
-                  placeholder="Category 2"
+                  placeholder="Kategori 2"
                   className="inputfield"
                   value={productInfo.category2}
                   onChange={(e) => handleInputChange('category2', e.target.value)}
                 />
                 <input
                   type="text"
-                  placeholder="Category 3"
+                  placeholder="Kategori 3"
                   className="inputfield"
                   value={productInfo.category3}
                   onChange={(e) => handleInputChange('category3', e.target.value)}
                 />
                 <input
                   type="text"
-                  placeholder="Category 4"
+                  placeholder="Kategori 4"
                   className="inputfield"
                   value={productInfo.category4}
                   onChange={(e) => handleInputChange('category4', e.target.value)}
@@ -197,7 +197,7 @@ function AddCustomProduct() {
             }}
           >
             {showNutrition ? ' - ' : ' + '}
-            Add nutrition
+            Legg til næringsinnhold
           </button>
           <div>
             {showNutrition && (
@@ -211,7 +211,7 @@ function AddCustomProduct() {
                 />
                 <input
                   type="number"
-                  placeholder="Fat (per 100g)"
+                  placeholder="Fett (per 100g)"
                   className="inputfield"
                   value={productInfo.fat}
                   onChange={(e) => handleInputChange('fat', e.target.value)}
@@ -219,7 +219,7 @@ function AddCustomProduct() {
                 />
                 <input
                   type="number"
-                  placeholder="Carbohydrates (per 100g)"
+                  placeholder="Karbohydrater (per 100g)"
                   className="inputfield"
                   value={productInfo.carbohydrates}
                   onChange={(e) => handleInputChange('carbohydrates', e.target.value)}
@@ -227,7 +227,7 @@ function AddCustomProduct() {
                 />
                 <input
                   type="number"
-                  placeholder="Proteins (per 100g)"
+                  placeholder="Proteiner (per 100g)"
                   className="inputfield"
                   value={productInfo.proteins}
                   onChange={(e) => handleInputChange('proteins', e.target.value)}
@@ -243,7 +243,7 @@ function AddCustomProduct() {
                 />
                 <input
                   type="number"
-                  placeholder="Sugar (per 100g)"
+                  placeholder="Sukker (per 100g)"
                   className="inputfield"
                   value={productInfo.sugar}
                   onChange={(e) => handleInputChange('sugar', e.target.value)}
@@ -261,27 +261,27 @@ function AddCustomProduct() {
             }}
           >
             {showOther ? ' - ' : ' + '}
-            Add other info
+            Legg til annen info
           </button>
           <div>
             {showOther && (
               <div className="grid grid-cols-2 gap-2 mt-1">
                 <input
                   type="text"
-                  placeholder="Store"
+                  placeholder="Butikk"
                   className="inputfield"
                   value={productInfo.store}
                   onChange={(e) => handleInputChange('store', e.target.value)}
                 />
                 <input
                   type="text"
-                  placeholder="Brand"
+                  placeholder="Merke"
                   className="inputfield"
                   value={productInfo.brand}
                   onChange={(e) => handleInputChange('brand', e.target.value)}
                 />
                 <textarea
-                  placeholder="Additional indivation"
+                  placeholder="Beskrivelse"
                   className="textarea col-span-2"
                   value={productInfo.additionalInfo}
                   onChange={(e) => handleInputChange('additionalInfo', e.target.value)}
@@ -298,14 +298,14 @@ function AddCustomProduct() {
           <Link to="/ProductsPage">
             <div className="flex">
               <ArrowLeft />
-              <p className="hidden sm:block">Back to products</p>
+              <p className="hidden sm:block">Tilbake til produkter</p>
             </div>
           </Link>
         </button>
 
         {/* Add Product button */}
         <button type="submit" className="btn" onClick={handleAddProduct}>
-          + Add product
+          + Legg til produkt
         </button>
       </div>
 
