@@ -85,7 +85,7 @@ describe('Products Page', () => {
     cy.get('[data-testid="product-654a23d4a609b87c60908e95"]').should('exist')
     cy.get('[data-testid="product-654a23d4a609b87c60908e95"]').click()
     // Check that Nutrition is shown when product is clicked
-    cy.contains('Nutrition').should('exist')
+    cy.contains('Kalorier').should('exist')
     // TODO add test for close button on popup
   })
 })
