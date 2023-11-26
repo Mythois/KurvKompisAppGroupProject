@@ -13,6 +13,7 @@
 9. [Future Work](#future-work)
 
 # Project 2
+**KurvKompis** is an application developed as part of the group project in *IT2810 Webutvikling* at NTNU fall 2023. The main task in this project was to represent a large amount of data.
 
 We have made a shopping list app, where the user can make their own shopping list based on a product register, where products represent groceries. The main functionality of this app is making a customized shopping list, to make the everyday shopping easier. The user will have a register of products to choose from, and may also add products to this register as they wish. The user will also have the opportunity to read details about each product.
 
@@ -41,6 +42,7 @@ Or manually:
 8. Once you are in the desired branch make sure that you are in the "GoCart" folder. For example, if you created the folder "project_2" folder in step 1, you may want to run "cd GoCart" to enter the correct folder.
 
 ### Installing mongodb community edition (locally)
+This is only for running the backend locally:
 
 1. Install mongodb community edition on your computer by following the instructions at https://www.mongodb.com/docs/manual/administration/install-community/
 2. During installation of mongodb or thereafter install mongodb compass
@@ -55,8 +57,9 @@ Or manually:
 1. Going back to the project. From the GoCart folder you can run npm run back to run the backend server and connect the project to the database. Thereafter, you can run npm run front in a new terminal (remember to cd into GoCart if you are not already there). This will start the website.
 2. Interact with our website.
 
-## Prettier
+## Prettier and linting
 
+### Prettier
 Prettier is recomended to format on save. To activate follow these steps:
 
 ```
@@ -70,6 +73,10 @@ Prettier is recomended to format on save. To activate follow these steps:
 Source for guided step by step tutorial: https://www.educative.io/answers/how-to-set-up-prettier-and-automatic-formatting-on-vs-code
 
 Or use shift + alt + F to format
+
+### Linting
+- Navigate to the right folder, either backend or frontend.
+- Open your terminal and run `npm run lint` 
 
 ## Development
 
@@ -106,10 +113,11 @@ The app is structured in such a way that the various parts of the website are or
   - The "index.js" file is the entry point for the backend application. It sets up the Apollo Server using the provided typeDefs, resolvers, and connects to a MongoDB database using Mongoose. It also starts the server to listen for incoming requests.
 
 - "frontend", including every element of the frontend:
-  - The different pages are grouped under "pages".
-  - The various components that are used in different pages are located under "components".
-  - The different tools used to assist in various parts are located under "utils".
-  - Icons are located under "assets".
+  - The different pages are grouped under *pages*.
+  - The various components that are used in different pages are located under *components*.
+  - The different tools used to assist in various parts are located under *utils*.
+  - Icons are located under *assets*.
+  - Component tests are to be found under *tests*, while the e2e tests are to be found under *cypress*
 
 The actual app is under "project_2/frontend/src/App.tsx."
 
@@ -177,13 +185,14 @@ Use of good and relevant components and libraries (freedom to choose, and we enc
 
 ## Testing
 
-The test are set up using vitest and should be covering both frontend and backend.
+The tests are set up using vitest and should be covering both frontend and backend.
 
-You can run the component tests by running: `npm run test` from GoCart/frontend/
+The component tests are located under **tests** in the frontend folder. You can run the component tests by running: `npm run test` from GoCart/frontend/
 
 - Component tests: The component tests utilize vitest, a testing framework for React components. These tests focus on the functionalities of individual components, ensuring they perform as expected.
+- To check test coverage run `npm run coverage` from GoCart/frontend/
 
-You can run the E2E tests by running: `npx cypress open` from GoCart/frontend/
+The E2E tests are located under **e2e** in the frontend/cypress folder. You can run the E2E tests by running: `npx cypress open` from GoCart/frontend/
 
 - E2E testing: The E2E tests employ Cypress, a testing framework for end-to-end testing of web applications. These tests cover the functionality of the application from a user's perspective, interacting with the UI elements as a real user would. The tests in the end-to-end testing cover the requirements we've set through the user stories for the website's functionality. Also the tests are made covering a page.
 
