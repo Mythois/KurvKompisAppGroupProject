@@ -92,7 +92,7 @@ function AddCustomProduct() {
       if (loading) return 'Laster...'
       if (error) return `Feilmelding! ${error.message}`
 
-      const {  } = await addCustomProduct({
+      await addCustomProduct({
         variables: {
           input: {
             name: productInfo.name,

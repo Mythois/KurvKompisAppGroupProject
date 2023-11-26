@@ -3,7 +3,6 @@ import { describe, test, vi } from 'vitest'
 import { render, fireEvent } from '@testing-library/react'
 import Product, { ProductProps } from '../src/components/Product'
 import React from 'react'
-import { GET_PRODUCT_BY_ID } from '../src/utils/queryFunctions/getProduct'
 
 const sampleProduct: ProductProps = {
   productName: 'Sample Product',
@@ -15,37 +14,13 @@ const sampleProduct: ProductProps = {
   listView: false,
 }
 
-const mocks = [
-  {
-    request: {
-      query: GET_PRODUCT_BY_ID,
-      variables: { _id: '1' },
-    },
-    result: {
-      data: {
-        getProduct: sampleProduct,
-      },
-    },
-  },
-]
-
-const errorMock = [
-  {
-    request: {
-      query: GET_PRODUCT_BY_ID,
-      variables: { _id: '1' },
-    },
-    error: new Error('Failed to fetch product details'),
-  },
-]
-
 // Mock the ProductDetails component to prevent its rendering and functionality in the tests
 vi.mock('../src/components/ProductDetails', () => {
   return {
     __esModule: true,
     default: vi.fn().mockReturnValue(null), // Mock ProductDetails component to return null
-  };
-});
+  }
+})
 
 // Mocking the react-router-dom context for testing
 vi.mock('react-router-dom', () => ({
