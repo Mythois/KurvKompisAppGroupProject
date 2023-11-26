@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import ProductsPage from './pages/ProductsPage'
 import AddCustomProduct from './pages/AddCustomProduct'
-import ProductDetailsPage from './pages/ProductDetailsPage'
 
 function App() {
   return (
@@ -16,7 +15,6 @@ function App() {
           <Route path={'/AddCustomProduct'} element={<AddCustomProduct />} />
           <Route path={'/ProductsPage'} element={<ProductsPage editable={false} />} />
           <Route path={'/AddProduct'} element={<ProductsPage editable={true} />} />
-          <Route path={'/ProductDetailsPage/:productName'} element={<ProductDetailsPage />} />
         </Routes>
       </div>
     </div>

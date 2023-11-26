@@ -55,14 +55,14 @@ function ProductDetails({ productID }: ProductDetailsProps) {
   return (
     <div className="h-full">
       <h2 className="text-2xl">{product.name}</h2>
-      <div className="mt-4 grid sm:grid-cols-2 gap-2 overflow-y-scroll h-5/6">
-        <div className="sm:col-span-2">
+      <div className="m-4 grid sm:grid-cols-2 gap-4 overflow-y-scroll h-5/6">
+        <div className="sm:col-span-2 w-2/3 xl:w-1/2 mx-auto">
           <ProductImage src={product.image} alt={product.name} />
         </div>
-        <div className="p-2">
+        <div className="p-4 shadow-md">
           <ul>
             <p className="text-xl">Næringsinnhold</p>
-            {product.nutrition ? (
+            {product.nutrition && product.nutrition.length > 0 ? (
               <ul>
                 {product.nutrition.map((nutritionproduct, index) => (
                   <li key={index}>
@@ -72,24 +72,24 @@ function ProductDetails({ productID }: ProductDetailsProps) {
                 ))}
               </ul>
             ) : (
-              'N/A'
+              'Ikke tilgjengelig'
             )}
           </ul>
         </div>
 
-        <div className="p-2">
+        <div className="p-2 shadow-md">
           <p className="text-xl">Info</p>
           <ul>
             <strong>Butikk: </strong>
-            {product.store ? product.store.name : 'N/A'}
+            {product.store && product.store.name.length > 0 ? product.store.name : 'Ikke tilgjengelig'}
           </ul>
           <ul>
             <strong>Forhandler: </strong>
-            {product.vendor || 'N/A'}
+            {(product.vendor && product.vendor.length > 0) || 'Ikke tilgjengelig'}
           </ul>
           <ul>
             <strong>Vekt: </strong>
-            {product.weight || 'N/A'} {product.weight_unit || ''}
+            {product.weight || 'Ikke tilgjengelig'} {product.weight_unit || ''}
           </ul>
 
           {/* Categories */}
@@ -103,17 +103,17 @@ function ProductDetails({ productID }: ProductDetailsProps) {
                   ))}
                 </>
               ) : (
-                <li>N/A</li>
+                <li>Ikke tilgjengelig</li>
               )}
             </ul>
           </div>
           {/* Allergens */}
-          <div className="">
+          <div>
             <strong>Allergener:</strong>
             <ul>
               {product.allergens ? (
                 product.allergens.every((allergenproduct) => allergenproduct.contains === 'NO') ? (
-                  'N/A'
+                  'Ikke tilgjengelig'
                 ) : (
                   <ul>
                     {product.allergens.map((allergenproduct, index) =>
@@ -127,15 +127,15 @@ function ProductDetails({ productID }: ProductDetailsProps) {
                   </ul>
                 )
               ) : (
-                <li>N/A</li>
+                <li>Ikke tilgjengelig</li>
               )}
             </ul>
           </div>
           {/* Description */}
         </div>
-        <div className="p-2 sm:col-span-2">
+        <div className="p-2 sm:col-span-2 shadow-md mb-4">
           <p className="text-xl">Beskrivelse</p>
-          <p>{product.description || 'N/A'}</p>
+          <p>{product.description || 'Ikke tilgjengelig'}</p>
         </div>
       </div>
     </div>

@@ -136,8 +136,12 @@ function Product({ productName, productID, productImage, increment, decrement, q
         </div>
       </div>
 
-      <dialog open={isShow} className="h-full w-full fixed top-0 py-20 bg-transparent">
-        <div className="popup">
+      <dialog
+        open={isShow}
+        className="h-full w-full fixed top-0 py-20 bg-transparent/50"
+        onClick={() => setShow(false)}
+      >
+        <div className="popup" onClick={(e) => e.stopPropagation()}>
           <div className="relative h-8">
             <button className="btn absolute right-0" onClick={() => setShow(false)}>
               <X size={24} />
