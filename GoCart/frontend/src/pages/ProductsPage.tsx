@@ -31,13 +31,16 @@ function ProductsPage({ editable }: ProductsPageProps) {
   const [perPage, setPerPage] = useState(40) // Used for pagination to allow for more Products to be displayed on a page
   const [showMoreBtn, setShowMoreBtn] = useState(true) // Control visibility of showMoreBtn
   const [products, setProducts] = useState<Product[]>([])
-
+  const [searchResultsFound, setSearchResultsFound] = useState<boolean>(true)
+  const [errorFound, setErrorFound] = useState<boolean>(false)
+  
   // Hande search
   const handleSearch = (input: string) => {
     const name = input !== '' ? input : ''
 
     // Use refetch for the initial search and fetchMore for subsequent searches
     if (page === 1) {
+      setErrorFound(false)
       setProducts([])
       refetch({
         page: 1,
@@ -46,9 +49,17 @@ function ProductsPage({ editable }: ProductsPageProps) {
         name: name,
         sortDirection: sortDirection,
       }).then(({ data }) => {
-        setProducts(data.searchProducts)
-        setFilter(input)
-        setShowMoreBtn(true)
+        if (!data.searchProducts || data.searchProducts.length === 0){
+          setSearchResultsFound(false)
+        }
+        else{
+          setErrorFound(false)
+          setSearchResultsFound(true)
+          setProducts(data.searchProducts)
+          setFilter(input)
+          setShowMoreBtn(true)
+        }
+
       })
     } else {
       fetchMore({
@@ -60,14 +71,22 @@ function ProductsPage({ editable }: ProductsPageProps) {
           sortDirection: sortDirection,
         },
       }).then(({ data }) => {
-        setProducts(data.searchProducts)
-        setFilter(input)
-        setPage(1)
-        setShowMoreBtn(true)
+        if(!data.searchProducts || data.searchProducts.length === 0){
+        setSearchResultsFound(false)
+        }
+        else{
+          setSearchResultsFound(true)
+          setProducts(data.searchProducts)
+          setFilter(input)
+          setPage(1)
+          setShowMoreBtn(true)
+        }
+
       })
     }
   }
 
+  // Debounce search 
   const debouncedrequest = debounce((searchterm: string) => handleSearch(searchterm), 500)
 
   // Handle category change
@@ -156,17 +175,11 @@ function ProductsPage({ editable }: ProductsPageProps) {
     })
   }, [])
 
-  if (loading) {
-    return <div>Laster...</div>
-  }
-
-  if (error) {
-    return <div>Feilmelding: {error.message}</div>
-  }
 
   if (!data) {
     return <div>Data er udefinert</div>
   }
+
 
   const loadMoreProduct = () => {
     const nextPage = page + 1
@@ -259,9 +272,15 @@ function ProductsPage({ editable }: ProductsPageProps) {
         </div>
       </div>
       {/* Render the productList component with the extracted product names */}
-      <div className="h-full overflow-y-scroll mt-4 mb-4">
-        {loading ? <div>Laster...</div> : <ProductList listView={false} products={productPropsList} />}
-      </div>
+      {error ? (
+        <div className='h-full mt-4 mb-4'>Ugyldig søk</div> // In case of error display this message
+      ) : searchResultsFound ? (
+        <div className="h-full overflow-y-scroll mt-4 mb-4">
+          {loading ? <div>Laster...</div> : <ProductList listView={false} products={productPropsList} />} 
+        </div>
+      ) : (
+        <p className='h-full mt-4 mb-4'>Ingen resultater funnet for søket</p>
+      )}
 
       <div className="flex justify-between mb-5 gap-2">
         {!editable && (
