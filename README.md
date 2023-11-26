@@ -139,7 +139,10 @@ Inclusion of some form of user-generated data that should be stored persistently
 The solution should demonstrate aspects of universal design and web accessibility.
 
 - The website is designed to change the layout of the page based on the size of the user device.
-- If the screen turns small phone sized a footer will appear.
+- The webpage has been anlysed with the axe DevTools (chrome extention) and these changes was made to solve issues:
+  - Main color on pages was changed to get better contrast between text and background making tekst more readable
+  - Elements without spesific tags or text got aria labels to enchant screenreading ability
+  - Scrollable element was done accessable through keyboard navigation
 
 The solution should demonstrate aspects of sustainable web development through design choices.
 
