@@ -67,7 +67,13 @@ function ProductDetails({ productID }: ProductDetailsProps) {
                 {product.nutrition.map((nutritionproduct, index) => (
                   <li key={index}>
                     <strong>{nutritionproduct.display_name}: </strong>
-                    {nutritionproduct.amount} {nutritionproduct.unit}
+                    {nutritionproduct.amount ? (
+                      <>
+                        {nutritionproduct.amount} {nutritionproduct.unit}
+                      </>
+                    ) : (
+                      'Ikke tilgjengelig'
+                    )}
                   </li>
                 ))}
               </ul>
@@ -85,7 +91,7 @@ function ProductDetails({ productID }: ProductDetailsProps) {
           </ul>
           <ul>
             <strong>Forhandler: </strong>
-            {(product.vendor && product.vendor.length > 0) || 'Ikke tilgjengelig'}
+            {product.vendor && product.vendor.length > 0 ? product.vendor : 'Ikke tilgjengelig'}
           </ul>
           <ul>
             <strong>Vekt: </strong>
@@ -96,11 +102,13 @@ function ProductDetails({ productID }: ProductDetailsProps) {
           <div className="">
             <strong>Kategorier:</strong>
             <ul>
-              {product.category ? (
+              {product.category && product.category.length > 0 ? (
                 <>
-                  {product.category.map((categoryproduct, index) => (
-                    <li key={index}>{categoryproduct.name}</li>
-                  ))}
+                  {product.category.every((categoryproduct) => categoryproduct.name.trim() === '') ? (
+                    <li>Ikke tilgjengelig</li>
+                  ) : (
+                    product.category.map((categoryproduct, index) => <li key={index}>{categoryproduct.name}</li>)
+                  )}
                 </>
               ) : (
                 <li>Ikke tilgjengelig</li>

@@ -32,7 +32,7 @@ const mockProduct = {
     },
   ],
   description: 'Test Description',
-  image: ''
+  image: '',
 }
 
 const mocks = [
