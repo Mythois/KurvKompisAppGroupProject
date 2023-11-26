@@ -56,7 +56,7 @@ function ProductDetails({ productID }: ProductDetailsProps) {
     <div className="h-full">
       <h2 className="text-2xl">{product.name}</h2>
       <div className="mt-4 grid sm:grid-cols-2 gap-2 overflow-y-scroll h-5/6">
-        <div className="sm:col-span-2">
+        <div className="sm:col-span-2 w-2/3 xl:w-1/2 mx-auto">
           <ProductImage src={product.image} alt={product.name} />
         </div>
         <div className="p-2">
