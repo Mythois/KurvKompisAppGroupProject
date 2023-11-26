@@ -9,7 +9,6 @@ import ProductDetails from './ProductDetails'
 import ProductImage from './ProductImage'
 import { X } from 'lucide-react'
 
-// It accepts props for item name, id, productQuantity, increment, decrement, quantity and showQuantityOnly
 export interface ProductProps {
   productName: string // The name or description of the product
   productID: string // The id of the product
@@ -38,11 +37,38 @@ function Product({ productName, productID, productImage, increment, decrement, q
 
       // Find the product in the updated list
       const productInList = parsedList.find((p) => p.productID === productID)
-
-      // Set the product quantity
       setProductQuantity(productInList?.productQuantity ?? 0)
     }
-  }, [productID]) // Only run the effect when productID changes
+  }, [productID])
+
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      setShow(true)
+    }
+  }
+
+  useEffect(() => {
+    if (isShow) {
+      const dialogElement = document.querySelector('dialog')
+      if (dialogElement) {
+        dialogElement.focus()
+      }
+    }
+  }, [isShow])
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setShow(false)
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [])
 
   // Add product to the shopping list
   function incrementProduct(event: React.MouseEvent<HTMLButtonElement>) {
@@ -96,9 +122,12 @@ function Product({ productName, productID, productImage, increment, decrement, q
   return (
     <>
       <div
-        className={`card  ${listView ? 'grid' : 'grid grid-cols-2'} gap-2`}
+        className={`card ${listView ? 'grid' : 'grid grid-cols-2'} gap-2`}
         onClick={() => setShow(true)}
         data-testid={`product-${productID}`}
+        onKeyPress={handleKeyPress}
+        role="button"
+        tabIndex={0}
       >
         {/* Display the product image */}
         <div>{!listView && <ProductImage src={productImage} alt={productName} />}</div>
