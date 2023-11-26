@@ -6,7 +6,7 @@ import ProductImage from '../src/components/ProductImage'
 
 describe('ProductImage component', () => {
   test('renders product image with provided src and alt', () => {
-    const src = 'test-image.jpg'
+    const src = 'https://bilder.ngdata.no/7035620025037/meny/large.jpg'
     const alt = 'Test Image'
     const { getByAltText } = render(<ProductImage src={src} alt={alt} />)
 
