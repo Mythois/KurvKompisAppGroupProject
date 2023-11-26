@@ -24,11 +24,12 @@ interface Product {
 }
 
 function ProductsPage({ editable }: ProductsPageProps) {
+  const [default_perPage, _setDefautPerpage] = useState(20)
   const [filter, setFilter] = useState('') // Filter for product names
   const [selectedCategory, setSelectedCategory] = useState('') // Selected category for filtering
   const [sortDirection, setSortDirection] = useState('asc') // Sort direction for product list
   const [page, setPage] = useState(1) // Used for pagination functionality to control what page we are on
-  const [perPage, setPerPage] = useState(40) // Used for pagination to allow for more Products to be displayed on a page
+  const [perPage, setPerPage] = useState(default_perPage) // Used for pagination to allow for more Products to be displayed on a page
   const [showMoreBtn, setShowMoreBtn] = useState(true) // Control visibility of showMoreBtn
   const [products, setProducts] = useState<Product[]>([])
 
@@ -41,7 +42,7 @@ function ProductsPage({ editable }: ProductsPageProps) {
       setProducts([])
       refetch({
         page: 1,
-        perPage: 40,
+        perPage: default_perPage,
         category: selectedCategory,
         name: name,
         sortDirection: sortDirection,
@@ -54,7 +55,7 @@ function ProductsPage({ editable }: ProductsPageProps) {
       fetchMore({
         variables: {
           page: 1,
-          perPage: 40,
+          perPage: default_perPage,
           category: selectedCategory,
           name: name,
           sortDirection: sortDirection,
@@ -75,7 +76,7 @@ function ProductsPage({ editable }: ProductsPageProps) {
     fetchMore({
       variables: {
         page: 1,
-        perPage: 40,
+        perPage: default_perPage,
         category: category,
         name: filter,
         sortDirection: sortDirection,
@@ -85,7 +86,7 @@ function ProductsPage({ editable }: ProductsPageProps) {
       const newProducts: Product[] = data.searchProducts
       setSelectedCategory(category)
       setPage(1)
-      setPerPage(40)
+      setPerPage(default_perPage)
       setProducts(newProducts)
       setShowMoreBtn(true)
       if (newProducts.length === 0) {
@@ -140,7 +141,7 @@ function ProductsPage({ editable }: ProductsPageProps) {
 
   // Fetch product data from GraphQL using Apollo Client
   const { loading, error, data, fetchMore, refetch } = useQuery(SEARCH_PRODUCTS, {
-    variables: { page: 1, perPage: 40, category: '', name: '', sortDirection: 'asc' },
+    variables: { page: 1, perPage: default_perPage, category: '', name: '', sortDirection: 'asc' },
     fetchPolicy: 'network-only', // Set fetchPolicy to 'network-only' to bypass the cache
   })
 
@@ -149,7 +150,7 @@ function ProductsPage({ editable }: ProductsPageProps) {
     // Trigger refetch when the component mounts
     refetch({
       page: 1,
-      perPage: 40,
+      perPage: default_perPage,
       category: selectedCategory,
       name: filter,
       sortDirection: sortDirection,
@@ -174,7 +175,7 @@ function ProductsPage({ editable }: ProductsPageProps) {
       fetchMore({
         variables: {
           page: nextPage,
-          perPage: 40,
+          perPage: default_perPage,
           category: selectedCategory,
           name: filter,
           sortDirection: sortDirection,
@@ -203,12 +204,12 @@ function ProductsPage({ editable }: ProductsPageProps) {
    */
   const showLess = () => {
     setPage(1)
-    setPerPage(40)
+    setPerPage(default_perPage)
 
     // Use refetch instead of fetchMore
     refetch({
       page: 1,
-      perPage: 40,
+      perPage: default_perPage,
       category: selectedCategory,
       name: filter,
       sortDirection: sortDirection,
@@ -284,7 +285,10 @@ function ProductsPage({ editable }: ProductsPageProps) {
             <ChevronDown />
             <p className="hidden sm:block">Vis mer</p>
           </button>
-          <button className={`btn flex ${productPropsList.length === 40 && 'hidden'}`} onClick={() => showLess()}>
+          <button
+            className={`btn flex ${productPropsList.length === default_perPage && 'hidden'}`}
+            onClick={() => showLess()}
+          >
             <p className="hidden sm:block">Vis mindre</p>
             <ChevronUp />
           </button>
