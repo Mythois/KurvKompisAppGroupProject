@@ -1,3 +1,4 @@
+import '@testing-library/jest-dom'
 import { describe, test, vi } from 'vitest'
 // import { render, fireEvent } from '@testing-library/react'
 // import Product, { ProductProps } from '../src/components/Product'
