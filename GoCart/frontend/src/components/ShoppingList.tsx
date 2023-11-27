@@ -6,6 +6,7 @@ import { shoppingListProductsVar } from '../utils/reactiveVariables/reactiveVari
 import ProductList from './ProductList'
 import { Link } from 'react-router-dom'
 import { ProductProps } from './Product.tsx'
+import { useState } from 'react'
 
 interface ShoppingListProps {
   title: string
@@ -14,6 +15,22 @@ interface ShoppingListProps {
 function ShoppingList({ title }: ShoppingListProps) {
   const shoppingListProducts: ProductProps[] = useReactiveVar(shoppingListProductsVar)
   const isShoppingListEmpty = shoppingListProducts.length === 0
+  const [showConfirmation, setShowConfirmation] = useState(false) // State for visning av bekreftelsespopup
+
+  // Function to delete all products in the shopping list
+  const deleteAllProducts = () => {
+    // Show the confirmation dialog before clearing the list
+    setShowConfirmation(true)
+  }
+
+  // Function to handle confirmation and clear the shopping list
+  const handleConfirmation = (confirmed: boolean) => {
+    if (confirmed) {
+      shoppingListProductsVar([]) // Clear the shopping list
+      localStorage.setItem('shoppingList', JSON.stringify([]))
+    }
+    setShowConfirmation(false) // Hide the confirmation dialog
+  }
 
   return (
     <div className="h-full flex-col">
@@ -36,7 +53,26 @@ function ShoppingList({ title }: ShoppingListProps) {
             Legg til produkter
           </button>
         </Link>
+        <button className="btn ml-4" onClick={deleteAllProducts}>
+          Fjern alle produkter
+        </button>
       </div>
+      {/* Confirmation dialog */}
+      {!isShoppingListEmpty && showConfirmation && (
+        <div className="fixed top-0 left-0 flex items-center justify-center w-full h-full bg-gray-800 bg-opacity-50">
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-8">
+            <p className="text-center mb-4">Er du sikker på at du vil fjerne alle produktene i handlelisten din?</p>
+            <div className="flex justify-center">
+              <button className="btn w-20 mr-2" onClick={() => handleConfirmation(true)}>
+                Ja
+              </button>
+              <button className="btn w-20" onClick={() => handleConfirmation(false)}>
+                Nei
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
