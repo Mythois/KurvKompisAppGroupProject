@@ -60,7 +60,7 @@ function ShoppingList({ title }: ShoppingListProps) {
       {/* Confirmation dialog */}
       {!isShoppingListEmpty && showConfirmation && (
         <div className="fixed top-0 left-0 flex items-center justify-center w-full h-full bg-gray-800 bg-opacity-50">
-          <div className="bg-white dark:bg-gray-800 rounded-lg p-8">
+          <div className="bg-white rounded-lg p-8 shadow-2xl m-2 border lightMode darkMode border-gray-300 dark:bg-slate-700 dark:border-gray-500">
             <p className="text-center mb-4">Er du sikker på at du vil fjerne alle produktene i handlelisten din?</p>
             <div className="flex justify-center">
               <button className="btn w-20 mr-2" onClick={() => handleConfirmation(true)}>
