@@ -202,4 +202,4 @@ If we were to continue working on this project, these are some parts we would co
 
 - Implementing functionality for deleting products you have added to the database. This could be a good implementation, although we have chosen to let the managing of the data be done by the developers for now.
 - Enable multiple categories in filtering function. This could be done so that people can narrow the searchf or a product down even more, although we do not see the need for this as we already have plenty of options for finding your desired product.
-- Extend test to cover more of the components and the apps functionallity.
+- Extend test to cover more of the components and the apps functionallity. Currently the coverage ain't as high as we would like, due to last minute changes in some of the components.
