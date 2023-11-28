@@ -122,7 +122,7 @@ function Product({ productName, productID, productImage, increment, decrement, q
   return (
     <>
       <div
-        className={`card ${listView ? 'grid' : 'grid grid-cols-2'} gap-2`}
+        className={`card grid ${listView ? '' : 'grid-cols-2'}`}
         onClick={() => setShow(true)}
         data-testid={`product-${productID}`}
         onKeyPress={handleKeyPress}
@@ -134,7 +134,7 @@ function Product({ productName, productID, productImage, increment, decrement, q
 
         <div className={`flex justify-between h-full ${listView ? '' : 'flex-col justify-end'}`}>
           {/* Display the product name */}
-          <div className="text-lg font-semibold col-span-2">{productName}</div>
+          <div className="text-lg font-semibold col-span-2 overflow-hidden">{productName}</div>
 
           {/* Display the product quantity */}
           {((increment && decrement && quantity) || listView) && (

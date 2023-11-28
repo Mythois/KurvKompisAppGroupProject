@@ -22,7 +22,7 @@ function ProductList({ products, listView }: ProductListProps) {
     // Render the products in a grid based on the listView prop
     <div
       tabIndex={0}
-      className={`grid rounded-2xl ${listView ? 'grid-cols-1' : 'sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'}`}
+      className={`grid rounded-2xl ${listView ? 'grid-cols-1' : 'md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'}`}
       data-testid="product-list"
     >
       {products.map((product, index) => (
