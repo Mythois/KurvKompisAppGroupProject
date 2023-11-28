@@ -140,7 +140,7 @@ function Product({ productName, productID, productImage, increment, decrement, q
           {((increment && decrement && quantity) || listView) && (
             <div className="flex h-max justify-end">
               <button
-                className="btn"
+                className="btn w-10"
                 data-testid={`decrement-button-${productID}`}
                 onClick={(e) => {
                   decrementProduct(e)
@@ -152,7 +152,7 @@ function Product({ productName, productID, productImage, increment, decrement, q
                 {newProductQuantity}
               </span>
               <button
-                className="btn"
+                className="btn w-10"
                 data-testid={`increment-button-${productID}`}
                 onClick={(e) => {
                   incrementProduct(e)
