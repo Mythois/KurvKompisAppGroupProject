@@ -13,6 +13,7 @@ function SortButtons(props: SortButtonsProps) {
   useEffect(() => {
     // Notify the parent component about the default descending order when the component mounts
     props.onSortAsc()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // Handle ascending button click

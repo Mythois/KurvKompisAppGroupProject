@@ -167,6 +167,7 @@ function ProductsPage({ editable }: ProductsPageProps) {
       name: filter,
       sortDirection: sortDirection,
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   if (!data) {
