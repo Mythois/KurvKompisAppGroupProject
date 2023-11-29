@@ -292,16 +292,16 @@ function ProductsPage({ editable }: ProductsPageProps) {
           </Link>
         )}
         <div className="flex gap-2">
-          <button className={`btn flex ${!showMoreBtn && 'hidden'}`} onClick={() => loadMoreProduct()}>
-            <ChevronDown />
-            <p className="hidden sm:block">Vis mer</p>
-          </button>
           <button
             className={`btn flex ${productPropsList.length === default_perPage && 'hidden'}`}
             onClick={() => showLess()}
           >
             <p className="hidden sm:block">Vis mindre</p>
             <ChevronUp />
+          </button>
+          <button className={`btn flex ${!showMoreBtn && 'hidden'}`} onClick={() => loadMoreProduct()}>
+            <ChevronDown />
+            <p className="hidden sm:block">Vis mer</p>
           </button>
         </div>
       </div>
