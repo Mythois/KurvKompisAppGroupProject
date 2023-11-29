@@ -50,7 +50,7 @@ This is only for running the backend locally:
 4. After all installation is complete, start mongodb compass
 5. Connect to the database with mongodb compass
 6. Create a database called GoCart with a collection called Products
-7. Upload the json file you find at GoCart/frontend/src/utils/mockup/GoCart.Products.json to the Products collection
+7. Upload the json file you find at GoCart/frontend/src/utils/dbData/GoCart.Products.json to the Products collection
 
 ### Running the project
 
