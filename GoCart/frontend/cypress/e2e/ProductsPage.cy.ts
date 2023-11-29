@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 describe('Products Page', () => {
   beforeEach(() => {
     // Go to the right page
@@ -34,7 +36,7 @@ describe('Products Page', () => {
     cy.get('[data-testid="product-list"]').each(($product, index, $list) => {
       if (index < $list.length - 1) {
         const currentProduct = $product.text().trim()
-        const nextProduct = $list
+        const nextProduct = ($list as any)
           .eq(index + 1)
           .text()
           .trim()
@@ -50,7 +52,7 @@ describe('Products Page', () => {
     cy.get('[data-testid="product-list"]').each(($product, index, $list) => {
       if (index < $list.length - 1) {
         const currentProduct = $product.text().trim()
-        const nextProduct = $list
+        const nextProduct = ($list as any)
           .eq(index + 1)
           .text()
           .trim()
