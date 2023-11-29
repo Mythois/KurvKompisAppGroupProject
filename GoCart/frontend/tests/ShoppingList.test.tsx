@@ -18,12 +18,4 @@ describe('ShoppingList Component Tests', () => {
 
     expect(screen.getByText(title)).toBeDefined()
   })
-
-  //   test('renders ProductList component with shopping list products', async () => {
-  //     // Missing test here
-  //   })
-
-  //   test('navigates to AddProduct page on button click', async () => {
-  //     // Missing test here
-  //   })
 })

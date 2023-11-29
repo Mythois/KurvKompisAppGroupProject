@@ -24,13 +24,15 @@ interface Product {
 }
 
 function ProductsPage({ editable }: ProductsPageProps) {
+  const default_perPage = 20
   const [filter, setFilter] = useState('') // Filter for product names
   const [selectedCategory, setSelectedCategory] = useState('') // Selected category for filtering
   const [sortDirection, setSortDirection] = useState('asc') // Sort direction for product list
   const [page, setPage] = useState(1) // Used for pagination functionality to control what page we are on
-  const [perPage, setPerPage] = useState(40) // Used for pagination to allow for more Products to be displayed on a page
+  const [perPage, setPerPage] = useState(default_perPage) // Used for pagination to allow for more Products to be displayed on a page
   const [showMoreBtn, setShowMoreBtn] = useState(true) // Control visibility of showMoreBtn
   const [products, setProducts] = useState<Product[]>([])
+  const [searchResultsFound, setSearchResultsFound] = useState<boolean>(true)
 
   // Hande search
   const handleSearch = (input: string) => {
@@ -41,33 +43,44 @@ function ProductsPage({ editable }: ProductsPageProps) {
       setProducts([])
       refetch({
         page: 1,
-        perPage: 40,
+        perPage: default_perPage,
         category: selectedCategory,
         name: name,
         sortDirection: sortDirection,
       }).then(({ data }) => {
-        setProducts(data.searchProducts)
-        setFilter(input)
-        setShowMoreBtn(true)
+        if (!data.searchProducts || data.searchProducts.length === 0) {
+          setSearchResultsFound(false)
+        } else {
+          setSearchResultsFound(true)
+          setProducts(data.searchProducts)
+          setFilter(input)
+          setShowMoreBtn(true)
+        }
       })
     } else {
       fetchMore({
         variables: {
           page: 1,
-          perPage: 40,
+          perPage: default_perPage,
           category: selectedCategory,
           name: name,
           sortDirection: sortDirection,
         },
       }).then(({ data }) => {
-        setProducts(data.searchProducts)
-        setFilter(input)
-        setPage(1)
-        setShowMoreBtn(true)
+        if (!data.searchProducts || data.searchProducts.length === 0) {
+          setSearchResultsFound(false)
+        } else {
+          setSearchResultsFound(true)
+          setProducts(data.searchProducts)
+          setFilter(input)
+          setPage(1)
+          setShowMoreBtn(true)
+        }
       })
     }
   }
 
+  // Debounce search
   const debouncedrequest = debounce((searchterm: string) => handleSearch(searchterm), 500)
 
   // Handle category change
@@ -75,7 +88,7 @@ function ProductsPage({ editable }: ProductsPageProps) {
     fetchMore({
       variables: {
         page: 1,
-        perPage: 40,
+        perPage: default_perPage,
         category: category,
         name: filter,
         sortDirection: sortDirection,
@@ -85,7 +98,7 @@ function ProductsPage({ editable }: ProductsPageProps) {
       const newProducts: Product[] = data.searchProducts
       setSelectedCategory(category)
       setPage(1)
-      setPerPage(40)
+      setPerPage(default_perPage)
       setProducts(newProducts)
       setShowMoreBtn(true)
       if (newProducts.length === 0) {
@@ -140,7 +153,7 @@ function ProductsPage({ editable }: ProductsPageProps) {
 
   // Fetch product data from GraphQL using Apollo Client
   const { loading, error, data, fetchMore, refetch } = useQuery(SEARCH_PRODUCTS, {
-    variables: { page: 1, perPage: 40, category: '', name: '', sortDirection: 'asc' },
+    variables: { page: 1, perPage: default_perPage, category: '', name: '', sortDirection: 'asc' },
     fetchPolicy: 'network-only', // Set fetchPolicy to 'network-only' to bypass the cache
   })
 
@@ -149,20 +162,13 @@ function ProductsPage({ editable }: ProductsPageProps) {
     // Trigger refetch when the component mounts
     refetch({
       page: 1,
-      perPage: 40,
+      perPage: default_perPage,
       category: selectedCategory,
       name: filter,
       sortDirection: sortDirection,
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  if (loading) {
-    return <div>Laster...</div>
-  }
-
-  if (error) {
-    return <div>Feilmelding: {error.message}</div>
-  }
 
   if (!data) {
     return <div>Data er udefinert</div>
@@ -174,7 +180,7 @@ function ProductsPage({ editable }: ProductsPageProps) {
       fetchMore({
         variables: {
           page: nextPage,
-          perPage: 40,
+          perPage: default_perPage,
           category: selectedCategory,
           name: filter,
           sortDirection: sortDirection,
@@ -203,12 +209,12 @@ function ProductsPage({ editable }: ProductsPageProps) {
    */
   const showLess = () => {
     setPage(1)
-    setPerPage(40)
+    setPerPage(default_perPage)
 
     // Use refetch instead of fetchMore
     refetch({
       page: 1,
-      perPage: 40,
+      perPage: default_perPage,
       category: selectedCategory,
       name: filter,
       sortDirection: sortDirection,
@@ -259,9 +265,15 @@ function ProductsPage({ editable }: ProductsPageProps) {
         </div>
       </div>
       {/* Render the productList component with the extracted product names */}
-      <div className="h-full overflow-y-scroll mt-4 mb-4">
-        {loading ? <div>Laster...</div> : <ProductList listView={false} products={productPropsList} />}
-      </div>
+      {error ? (
+        <div className="h-full mt-4 mb-4">Ugyldig søk</div> // In case of error display this message
+      ) : searchResultsFound ? (
+        <div className="h-full overflow-y-scroll mt-4 mb-4">
+          {loading ? <div>Laster...</div> : <ProductList listView={false} products={productPropsList} />}
+        </div>
+      ) : (
+        <p className="h-full mt-4 mb-4">Ingen resultater funnet for søket</p>
+      )}
 
       <div className="flex justify-between mb-5 gap-2">
         {!editable && (
@@ -284,7 +296,10 @@ function ProductsPage({ editable }: ProductsPageProps) {
             <ChevronDown />
             <p className="hidden sm:block">Vis mer</p>
           </button>
-          <button className={`btn flex ${productPropsList.length === 40 && 'hidden'}`} onClick={() => showLess()}>
+          <button
+            className={`btn flex ${productPropsList.length === default_perPage && 'hidden'}`}
+            onClick={() => showLess()}
+          >
             <p className="hidden sm:block">Vis mindre</p>
             <ChevronUp />
           </button>

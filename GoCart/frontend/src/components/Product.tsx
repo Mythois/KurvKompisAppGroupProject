@@ -9,7 +9,6 @@ import ProductDetails from './ProductDetails'
 import ProductImage from './ProductImage'
 import { X } from 'lucide-react'
 
-// It accepts props for item name, id, productQuantity, increment, decrement, quantity and showQuantityOnly
 export interface ProductProps {
   productName: string // The name or description of the product
   productID: string // The id of the product
@@ -38,11 +37,38 @@ function Product({ productName, productID, productImage, increment, decrement, q
 
       // Find the product in the updated list
       const productInList = parsedList.find((p) => p.productID === productID)
-
-      // Set the product quantity
       setProductQuantity(productInList?.productQuantity ?? 0)
     }
-  }, [productID]) // Only run the effect when productID changes
+  }, [productID])
+
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      setShow(true)
+    }
+  }
+
+  useEffect(() => {
+    if (isShow) {
+      const dialogElement = document.querySelector('dialog')
+      if (dialogElement) {
+        dialogElement.focus()
+      }
+    }
+  }, [isShow])
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setShow(false)
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [])
 
   // Add product to the shopping list
   function incrementProduct(event: React.MouseEvent<HTMLButtonElement>) {
@@ -96,22 +122,25 @@ function Product({ productName, productID, productImage, increment, decrement, q
   return (
     <>
       <div
-        className={`card  ${listView ? 'grid' : 'grid grid-cols-2'} gap-2`}
+        className={`card grid ${listView ? '' : 'grid-cols-2'}`}
         onClick={() => setShow(true)}
         data-testid={`product-${productID}`}
+        onKeyPress={handleKeyPress}
+        role="button"
+        tabIndex={0}
       >
         {/* Display the product image */}
         <div>{!listView && <ProductImage src={productImage} alt={productName} />}</div>
 
         <div className={`flex justify-between h-full ${listView ? '' : 'flex-col justify-end'}`}>
           {/* Display the product name */}
-          <div className="text-lg font-semibold col-span-2">{productName}</div>
+          <div className="text-lg font-semibold col-span-2 overflow-hidden">{productName}</div>
 
           {/* Display the product quantity */}
           {((increment && decrement && quantity) || listView) && (
             <div className="flex h-max justify-end">
               <button
-                className="btn"
+                className="btn w-10"
                 data-testid={`decrement-button-${productID}`}
                 onClick={(e) => {
                   decrementProduct(e)
@@ -123,7 +152,7 @@ function Product({ productName, productID, productImage, increment, decrement, q
                 {newProductQuantity}
               </span>
               <button
-                className="btn"
+                className="btn w-10"
                 data-testid={`increment-button-${productID}`}
                 onClick={(e) => {
                   incrementProduct(e)
@@ -136,8 +165,12 @@ function Product({ productName, productID, productImage, increment, decrement, q
         </div>
       </div>
 
-      <dialog open={isShow} className="h-full w-full fixed top-0 py-20 bg-transparent">
-        <div className="popup">
+      <dialog
+        open={isShow}
+        className="h-full w-full fixed top-0 py-20 bg-transparent/50"
+        onClick={() => setShow(false)}
+      >
+        <div className="popup" onClick={(e) => e.stopPropagation()}>
           <div className="relative h-8">
             <button className="btn absolute right-0" onClick={() => setShow(false)}>
               <X size={24} />

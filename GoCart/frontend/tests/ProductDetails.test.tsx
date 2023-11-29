@@ -5,9 +5,6 @@ import ProductDetails from '../src/components/ProductDetails'
 import React from 'react'
 import { GET_PRODUCT_BY_ID } from '../src/utils/queryFunctions/getProduct'
 
-// TODO: figure out why the test fails
-// State: failed
-
 const mockProduct = {
   name: 'Test Product',
   nutrition: [
@@ -35,6 +32,7 @@ const mockProduct = {
     },
   ],
   description: 'Test Description',
+  image: '',
 }
 
 const mocks = [
@@ -64,7 +62,7 @@ const errorMock = [
 describe('ProductDetails Component', () => {
   test('renders loading state', async () => {
     render(
-      <MockedProvider mocks={[]} addTypename={false}>
+      <MockedProvider mocks={mocks} addTypename={false}>
         <ProductDetails productID="1" />
       </MockedProvider>,
     )

@@ -1,11 +1,26 @@
-import { describe, test, vi } from 'vitest'
-// import { render, fireEvent } from '@testing-library/react'
-// import Product, { ProductProps } from '../src/components/Product'
-// import React from 'react'
+import '@testing-library/jest-dom'
+import { describe, expect, test, vi } from 'vitest'
+import { render, fireEvent } from '@testing-library/react'
+import Product, { ProductProps } from '../src/components/Product'
+import React from 'react'
 
-// TODO: figure out why the test
-// State: Failed
-// Possible reason: Changes in backend
+const sampleProduct: ProductProps = {
+  productName: 'Sample Product',
+  productID: '1',
+  productImage: '',
+  increment: true,
+  decrement: true,
+  quantity: true,
+  listView: false,
+}
+
+// Mock the ProductDetails component to prevent its rendering and functionality in the tests
+vi.mock('../src/components/ProductDetails', () => {
+  return {
+    __esModule: true,
+    default: vi.fn().mockReturnValue(null), // Mock ProductDetails component to return null
+  }
+})
 
 // Mocking the react-router-dom context for testing
 vi.mock('react-router-dom', () => ({
@@ -13,62 +28,49 @@ vi.mock('react-router-dom', () => ({
 }))
 
 describe('Product Component', () => {
-  test('Tests doesnt work due to changes in backend', async () => {})
-  // const sampleProduct: ProductProps = {
-  //   productName: 'Sample Product',
-  //   productID: '123',
-  //   productImage: '',
-  //   increment: true,
-  //   decrement: true,
-  //   quantity: true,
-  //   listView: false,
-  // }
+  test('renders Product correctly', async () => {
+    // Test rendering of Product component
+    const { getByText } = render(<Product {...sampleProduct} />)
 
-  // test('renders Product correctly', async () => {
-  //   // Test rendering of Product component
-  //   const { getByText } = render(<Product {...sampleProduct} />)
+    // Assert that the product name is rendered
+    expect(getByText('Sample Product')).toBeTruthy()
+  })
 
-  //   // Assert that the product name is rendered
-  //   expect(getByText('Sample Product')).toBeTruthy()
+  test('increments product quantity when + button is clicked', async () => {
+    const { getByText } = render(<Product {...sampleProduct} />)
 
-  //   // Add more assertions as needed for increment, decrement buttons, quantity display, etc.
-  // })
+    // Get the + button and simulate a click event
+    const incrementButton = getByText('+')
+    fireEvent.click(incrementButton)
 
-  // test('increments product quantity when + button is clicked', async () => {
-  //   const { getByText } = render(<Product {...sampleProduct} />)
+    // Get the quantity display element
+    const quantityDisplay = getByText('1') // Update this based on how your quantity is displayed
 
-  //   // Get the + button and simulate a click event
-  //   const incrementButton = getByText('+')
-  //   fireEvent.click(incrementButton)
+    // Assert that the quantity is incremented by 1
+    expect(quantityDisplay.textContent).toBe('1') // Use .textContent to access the text content and perform assertions
+  })
 
-  //   // Get the quantity display element
-  //   const quantityDisplay = getByText('12') // Update this based on how your quantity is displayed
+  test('decrements product quantity when - button is clicked', async () => {
+    const { getByText } = render(<Product {...sampleProduct} />)
 
-  //   // Assert that the quantity is incremented by 1
-  //   expect(quantityDisplay.textContent).toBe('1') // Use .textContent to access the text content and perform assertions
-  // })
+    // Get the - button and simulate a click event
+    const decrementButton = getByText('-')
+    fireEvent.click(decrementButton)
 
-  // test('decrements product quantity when - button is clicked', async () => {
-  //   const { getByText } = render(<Product {...sampleProduct} />)
+    // Get the quantity display element
+    const quantityDisplay = getByText('0') // Update this based on how your quantity is displayed
 
-  //   // Get the - button and simulate a click event
-  //   const decrementButton = getByText('-')
-  //   fireEvent.click(decrementButton)
+    // Assert that the quantity is decremented by 1
+    expect(quantityDisplay.textContent).toBe('0') // Use .textContent to access the text content and perform assertions
+  })
 
-  //   // Get the quantity display element
-  //   const quantityDisplay = getByText('0') // Update this based on how your quantity is displayed
+  test('does not render increment and decrement buttons when props are false', async () => {
+    const { queryByText } = render(<Product {...sampleProduct} increment={false} decrement={false} />)
 
-  //   // Assert that the quantity is decremented by 1
-  //   expect(quantityDisplay.textContent).toBe('0') // Use .textContent to access the text content and perform assertions
-  // })
+    const incrementButton = queryByText('+')
+    const decrementButton = queryByText('-')
 
-  // test('does not render increment and decrement buttons when props are false', async () => {
-  //   const { queryByText } = render(<Product {...sampleProduct} increment={false} decrement={false} />)
-
-  //   const incrementButton = queryByText('+')
-  //   const decrementButton = queryByText('-')
-
-  //   expect(incrementButton).toBeNull()
-  //   expect(decrementButton).toBeNull()
-  // })
+    expect(incrementButton).toBeNull()
+    expect(decrementButton).toBeNull()
+  })
 })
