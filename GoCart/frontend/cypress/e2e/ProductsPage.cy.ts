@@ -36,6 +36,7 @@ describe('Products Page', () => {
     cy.get('[data-testid="product-list"]').each(($product, index, $list) => {
       if (index < $list.length - 1) {
         const currentProduct = $product.text().trim()
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const nextProduct = ($list as any)
           .eq(index + 1)
           .text()
@@ -52,6 +53,7 @@ describe('Products Page', () => {
     cy.get('[data-testid="product-list"]').each(($product, index, $list) => {
       if (index < $list.length - 1) {
         const currentProduct = $product.text().trim()
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const nextProduct = ($list as any)
           .eq(index + 1)
           .text()
