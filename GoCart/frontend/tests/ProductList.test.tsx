@@ -46,9 +46,9 @@ describe('ProductList Component', () => {
 
     // Check if ProductList renders with the list view based on the listView prop
     context.expect(container.querySelector('.grid')).toBeTruthy()
-    context.expect(container.querySelector('[class*="sm:grid-cols-2"]')).toBeTruthy() // Using attribute selector
-    context.expect(container.querySelector('[class*="lg:grid-cols-3"]')).toBeTruthy() // Using attribute selector
-    context.expect(container.querySelector('[class*="xl:grid-cols-4"]')).toBeTruthy() // Using attribute selector
+    context.expect(container.querySelector('[class*="md:grid-cols-2"]')).toBeTruthy() // Using attribute selector
+    context.expect(container.querySelector('[class*="xl:grid-cols-3"]')).toBeTruthy() // Using attribute selector
+    context.expect(container.querySelector('[class*="2xl:grid-cols-4"]')).toBeTruthy() // Using attribute selector
   })
 
   test('renders no products when products array is empty', async (context) => {
