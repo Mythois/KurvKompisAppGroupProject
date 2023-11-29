@@ -126,7 +126,6 @@ function Product({ productName, productID, productImage, increment, decrement, q
         onClick={() => setShow(true)}
         data-testid={`product-${productID}`}
         onKeyPress={handleKeyPress}
-        role="button"
         tabIndex={0}
       >
         {/* Display the product image */}
