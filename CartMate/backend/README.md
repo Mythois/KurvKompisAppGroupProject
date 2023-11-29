@@ -19,7 +19,7 @@ The most important folders and files are listed below.
 
 ### Running it from the root of the project
 
-To run the backend from the root folder of the project, that is the GoCart folder, you will have to:
+To run the backend from the root folder of the project, that is the CartMate folder, you will have to:
 
 - cd into the root folder using a terminal
 - run: `npm run back`
