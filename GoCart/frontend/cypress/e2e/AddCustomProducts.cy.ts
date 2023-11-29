@@ -1,3 +1,6 @@
+/// <reference types="cypress" />
+
+
 describe('Add Custom Product Page', () => {
   beforeEach(() => {
     cy.visit('/AddCustomProduct')

@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 describe('Home Page', () => {
   beforeEach(() => {
     // Go to the home page

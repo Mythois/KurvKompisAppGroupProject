@@ -20,7 +20,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
-    "types": ["vitest/globals"]
+    "types": ["vitest/globals", "cypress"]
   },
   "extends": "@tsconfig/cypress/tsconfig.json",
   "include": ["cypress", "src", "./tests/setup.ts"],
